@@ -1,18 +1,89 @@
 header{
-    background-color: #D8042A;
-    width: 200px;
-    
+
+    background-color: peru;
+    text-align: left;
+    border-style: groove;
+    max-width: 50ch;
 }
 
+.titre1{
+    background-color: peru;
+    max-width: 10ch;
+    border-style: groove;
+}
+
+
+a{
+    font-size: large;
+}
 
 body{
+    display: flex;
     background-color: white;
-
+    flex-direction: column; /* Organiser en colonne */
+    margin: 0;
 
 }
-
 
 
 p{
     background-color: #D8042A;
+    border-style:inherit;
+    border-color: black;
+    max-width: 60ch;
+}
+
+ul{
+    background-color: #D8042A;
+    border-style:inherit;
+    border-color: black;
+    max-width: 60ch;
+}
+
+a{
+    color: black;
+}
+
+form{
+
+    border: 2px solid red; /* Bordure */
+    background-color: #f4f4f4; /* Couleur de fond */
+    border-width: 5px;
+    text-align: center;
+    width: 400px; /* Largeur du formulaire */
+
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: left ; /* Aligner les labels et inputs */
+    margin-bottom: 10px;
+}
+
+
+
+input {
+
+    flex-grow: 1; /* Permet aux inputs de s'adapter à la largeur */
+    margin-left: 10px;
+    width: 50%; /* Largeur uniforme */
+    padding: 5px; /* Même espacement interne */
+    border: 1px solid black; /* Bordure uniforme */
+    border-radius: 5px; /* Coins légèrement arrondis */
+    font-size: 12px; /* Même taille de police */
+    box-sizing: border-box; /* Évite que la largeur soit affectée par le padding */
+}
+
+.pageAcceuil{
+
+    background-image: url(media/Bojnice3.jpg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover; /* Ajuste l’image pour couvrir toute la page */
+
 }
