@@ -4,6 +4,7 @@ header{
     text-align: left;
     border-style: groove;
     max-width: 50ch;
+    padding: 20px;
 }
 
 .titre1{
@@ -33,7 +34,7 @@ p{
     max-width: 60ch;
 }
 
-ul{
+p ul{
     background-color: #D8042A;
     border-style:inherit;
     border-color: black;
