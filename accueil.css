@@ -1,0 +1,21 @@
+div.menu{
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+
+}
+
+div.menu a{
+    display: inline-block;
+    color: white;
+    padding: 14px;
+}
+
+div.menu a:hover{
+    background-color: #777;
+}
+
+a#connexion{
+    margin-left:auto;
+}
+
