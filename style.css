@@ -182,13 +182,92 @@ ul .limenu a:hover {
 
 }
 
-#sidebar {
-    width: 200px; 
-    float: left; 
-    height: 400px; 
-    background: #ddd;
-    margin-left: 10px;
+nav.adminbar {
+    
+
+    margin-top: 20px;
+    display: flex; 
+    justify-content: center; 
+ 
 }
+
+ul.ul-adminbar{
+    text-decoration: none;
+    list-style: none;
+    background: #0d1b1e;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+nav.adminbar a{
+        color: white;
+        text-decoration: none;
+        transition: color 0.4s;
+}
+
+
+nav.adminbar a:visited{
+        color: white;
+}
+
+nav.adminbar a:hover {
+        color: rgb(237, 184, 50);
+    }
+
+table.admintable{
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50); 
+    padding: 4px;
+    border-radius: 5px;
+}
+
+table caption.admintable{
+    background-color: #0d1b1e; 
+    text-align: left;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+td > button{
+    background-color: #0d1b1e; 
+    color: rgb(237, 184, 50);
+    border-radius: 5px;
+}
+
+div.admindiv{
+    display: flex; 
+    justify-content: center; 
+    margin-top: 200px;
+}
+
+select{
+    background-color: #0d1b1e; 
+    color: rgb(237, 184, 50);
+    border-radius: 5px;
+}
+
+option{
+    color: #0d1b1e;
+    background-color: rgb(237, 184, 50);
+    border-radius: 5px;
+}
+
+td.td-admin a{
+    color: rgb(237, 184, 50);
+    text-decoration: none;
+    transition: color 0.4s;
+}
+
+
+td.td-admin a:visited{
+    color: rgb(237, 184, 50);
+}
+
+td.td-admin a:hover {
+    color: white;
+}
+
 
 /*Body admin fin*/
 
