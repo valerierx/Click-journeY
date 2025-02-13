@@ -1,23 +1,153 @@
-div.menu{
-    background-color: grey;
-    display: flex;
+*{
+    text-decoration: none;
+}
+
+body{
+    background-image: url(paysage.jpg);
+    background-size: cover ;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    image-rendering: crisp-edges;
+    background-attachment: fixed;
+}
+/*debut Accueil*/
+/*debut Menu*/
+.divmenu{
+    align-items:center;
+    justify-content: space-between;
+    display: flex;/*disposition en ligne */
+    height: 100px;
+}
+li.limenu{
+    display: inline-block;
+    
+}
+
+.limenu a{
+    color:white;
+    font-size: 20px;
+    margin-right: 25px;
+    
+}
+ul .limenu a:hover {
+    color:black; 
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 5px 10px; 
+    border-radius: 5px; 
+}
+.bouton_menu{
+   
+    color: black;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.logo1{
+    padding: 10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+/*fin Menu*/
+/*Debut description accueil avec onglet inscription*/
+.section_accueil{
+    padding: 20px 0;
+    text-align: center;
+    color:#FFFF;
+    height: 100vh;
+    align-items: center;
     justify-content: center;
 
 }
 
-div.menu a{
-    display: inline-block;
+.accueil_contenu1{
+    margin-top: 100px;
+}
+.accueil_titre1{
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+.accueil_p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.accueil_btn {
+    background: blue; 
+    color: #333;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.accueil_btn:hover {
+    background: grey; 
+}
+/*Fin description accueil avec onglet inscription*/
+/*fin Accueil*/
+/*Présentation fin*/
+.contenant { /*créer pour dédier un emplacement pour les élements*/
+    display: flex; /* Aligner les élements en ligne */
+    gap: 20px; /* Espacement entre chaque éléments */
+    justify-content: center;
+}
+
+.carte {
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.imagerussie {
+    background: url('russie.jpg') center/cover no-repeat;/*pour centrer, ajuster et pour eviter la répition de l'image*/
+    height: 180px;
+}
+.imagealbanie {
+    background: url('albanie.jpg') center/cover no-repeat;
+    height: 180px;
+}
+.imagecroatie {
+    background: url('croatie.jpg') center/cover no-repeat;
+    height: 180px;
+}
+
+.texte {
+    padding: 15px;
+}
+
+.texte h2 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.texte p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.texte a {
+    text-decoration: none;
+    background-color: #007BFF;
     color: white;
-    padding: 14px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    
 }
 
-div.menu a:hover{
-    background-color: #777;
+.texte a:hover {
+    background-color: #0056b3;
 }
-
-a#connexion{
-    margin-left:auto;
-}
+/*Présentation fin*/
 
 /*Footer début*/
 footer {
@@ -38,7 +168,7 @@ footer {
     margin: 10px;
 }
 
-h3 {
+h3.footer_h3 {
     color: white;
 }
 
