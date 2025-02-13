@@ -11,6 +11,7 @@ body{
     margin: 0;
     image-rendering: crisp-edges;
     background-attachment: fixed;
+    
 }
 /*debut Accueil*/
 /*debut Menu*/
@@ -167,11 +168,39 @@ ul .limenu a:hover {
 }
 /*Présentation fin*/
 
+
+
+/*Body admin début*/
+
+.admin {
+    background-image: url(media/adminback.jpeg);
+    background-size: cover ;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    image-rendering: crisp-edges;
+    background-attachment: fixed;
+
+}
+
+#sidebar {
+    width: 200px; 
+    float: left; 
+    height: 400px; 
+    background: #ddd;
+    margin-left: 10px;
+}
+
+/*Body admin fin*/
+
+
 /*Footer début*/
 footer {
     background-color: #0d1b1e;
     color: white;
     padding: 15px 0;
+    margin-top: 100px;
    
 }
 
@@ -190,19 +219,19 @@ h3.footer_h3 {
     color: white;
 }
 
-ul.ulfooter {
+ul.ul-footer {
     list-style: none;
     padding: 0;
 }
 
-ul.ulfooter li a {
+ul.ul-footer li a {
     color: white;
     text-decoration: none;
     transition: color 0.4s;
 }
 
-ul.ulfooter li a:hover {
-    color: rgb(165, 17, 17);
+ul.ul-footer li a:hover {
+    color: rgb(237, 184, 50);
 }
 
 .footer-bottom {
