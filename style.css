@@ -34,9 +34,7 @@ li.limenu{
 }
 ul .limenu a:hover {
     color:black; 
-    background-color: rgba(255, 255, 255, 0.2); 
-    padding: 5px 10px; 
-    border-radius: 5px; 
+    background-color: rgba(255, 255, 255, 0.2);
 }
 .bouton_menu{
    
@@ -173,7 +171,7 @@ ul .limenu a:hover {
 /*Body admin début*/
 
 .admin {
-    background-image: url(media/adminback.jpeg);
+    background-image: url(paysage.jpg);
     background-size: cover ;
     background-repeat: no-repeat;
     background-position: center;
@@ -241,3 +239,43 @@ ul.ul-footer li a:hover {
     padding-top: 10px;
 }
 /*Footer fin*/
+
+/*Connexion début*/
+button[type=submit] {
+    background: blue;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+}
+button[type=submit]:hover {
+    background: grey;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    text-align: left;
+}
+
+.lien {
+    all: revert !important;
+    text-align: left !important;
+}
+
+
