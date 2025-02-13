@@ -52,36 +52,54 @@ ul .limenu a:hover {
 /*fin Menu*/
 /*Debut description accueil avec onglet inscription*/
 .section_accueil{
-    padding: 20px 0;
-    text-align: center;
-    color:#FFFF;
-    height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .accueil_contenu1{
-    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width: 500px;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    
+}
+.accueil_image{
+    width: 40%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.accueil_texte{
+    width: 60%;
+    padding: 0 20px;
+    text-align: left;
 }
 .accueil_titre1{
     font-size: 2rem;
     margin-bottom: 15px;
+    text-align: center;
 }
+
 .accueil_p {
     font-size: 1.2rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .accueil_btn {
     background: blue; 
-    color: #333;
+    color: white;
     padding: 10px 20px;
     font-size: 1rem;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     transition: 0.3s;
+    width: 100%;
+    text-align: center;
 }
 .accueil_btn:hover {
     background: grey; 
