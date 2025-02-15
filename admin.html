@@ -29,7 +29,7 @@
     <table border="2" style="border-color: yellow; background-color: #0d1b1e; color: white;">
         <tr>
           <td style="border: none; padding: 5px;"><img src="media/warn.png" width="100" height="100"  alt="triangle attention"></td>
-          <td style="border: none; padding: 5px; font-size: larger;">Attention, vous êtes sur une page administrateur. Assuré vous de la fermer après avoir finis.</td>
+          <td style="border: none; padding: 5px; font-size: larger;">Attention, vous êtes sur une page administrateur.</td>
         </tr>
       </table>    
 
@@ -42,10 +42,10 @@
 <nav  class="adminbar">
 
     <ul class="ul-adminbar">
-        <li><a href="#utilisateurs" >inscris</a></li>
-        <li><a href="#bannis">liste noir</a></li>
+        <li><a href="#utilisateurs" >Utilisateurs</a></li>
+        <li><a href="#bannis">Liste noire</a></li>
         <li><a href="#stastistique">Affluence du site</a></li>
-        <li><a href="#reservation">Etat des réservation</a></li>
+        <li><a href="#reservation">État des réservations</a></li>
     </ul>
 
 </nav>
@@ -55,45 +55,45 @@
 
 
     <table border="1" id="utilisateurs"  class="admintable" >
-        <caption class="admintable" ><strong>Liste des utilisateurs inscrits</strong></caption>
+        <caption class="admintable" ><strong>Liste des utilisateurs</strong></caption>
         <thead>
             <tr>
+                <th>Identifiant</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Mail</th>
                 <th>Téléphone</th>
                 <th>Statut</th>
                 <th>VIP</th>
-                <th>Etat</th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td>1</td>
                 <td>Nom</td>
                 <td>Prénom</td>
                 <td>prenom.nom@email.com</td>
                 <td>0123456789</td>
                 <td>Client</td>
                 <td>Oui</td>
-                <td>Connecté</td>
             </tr>
             <tr>
+                <td>2</td>
                 <td>Nom</td>
                 <td>Prenom</td>
                 <td>prenom.nom@email.com</td>
                 <td>0987654321</td>
                 <td>Client</td>
                 <td>Non</td>
-                <td>Hors ligne</td>
             </tr>
             <tr>
+                <td>3</td>
                 <td>CY</td>
                 <td>Tech</td>
                 <td>cy.tech@cytech.fr</td>
                 <td>x</td>
                 <td>Institution</td>
                 <td>Oui</td>
-                <td>Hors ligne</td>
             </tr>
         </tbody>
         <tfoot>
@@ -101,8 +101,8 @@
 
                 <td><button> <- précédent </button>  | <button>suivant -> </button> </td>
                 <td>1/..</td>
-                <td style="text-align: center;"><button>Modifié</button></td>
-                <td  class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
+                <td class="td-admin-modif"><button>Modifer</button></td>
+                <td class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
             </tr>
 
 
@@ -118,6 +118,7 @@
         <caption class="admintable" ><strong>Liste des utilisateurs Bannis</strong></caption>
         <thead>
             <tr>
+                <td>Identifiant</td>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Email</th>
@@ -128,6 +129,7 @@
         </thead>
         <tbody>
             <tr>
+                <td>2345</td>
                 <td>Truand</td>
                 <td>Nom truand</td>
                 <td>Truand@email.com</td>
@@ -136,6 +138,7 @@
                 <td>10/02/2024</td>
             </tr>
             <tr>
+                <td>4324</td>
                 <td>Truand</td>
                 <td>Nom truand</td>
                 <td>Truand@email.com</td>
@@ -149,7 +152,7 @@
 
                 <td><button><- précédent </button>  | <button>suivant -> </button> </td>
                 <td>1/..</td>
-                <td style="text-align: center;"><button>Modifié</button></td>
+                <td style="text-align: center;"><button>Modifier</button></td>
                 <td  class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
             </tr>
         </tfoot>
@@ -163,19 +166,21 @@
         <caption class="admintable" ><strong>Gestion des Réservations</strong></caption>
         <thead>
             <tr>
+                <th>Id réservation</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Date</th>
-                <th>Id voyage</th>
+                <th>Id compte</th>
                 <th>Statut</th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td>38754</td>
                 <td>Nom</td>
                 <td>Prenom</td>
                 <td>15/05/2025</td>
-                <td>Prs-Bcrst50</td>
+                <td>2345</td>
                 <td>
                     <select class="status">
                         <option value="En attente">En attente</option>
@@ -185,10 +190,11 @@
                 </td>
             </tr>
             <tr>
+                <td>38574</td>
                 <td>Nom</td>
                 <td>Prenom</td>
                 <td>20/05/2025</td>
-                <td>Prg-Vlns64</td>
+                <td>2345</td>
                 <td>
                     <select class="status">
                         <option value="En attente">En attente</option>
@@ -203,7 +209,7 @@
 
             <td><button><- précédent </button>  | <button>suivant -> </button> </td>
             <td>1/..</td>
-            <td style="text-align: center;"><button>Modifié</button></td>
+            <td style="text-align: center;"><button>Modifier</button></td>
             <td  class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
         </tr>
     </tfoot>
@@ -221,7 +227,7 @@
             <tr>
                 <th>Date</th>
                 <th>Visiteurs Uniques</th>
-                <th>Pages Vues</th>
+                <th>Pages vues</th>
                 <th>Temps Moyen (min)</th>
                 <th>Taux de Rebond (%)</th>
             </tr>
@@ -254,7 +260,7 @@
 
                 <td><button><- précédent </button>  | <button>suivant -> </button> </td>
                 <td>1/..</td>
-                <td style="text-align: center;"><button>Modifié</button></td>
+                <td style="text-align: center;"><button>Modifier</button></td>
                 <td  class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
             </tr>
         </tfoot>

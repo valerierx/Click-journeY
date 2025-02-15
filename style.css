@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
     text-decoration: none;
 }
 
 body{
+    font-family: "Noto Sans", serif;
+    font-optical-sizing: auto;
     background-image: url(paysage.jpg);
-    background-size: cover ;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
@@ -273,6 +277,9 @@ td.td-admin a:hover {
     color: white;
 }
 
+td.td-admin-modif {
+    text-align: center;
+}
 
 /*Body admin fin*/
 
