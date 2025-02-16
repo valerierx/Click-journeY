@@ -26,10 +26,11 @@ img[alt="Logo"] {
 /*debut Accueil*/
 /*debut Menu*/
 .divmenu{
-    align-items:center;
-    justify-content: space-between;
-    display: flex;/*disposition en ligne */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
     height: 100px;
+    padding: 0 50px; 
 }
 li.limenu{
     display: inline-block;
@@ -57,6 +58,7 @@ ul .limenu a:hover {
     padding: 10px;
     font-weight: bold;
     font-size: 30px;
+    justify-content: flex-end;
 }
 /*fin Menu*/
 /*Debut description accueil avec onglet inscription*/
@@ -444,6 +446,42 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
 .lien {
     all: revert !important;
     text-align: left !important;
+}
+/*¨Profil*/
+.profil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.profil-elmt {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 350px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.modif-btn {
+    background: #00c1d4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modif-btn a {
+    color: white;
+    text-decoration: none;
 }
 
 
