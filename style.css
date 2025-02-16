@@ -7,7 +7,7 @@
 body{
     font-family: "Noto Sans", serif;
     font-optical-sizing: auto;
-    background-image: url(paysage.jpg);
+    background-image: url(media/paysage.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -164,15 +164,15 @@ ul .limenu a:hover {
 }
 
 .imagerussie {
-    background: url('russie.jpg') center/cover no-repeat;/*pour centrer, ajuster et pour eviter la répition de l'image*/
+    background: url('media/russie.jpg') center/cover no-repeat;/*pour centrer, ajuster et pour eviter la répition de l'image*/
     height: 180px;
 }
 .imagealbanie {
-    background: url('albanie.jpg') center/cover no-repeat;
+    background: url('media/albanie.jpg') center/cover no-repeat;
     height: 180px;
 }
 .imagecroatie {
-    background: url('croatie.jpg') center/cover no-repeat;
+    background: url('media/croatie.jpg') center/cover no-repeat;
     height: 180px;
 }
 
@@ -237,7 +237,7 @@ ul .limenu a:hover {
 }
 
 .admin {
-    background-image: url(paysage.jpg);
+    background-image: url(media/paysage.jpg);
     background-size: cover ;
     background-repeat: no-repeat;
     background-position: center;
