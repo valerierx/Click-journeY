@@ -179,10 +179,11 @@ ul .limenu a:hover {
 
 /*Body admin début*/
 
-.haut-de-page {
+#haut-de-page {
     display: flex;
     justify-content: center;
 }
+
 .admin_warn {
     border-color: yellow;
     background-color: #0d1b1e;
