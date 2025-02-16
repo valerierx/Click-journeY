@@ -115,7 +115,36 @@ ul .limenu a:hover {
 }
 /*Fin description accueil avec onglet inscription*/
 /*fin Accueil*/
-/*Présentation fin*/
+/*Debut Présentation*/
+/*Debut barre de recherche*/
+.barre-recherche {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+  
+  .recherche {
+    width: 200px;
+    padding: 8px;
+    border: 2px solid white;
+    border-radius: 15px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .bouton-recherche {
+    background-color: white;
+    border: none;
+    padding: 6px 10px;
+    margin-left: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+ 
+/*Fin barre de recherche*/
+/*Debut Carte */
 .contenant { /*créer pour dédier un emplacement pour les élements*/
     display: flex; /* Aligner les élements en ligne */
     gap: 20px; /* Espacement entre chaque éléments */
@@ -174,6 +203,8 @@ ul .limenu a:hover {
 .texte a:hover {
     background-color: #6c00d4;
 }
+/*Fin carte*/
+
 /*Présentation fin*/
 
 
