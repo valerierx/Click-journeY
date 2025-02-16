@@ -32,7 +32,7 @@ img[alt="Logo"] {
 }
 li.limenu{
     display: inline-block;
-    
+    margin-left: -100px;
 }
 
 .limenu a{
@@ -98,7 +98,7 @@ ul .limenu a:hover {
     margin-bottom: 15px;
 }
 .accueil_btn {
-    background: blue; 
+    background: #6c00d4;
     color: white;
     padding: 10px 20px;
     font-size: 1rem;
@@ -161,7 +161,7 @@ ul .limenu a:hover {
 
 .texte a {
     text-decoration: none;
-    background-color: #007BFF;
+    background-color: #6c00d4;
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
@@ -171,13 +171,34 @@ ul .limenu a:hover {
 }
 
 .texte a:hover {
-    background-color: #0056b3;
+    background-color: #6c00d4;
 }
 /*Présentation fin*/
 
 
 
 /*Body admin début*/
+
+.haut-de-page {
+    display: flex;
+    justify-content: center;
+}
+.admin_warn {
+    border-color: yellow;
+    background-color: #0d1b1e;
+    color: white;
+}
+
+.warn_image {
+    border: none;
+    padding: 5px;
+}
+
+.warn_text {
+    border: none;
+    padding: 5px;
+    font-size: larger
+}
 
 .admin {
     background-image: url(paysage.jpg);
@@ -192,21 +213,29 @@ ul .limenu a:hover {
 }
 
 nav.adminbar {
-    
-
     margin-top: 20px;
-    display: flex; 
-    justify-content: center; 
- 
+    display: flex;
+    justify-content: center;
+
 }
 
 ul.ul-adminbar{
+    display: flex;
+    justify-content: space-between;
     text-decoration: none;
     list-style: none;
     background: #0d1b1e;
     color: white;
     padding: 20px;
     border-radius: 10px;
+}
+
+ul.ul-adminbar li {
+    display: inline-block;
+}
+
+ul.ul-adminbar li a {
+    margin: 25px;
 }
 
 nav.adminbar a{
@@ -229,7 +258,22 @@ table.admintable{
     color: rgb(237, 184, 50); 
     padding: 4px;
     border-radius: 5px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
+
+.admintable td {
+    padding: 12px 15px;
+}
+
+.admintable tbody tr:hover {
+    background-color: #253134;
+}
+
 
 table caption.admintable{
     background-color: #0d1b1e; 
@@ -332,7 +376,7 @@ ul.ul-footer li a:hover {
 
 /*Connexion début*/
 button[type=submit] {
-    background: blue;
+    background: #6c00d4;
     color: white;
     padding: 10px 20px;
     font-size: 1rem;
