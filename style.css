@@ -163,6 +163,25 @@ ul .limenu a:hover {
     text-align: center;
 }
 
+.carte_recherche fieldset {
+    display: inline-block;
+}
+
+.contenant_recherche { /*créer pour dédier un emplacement pour les élements*/
+    gap: 20px; /* Espacement entre chaque éléments */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.carte_recherche {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: inline-block;
+}
+
 .imagerussie {
     background: url('russie.jpg') center/cover no-repeat;/*pour centrer, ajuster et pour eviter la répition de l'image*/
     height: 180px;
@@ -423,11 +442,18 @@ button[type=submit] {
     width: 100%;
     text-align: center;
 }
+.titre_recherche {
+    text-align: center;
+}
+
+.inline_submit {
+    width: unset !important;
+}
 button[type=submit]:hover {
     background: grey;
 }
 
-input[type=text], input[type=email], input[type=password] {
+input[type=text], input[type=email], input[type=password], input[type=date], input[type=number] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -471,7 +497,7 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
 }
 
 .modif-btn {
-    background: #00c1d4;
+    background: #6c00d4;
     color: white;
     padding: 10px 15px;
     border: none;
