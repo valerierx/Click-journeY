@@ -448,13 +448,13 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     text-align: left !important;
 }
 /*¨Profil*/
-.profil-container {
+.profil {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80vh;
 }
-.profil-card {
+.profil-elmt {
     background: white;
     padding: 30px;
     text-align: center;
@@ -470,7 +470,7 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     margin-bottom: 15px;
 }
 
-.edit-btn {
+.modif-btn {
     background: #00c1d4;
     color: white;
     padding: 10px 15px;
@@ -479,7 +479,7 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     cursor: pointer;
 }
 
-.edit-btn a {
+.modif-btn a {
     color: white;
     text-decoration: none;
 }
