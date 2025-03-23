@@ -510,4 +510,21 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     text-decoration: none;
 }
 
+.admin-btn {
+    background: #0c915a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+.admin-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.bouton-array {
+    display: table;
+    margin: auto;
+}

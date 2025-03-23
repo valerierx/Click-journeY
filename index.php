@@ -1,48 +1,50 @@
+<?php 
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Profil</title>
+  <title>Accueil</title>
 </head>
-<body id="haut">
-  
-  <div>
+<body>
 <nav>
-  <div class="divmenu">
+  <div id="haut" class="divmenu">
     <div class="logo1">
         <a href="index.html"><img src="media/logo.webp" width="400" height="100" alt="Logo"></a>
     </div>
     <ul>
       <li class="limenu"><a href="index.html">Accueil</a></li>
-        <li class="limenu"><a href="presentation.html">Trajets</a></li>
-        <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
-      <li class="limenu"><a href="">Bon plans</a></li>
+      <li class="limenu"><a href="presentation.html">Trajets</a></li>
+      <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
+      <li class="limenu"><a href="">Bon plan</a></li>
       <button class="bouton_menu"><a href="connexion.html">Connexion</a></button>
-      <button class="bouton_menu"><a href="profil.html">Profil</a></button>
+      <button class="bouton_menu"><a href="profil.php">Profil</a></button>
       </ul>
       <i class='bx bx-search-alt'></i>   <!--Pas utiliser mais permet de centrer le menu-->
   </div>
 </nav>
-
-
-<!-- Section Profil -->
-<section class="profil">
-    <div class="profil-elmt">
-        <img src="media/profil.jpg" alt="Photo de Profil" class="avatar">
-        <h1>Pseudo</h1>
-        <p>Nom: Exemple</p>
-        <p>Prénom: Exemple</p>
-        <p>Email: utilisateur@email.com</p>
-        <p>Mots de passe: XXXXXX</p>
-        <p>Date de naissance : 01/01/01</p>
-        <p>Ville: Paris</p>
-        <button class="modif-btn"><a href="modifier_profil.html">Modifier Profil</a></button>
+ <!-- <img src="europe.jpg">-->
+  
+ <!--<div class="scrolling-text">
+  Profitez d'une Offre Exclusive après l'inscription avec le code Click-journeY !!!
+</div>-->
+<section class="section_accueil">
+  <div class="accueil_contenu1">
+    <img src="media/phototexte.jpg" class="accueil_image">
+    <div class="accueil_texte">
+    <h3 class="accueil_titre1">Bienvenue sur CY Eastern</h3>
+    <p class="accueil_p">Nous sommes CY Eastern , une agence de voyage spécialisé dans les pays d'europe de l'est.<br>
+      Explorez l'Europe de l'est, vivez l'inoubliable avec CY Eastern !<br>
+      Pour vivre pleinement votre aventure rejoignez nous.</p>
+      
+      <a class="accueil_btn" href="inscription.html" >Inscrivez-vous</a>
     </div>
-</section>
-<<<<<<< HEAD
   </div>
-=======
+</section>
+
+
 
 <footer>
   <div class="contenu">
@@ -76,6 +78,6 @@
 </footer>
 
 
->>>>>>> 44a374e76155658944844cf25b4652bdba5d405f
+
 </body>
 </html>
