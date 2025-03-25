@@ -22,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     // Check if email is valid
     if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        exit("Mail incorrect!");
+        header("Location: ../inscription.php?mail");
     }
 
 
