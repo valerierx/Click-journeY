@@ -18,7 +18,7 @@
         <li class="limenu"><a href="presentation.html">Trajets</a></li>
         <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
         <li class="limenu"><a href="">Bon plan</a></li>
-        <button class="bouton_menu"><a href="connexion.html">Connexion</a></button>
+        <button class="bouton_menu"><a href="connexion.php">Connexion</a></button>
       </ul>
       <i class='bx bx-search-alt'></i>
       <!--Loupe de recherche-->
@@ -35,6 +35,17 @@
   <div class="carte">
     <div class="texte">
       <h1>Connexion</h1>
+      <?php
+      if(isset($_GET["incorrect"])) {
+        echo '<p class="message erreur">
+          Mail ou mot de passe incorrect!
+        </p>';
+      } else if(isset($_GET['nvcompte'])) {
+        echo '<p class="message valide">
+          Votre compte a été créé! Connectez-vous ci-dessous.
+        </p>';
+      }
+      ?>
       <form action="api/connexion.php" method="POST">
         <label>
           <input type="email" placeholder="Email" name="mail" required>
@@ -55,7 +66,7 @@
       <br>
         Pas encore inscrit?
       </br>
-      <a class="lien" href="inscription.html">Créer un compte</a>
+      <a class="lien" href="inscription.php">Créer un compte</a>
     </div>
   </div>
 </div>
@@ -82,8 +93,8 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="presentation.html">Présentation</a></li>
         <li><a href="#">Nos services</a></li>
-        <li><a href="connexion.html">Connexion</a></li>
-        <li><a href="inscription.html">Inscription</a></li>
+        <li><a href="connexion.php">Connexion</a></li>
+        <li><a href="inscription.php">Inscription</a></li>
       </ul>
     </div>
   </div>

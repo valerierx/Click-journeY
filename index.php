@@ -19,7 +19,7 @@
       <li class="limenu"><a href="presentation.html">Trajets</a></li>
       <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
       <li class="limenu"><a href="">Bon plan</a></li>
-      <button class="bouton_menu"><a href="connexion.html">Connexion</a></button>
+      <button class="bouton_menu"><a href="connexion.php">Connexion</a></button>
       <button class="bouton_menu"><a href="profil.php">Profil</a></button>
       </ul>
       <i class='bx bx-search-alt'></i>   <!--Pas utiliser mais permet de centrer le menu-->
@@ -39,7 +39,7 @@
       Explorez l'Europe de l'est, vivez l'inoubliable avec CY Eastern !<br>
       Pour vivre pleinement votre aventure rejoignez nous.</p>
       
-      <a class="accueil_btn" href="inscription.html" >Inscrivez-vous</a>
+      <a class="accueil_btn" href="inscription.php" >Inscrivez-vous</a>
     </div>
   </div>
 </section>
@@ -67,8 +67,8 @@
             <li><a href="index.html">Accueil</a></li>
             <li><a href="presentation.html">Présentation</a></li>
             <li><a href="#">Nos services</a></li>
-            <li><a href="connexion.html">Connexion</a></li>
-            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="connexion.php">Connexion</a></li>
+            <li><a href="inscription.php">Inscription</a></li>
           </ul>
       </div>
   </div>

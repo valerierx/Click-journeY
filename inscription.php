@@ -20,7 +20,7 @@
         <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
         <li class="limenu"><a href="">Itinéraire</a></li>
         <li class="limenu"><a href="">Bon plan</a></li>
-        <button class="bouton_menu"><a href="connexion.html">Connexion</a></button>
+        <button class="bouton_menu"><a href="connexion.php">Connexion</a></button>
       </ul>
       <i class='bx bx-search-alt'></i>
       <!--Loupe de recherche-->
@@ -37,6 +37,13 @@
   <div class="carte">
     <div class="texte">
       <h1>Inscription</h1>
+      <?php
+      if(isset($_GET["mail"])) {
+        echo '<p class="message erreur">
+          L\'adresse mail est déjà utilisée!
+        </p>';
+      }
+      ?>
       <form action="api/inscription.php" method="POST">
         <label>
           <input type="text" placeholder="Nom" name="nom" required>
@@ -64,7 +71,7 @@
         <button class="submit" type="submit">Créer un compte</button>
       </form>
       <br>
-        Déjà client? <a class="lien" href="connexion.html">Se connecter</a>
+        Déjà client? <a class="lien" href="connexion.php">Se connecter</a>
       </br>
     </div>
   </div>
@@ -92,8 +99,8 @@
         <li><a href="index.html">Accueil</a></li>
         <li><a href="presentation.html">Présentation</a></li>
         <li><a href="#">Nos services</a></li>
-        <li><a href="connexion.html">Connexion</a></li>
-        <li><a href="inscription.html">Inscription</a></li>
+        <li><a href="connexion.php">Connexion</a></li>
+        <li><a href="inscription.php">Inscription</a></li>
       </ul>
     </div>
   </div>

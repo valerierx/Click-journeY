@@ -528,3 +528,29 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     display: table;
     margin: auto;
 }
+
+.message {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.erreur {
+    border-color: #e76f51;
+    background-color: rgba(231, 111, 81, 0.1);
+}
+.avertissement {
+    border-color: rgb(237, 184, 50);
+    background-color: rgba(42, 157, 143, 0.1);
+}
+.info {
+    border-color: #0096c7;
+    background-color: rgba(0, 150, 199, 0.1);
+}
+.valide {
+    border-color: #00b353;
+    background-color: rgba(0, 179, 83, 0.1);
+}
+
+  
