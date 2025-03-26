@@ -487,6 +487,7 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 350px;
+    
 }
 
 .avatar {
@@ -553,4 +554,10 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     background-color: rgba(0, 179, 83, 0.1);
 }
 
-  
+.rue {
+    display:inline !important;
+}
+
+.rue input[type="number"] {
+    width: 50%;
+}

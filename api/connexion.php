@@ -30,6 +30,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['nom'] = $profileRow["nom"];
             $_SESSION['prenom'] = $profileRow["prenom"];
             $_SESSION['role'] = $profileRow["role"];
+            $_SESSION['naissance'] = $profileRow["naissance"];
+            $_SESSION['derniereConnexion'] = $profileRow["derniereConnexion"];
+
+            $connexionQuery = "UPDATE comptes SET derniereConnexion=now() WHERE idCompte='$id'";
+            $connexion = mysqli_query($linkDB, $connexionQuery);
+            
+            // NOUVEAU COMPTE
+            if($_SESSION['derniereConnexion'] == "0000-00-00 00:00:00") {
+                header('Location: ../modifProfil.php?nouveau');
+            }
 
             header('Location: ../index.php');
         } else {
