@@ -152,6 +152,8 @@ ul .limenu a:hover {
     display: flex; /* Aligner les élements en ligne */
     gap: 20px; /* Espacement entre chaque éléments */
     justify-content: center;
+    margin-bottom: 60px !important;
+    width: 100%;
 }
 
 .carte {
