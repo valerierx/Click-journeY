@@ -47,39 +47,28 @@ if (!isset($_SESSION['connecte'])) {
         <form action="api/profil.php" method="POST">
             <h1>Informations personnelles</h1>
             <label for="nom">
-                <input type="text" placeholder="Nom" name="nom" value="<?php echo $_SESSION['nom'];?>" required>
+                <input type="text" autocomplete="off" placeholder="Nom" name="nom" value="<?php echo $_SESSION['nom'];?>" required>
             </label>
             <label>
                 <input type="text" placeholder="Prénom" name="prenom" value="<?php echo $_SESSION['prenom'];?>" required>
             </label>
             <label>
-                <input type="email" placeholder="Email" name="mail" value="<?php echo $_SESSION['mail'];?>" required>
-            </label>
-            <label>
                 <input type="date" placeholder="Date de naissance" name="naissance" <?php 
                 if($_SESSION["naissance"] != "1879-10-26") {
                     echo 'value="' . $_SESSION["naissance"] . '"';
                 } ?>  required>
-            </label>
-            <label for="newsletter">
-                <input type="checkbox" id="newsletter" name="newsletter" value="1">
-                J'accepte de recevoir notre newsletter
             </label>
             <h3>Adresse postale</h3>
             <div class="rue">
-                <input type="number" placeholder="N°" name="numero" value="<?php echo $_SESSION['numero'];?>" required>
+                <input type="number" autocomplete="off" placeholder="N°" name="numero" value="<?php echo $_SESSION['numero'];?>">
                 <input type="text" placeholder="Rue" name="rue" value="<?php echo $_SESSION['rue'];?>" required>
             </div>
-            <label>
-                <input type="number" placeholder="Code postal" name="code" value="" required>
-            </label>
-            <select name="commune" id="commune"></select>
-            <label>
-                <input type="date" placeholder="Date de naissance" name="naissance" <?php 
-                if($_SESSION["naissance"] != "1879-10-26") {
-                    echo 'value="' . $_SESSION["naissance"] . '"';
-                } ?>  required>
-            </label>
+            <input type="text" placeholder="Complément d'adresse" name="complement" value="<?php echo $_SESSION['complement'];?>">
+            <div class="rue">
+                <input type="number" autocomplete="off" placeholder="Code postal" name="codePostal" value="<?php echo $_SESSION['codePostal'];?>" required>
+                <input type="text" placeholder="Commune" name="commune" value="<?php echo $_SESSION['commune'];?>" required>
+            </div>
+            <!--<select name="commune" id="commune"></select>-->
             <button class="submit" type="submit">Modifier le profil</button>
         </form>
     </div>

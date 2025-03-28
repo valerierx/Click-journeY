@@ -557,13 +557,17 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
 }
 
 .rue {
-    display:inline !important;
+    display:flex;
+    gap: 2px
 }
 
-.rue input[type="number"] {
-    width: 50%;
+.rue input[name="numero"] {
+    width: 30%;
 }
 
+.rue input[name="codePostal"] {
+    width: 70%
+}
 
 
 /* Début Récapitulatif d'un voyage*/

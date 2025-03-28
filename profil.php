@@ -38,15 +38,23 @@ if (!isset($_SESSION['connecte'])) {
 <section class="profil">
     <div class="profil-elmt">
         <img src="media/profil.jpg" alt="Photo de Profil" class="avatar">
-        <h1>Pseudo</h1>
+        <?php
+        if(isset($_GET["mail"])) {
+            echo '<p class="message valide">
+            Votre profil a été modifié!
+            </p>';
+        }
+        ?>
+        <h1>Profil</h1>
         <p>Nom: <?=$_SESSION['nom']?></p>
         <p>Prénom: <?=$_SESSION['prenom']?></p>
         <p>Email: <?=$_SESSION['mail']?></p>
-        <p>Mots de passe: XXXXXX</p>
-        <p>Date de naissance : 01/01/01</p>
-        <p>Ville: Paris</p>
+        <p>Date de naissance : <?=$_SESSION['naissance']?></p>
+        <h2>Adresse</h2>
+        <p>2 Avenue du Parc</p>
+        <p>95000 Cergy</p>
         <div class="bouton-array">
-          <button class="modif-btn"><a href="modifier_profil.php">Modifier Profil</a></button>
+          <button class="modif-btn"><a href="modifProfil.php">Modifier Profil</a></button>
           <?php if ($_SESSION['role'] == 0) {
               echo '<button class="admin-btn"><a href="admin.php">Tableau de bord admin</a></button>';
           };?>
