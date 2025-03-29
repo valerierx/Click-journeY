@@ -5,7 +5,7 @@
 }
 
 body{
-    font-family: "Noto Sans", serif;
+    font-family: Arial, sans-serif;
     font-optical-sizing: auto;
     background-image: url(media/paysage.jpg);
     background-size: cover;
@@ -622,3 +622,59 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
     background-color: #5300a6;
   }
   /*Fin Récapitulatif voyage*/
+
+  /*Début confirmation de paiement*/
+  .confirmation-container {
+    max-width: 600px;
+    margin: 100px auto;
+    background: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .confirmation-container h1 {
+    color: #00b353;
+    margin-bottom: 20px;
+  }
+  
+  .confirmation-container p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .telechargements {
+    margin-top: 30px;
+  }
+  
+  .btn-telechargement {
+    display: inline-block;
+    background-color: #6c00d4;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-telechargement:hover {
+    background-color: #5300a6;
+  }
+  
+  .btn-retour {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .btn-retour:hover {
+    background-color: #555;
+  }
+/*Fin de confirmation de pe  
