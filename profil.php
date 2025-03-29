@@ -39,7 +39,7 @@ if (!isset($_SESSION['connecte'])) {
     <div class="profil-elmt">
         <img src="media/profil.jpg" alt="Photo de Profil" class="avatar">
         <?php
-        if(isset($_GET["mail"])) {
+        if(isset($_GET["succes"])) {
             echo '<p class="message valide">
             Votre profil a été modifié!
             </p>';
@@ -51,8 +51,13 @@ if (!isset($_SESSION['connecte'])) {
         <p>Email: <?=$_SESSION['mail']?></p>
         <p>Date de naissance : <?=$_SESSION['naissance']?></p>
         <h2>Adresse</h2>
-        <p>2 Avenue du Parc</p>
-        <p>95000 Cergy</p>
+        <p><?=$_SESSION['numero']?> <?=$_SESSION['rue']?></p>
+        <?php
+        if(isset($_SESSION["complement"])) {
+          echo '<p>' . $_SESSION['complement'] . '</p>';
+        }
+        ?>
+        <p><?=$_SESSION['codePostal']?> <?=$_SESSION['commune']?></p>
         <div class="bouton-array">
           <button class="modif-btn"><a href="modifProfil.php">Modifier Profil</a></button>
           <?php if ($_SESSION['role'] == 0) {
