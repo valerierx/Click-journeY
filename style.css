@@ -572,8 +572,9 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
 
 /* Début Récapitulatif d'un voyage*/
 .container {
-    max-width: 600px;
-    margin: 0 auto;
+    margin-top: 40px;
+    max-width: 1000px;
+    margin-left: 10%;
     background: white;
     padding: 30px;
     border-radius: 10px;
@@ -603,8 +604,9 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
   
   .btn-payer {
     display: block;
-    width: 100%;
+    width: 50%;
     margin-top: 30px;
+    margin: auto;
     background-color: #6c00d4;
     color: white;
     border: none;
@@ -621,6 +623,17 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
   .btn-payer:hover {
     background-color: #5300a6;
   }
+
+
+  .detail_table {
+
+    border-color: #6c00d4;
+    border-width: 5px;
+    border-spacing: 5px;
+
+  }
+
+
   /*Fin Récapitulatif voyage*/
 
   /*Début confirmation de paiement*/
