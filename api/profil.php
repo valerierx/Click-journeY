@@ -17,14 +17,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    $id = $_SESSION['id'];
     $profileQuery = "UPDATE comptes SET nom='{$_POST['nom']}', prenom='{$_POST['prenom']}', naissance='{$_POST['naissance']}' WHERE idCompte={$_SESSION['id']}";
 
     // mise à jour du profil utilisateur dans la BDD
     if (mysqli_query($linkDB, $profileQuery)) {
         $adresseQuery = "INSERT INTO adresses (idCompte, numero, rue, complement, codePostal, commune) VALUES ('{$_SESSION["id"]}', '{$_POST["numero"]}', '{$_POST["rue"]}', '{$_POST["complement"]}', '{$_POST["codePostal"]}', '{$_POST["commune"]}') ON DUPLICATE KEY UPDATE numero='{$_POST["numero"]}', rue='{$_POST["rue"]}', complement='{$_POST["complement"]}', codePostal='{$_POST["codePostal"]}', commune='{$_POST["commune"]}'";
         if (mysqli_query($linkDB, $adresseQuery)) {
-            
+            $_SESSION["nom"] = $_POST["nom"];
+            $_SESSION["prenom"] = $_POST["prenom"];
+            $_SESSION["naissance"] = $_POST["naissance"];
+            $_SESSION["numero"] = $_POST["numero"];
+            $_SESSION["rue"] = $_POST["rue"];
+            $_SESSION["complement"] = $_POST["complement"];
+            $_SESSION["codePostal"] = $_POST["codePostal"];
+            $_SESSION["commune"] = $_POST["commune"];
+
             header("Location: ../profil.php?succes");
         } else {
             header("Content-Type: application/json");

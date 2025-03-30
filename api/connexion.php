@@ -33,6 +33,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['naissance'] = $profileRow["naissance"];
             $_SESSION['derniereConnexion'] = $profileRow["derniereConnexion"];
 
+            $adresseQuery = "SELECT * FROM adresses WHERE idCompte='$id'";
+            $adresseResult = mysqli_query($linkDB, $adresseQuery);
+            $adresseRow = mysqli_fetch_array($adresseResult);
+            if(!empty($adresseRow)) {
+                $_SESSION["numero"] = $adresseRow["numero"];
+                $_SESSION["rue"] = $adresseRow["rue"];
+                $_SESSION["complement"] = $adresseRow["complement"];
+                $_SESSION["codePostal"] = $adresseRow["codePostal"];
+                $_SESSION["commune"] = $adresseRow["commune"];
+            }
+
             $connexionQuery = "UPDATE comptes SET derniereConnexion=now() WHERE idCompte='$id'";
             $connexion = mysqli_query($linkDB, $connexionQuery);
             
