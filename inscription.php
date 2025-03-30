@@ -16,7 +16,7 @@
       </div>
       <ul>
         <li class="limenu"><a href="index.html">Accueil</a></li>
-        <li class="limenu"><a href="presentation.html">Trajets</a></li>
+        <li class="limenu"><a href="presentation.php">Trajets</a></li>
         <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
         <li class="limenu"><a href="">Itinéraire</a></li>
         <li class="limenu"><a href="">Bon plan</a></li>
@@ -97,7 +97,7 @@
       <ul class="ul-footer">
         <li><a href="#haut">haut de page</a></li>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="presentation.php">Présentation</a></li>
         <li><a href="#">Nos services</a></li>
         <li><a href="connexion.php">Connexion</a></li>
         <li><a href="inscription.php">Inscription</a></li>

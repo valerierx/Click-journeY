@@ -289,7 +289,7 @@
             <ul class="ul-footer">
                 <li><a href="#haut">haut de page</a></li>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="presentation.html">Présentation</a></li>
+                <li><a href="presentation.php">Présentation</a></li>
                 <li><a href="#">Nos services</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
                 <li><a href="inscription.php">Inscription</a></li>
