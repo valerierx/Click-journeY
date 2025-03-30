@@ -690,4 +690,137 @@ label[for=cgu], label[for=newsletter], label[for=mdpoublie] {
   .btn-retour:hover {
     background-color: #555;
   }
-/*Fin de confirmation de pe  
+/*Fin de confirmation de pe 
+
+/* Début page voyage reservation */
+
+.body_reservation{
+    background-image: url(media/sunset.jpg);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+div.container-res {
+    margin-top: 40px;
+    max-width: 1000px;
+    margin-left: 10%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    
+}
+
+div.container-res .titre {
+    margin: auto;
+    width: 100%; /* Ajuste la largeur du texte */
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.encadrement{
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.texte-res{
+    max-width: 60ch; /* Limite à environ 50 caractères par ligne */
+    margin: 0 auto; /* Centre horizontalement */
+    text-align: left; /* Centre le texte */
+    font-size: 18px; /* Taille de police adaptée */
+    line-height: 1.6; /* Espacement pour une meilleure lisibilité */
+    padding: 20px; /* Ajoute un peu d’espace autour */
+}
+
+.container-res2 {
+    margin-top: 30px;
+    max-width: 1000px;
+    margin-left: 10%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.img_reservation img {
+    width: 85%;
+    border-radius: 10px;
+    border-color: black;
+    border-style: double;
+}
+.prix_reservation {
+    padding-bottom: 20px;
+    width: 450px;
+    font-size: 24px;
+    color: #007bff;
+    font-weight: bold;
+}
+.bouton1-res {
+    padding: 10px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.bouton2-res{
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.bouton3-res{
+    display: block;
+    width: 30%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.div2reservation {
+    margin-top: 20px;
+}
+
+
+.btn-paiement {
+    background-color: #6c00d4; /* Violet */
+    color: white; /* Texte en blanc */
+    font-size: 16px; /* Taille de police */
+    padding: 12px 24px; /* Espacement interne */
+    border-radius: 8px; /* Bords arrondis */
+    border: none; /* Suppression de la bordure */
+    cursor: pointer; /* Curseur en forme de main */
+    transition: all 0.3s ease; /* Animation douce */
+  }
+
+  .btn-paiement:hover {
+    background-color: #5800a3; /* Violet un peu plus foncé au survol */
+    transform: scale(1.05); /* Agrandissement au survol */
+  }
+
+  .btn-paiement:active {
+    background-color: #450080; /* Couleur plus sombre quand le bouton est pressé */
+  }
+
+  .btn-paiement:focus {
+    outline: none; /* Supprimer le contour lors du focus */
+  }
+
+
+/*Fin page réservation */
