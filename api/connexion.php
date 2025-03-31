@@ -32,6 +32,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['role'] = $profileRow["role"];
             $_SESSION['naissance'] = $profileRow["naissance"];
             $_SESSION['derniereConnexion'] = $profileRow["derniereConnexion"];
+            $_SESSION["inscription"] = $profileRow["inscription"];
 
             $adresseQuery = "SELECT * FROM adresses WHERE idCompte='$id'";
             $adresseResult = mysqli_query($linkDB, $adresseQuery);

@@ -1,3 +1,14 @@
+<?php 
+if(!isset($_SESSION)) {
+  session_start();
+}
+if(!$_SESSION['connecte']) {
+  header('Location: index.php');
+}
+if($_SESSION['role'] != '0') {
+    header('Location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

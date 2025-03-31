@@ -1,0 +1,62 @@
+version: '3'
+
+services:
+  php:
+    container_name: php
+    build:
+      dockerfile: php-dockerfile
+      context: .
+    volumes:
+      - ../:/var/www/html
+      - ./php-logging.conf:/usr/local/etc/php-fpm.d/zz-log.conf
+    depends_on:
+      - mariadb
+
+  # Nginx Service
+  nginx:
+    container_name: nginx
+    image: docker://nginx:latest
+    ports:
+      - 8080:80
+    links:
+      - php
+    volumes:
+      - ../:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+    depends_on:
+      - php
+
+  mariadb:
+    image: docker://mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: meilleursite2025
+      MYSQL_DATABASE: clickjourney
+      MYSQL_USER: valerie
+      MYSQL_PASSWORD: meilleursite2025
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data:/var/lib/mysql
+    networks:
+      - intranet
+
+  phpmyadmin:
+    image: docker://phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: meilleursite2025
+    ports:
+      - "8081:80"
+    depends_on:
+      - mariadb
+    networks:
+      - intranet
+
+networks:
+    intranet:
+
+

@@ -1,3 +1,11 @@
+<?php 
+if(!isset($_SESSION)) {
+  session_start();
+}
+if(!$_SESSION['connecte']) {
+  header('Location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,14 +35,24 @@
 </nav>
   </div>
   <div class="confirmation-container">
-    <h1>Paiement confirmé ✅</h1>
+  <?php 
+  if(isset($_GET['succes'])) {
+    echo '<h1>Paiement confirmé ✅</h1>
     <p>Merci pour votre réservation !</p>
     <p>Un e-mail de confirmation vous a été envoyé.</p>
+    <p>Id de transaction : '. $_SESSION['transid'] . '</p>
 
     <div class="telechargements">
       <a href="recapitulatif.pdf" download class="btn-telechargement">📄 Télécharger le récapitulatif</a>
       <a href="facture.pdf" download class="btn-telechargement">🧾 Télécharger la facture</a>
-    </div>
+    </div>';
+  } else {
+    echo '  <h1>Paiement refusé ⛔</h1>
+    <p>Veuillez réesayer votre achat.</p>
+    <p>Id de transaction : '. $_SESSION['transid'] . '</p>
+    <a href="recapitulatif.php?commande='.$_GET['commande']. '" class="btn-fail">Réessayer</a>';
+  }
+?>
 
     <a href="index.html" class="btn-retour">Retour à l'accueil</a>
   </div>

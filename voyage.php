@@ -1,7 +1,4 @@
-<?php
-include('api/linkDB.php');
-
-?>
+<?php include('api/linkDB.php'); ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,7 +74,8 @@ include('api/linkDB.php');
                 <li>Durée du séjour : <?= $voyage[$_GET['get']]['duree'] ?> jours.</li>
                 <li>Les services hôteliers, ainsi que les petits-déjeuners et dîners, sont pris en charge.</li>
                 <li>Des activités sont incluses dans la formule de base du voyage.</li>
-                <li>N'oubliez pas de consulter la section "Étapes" pour sélectionner des options complémentaires avant
+                <li>N'oubliez pas de consulter la section "Étapes" pour sélectionner des options complémentaires
+                    avant
                     la validation finale.</li>
 
             </ul>
@@ -89,9 +87,15 @@ include('api/linkDB.php');
 
         <div>
             <p class="prix_reservation">À partir de : <?= $voyage[$_GET['get']]['prix'] ?>€</p>
-            <a href="#" class="bouton1-res">Sélectionner la date de départ</a>
-            <button class="bouton3-res">Étape</button>
-            <button class="btn-paiement">Procédé au paiement</button>
+            <?php
+            if($_SESSION['connecte']) {
+                echo '<a href="resa.php?get=' . $_GET['get'] . '" class="bouton1-res">Réserver maintenant</a>';
+            } else {
+                echo '<a href="connexion.php" class="bouton1-res">Connectez-vous pour réserver</a>';
+            }
+            ?>
+            <!--button class="bouton3-res">Étape</button>
+            <button class="btn-paiement">Procédé au paiement</button-->
         </div>
         <div class="div2reservation">
             <h2>Je m’organise :</h2>

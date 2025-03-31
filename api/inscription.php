@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (mysqli_query($linkDB, $query)) {
                 // Protect password
                 $id = mysqli_insert_id($linkDB);
-                $profileQuery = "INSERT INTO comptes (idCompte, nom, prenom, role, newsletter, naissance, derniereConnexion) VALUES ('$id', '$nom' , '$prenom', 1, '$newsletter', '1879-10-26', '0000-00-00 00:00:00')";
+                $profileQuery = "INSERT INTO comptes (idCompte, nom, prenom, role, newsletter, naissance, inscription, derniereConnexion) VALUES ('$id', '$nom' , '$prenom', 1, '$newsletter', '1879-10-26', NOW(), '0000-00-00 00:00:00')";
                 mysqli_query($linkDB, $profileQuery);
 
                 header("Location: ../connexion.php?nvcompte");
