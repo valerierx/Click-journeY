@@ -23,8 +23,14 @@ include('api/linkDB.php');
           <li class="limenu"><a href="presentation.php">Trajets</a></li>
           <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
           <li class="limenu"><a href="">Bon plan</a></li>
-          <button class="bouton_menu"><a href="connexion.php">Connexion</a></button>
-          <button class="bouton_menu"><a href="profil.php">Profil</a></button>
+          <?php
+          if (!$_SESSION['connecte']) {
+            echo '<button class="bouton_menu"><a href="connexion.php">Connexion</a></button>';
+          } else {
+            echo '<button class="bouton_menu"><a href="profil.php">Profil</a></button>
+        <button class="bouton_menu"><a href="index.php?logout=1">Déconnexion</a></button>';
+          }
+          ?>
         </ul>
         <i class='bx bx-search-alt'></i>
         <!--Loupe de recherche-->
@@ -61,40 +67,40 @@ include('api/linkDB.php');
       echo '    <div class="carte">
       <div class="imagerussie"></div>
       <div class="texte">
-        <h2>' . $desc[$i]['titre'].'</h2>
-        <br>À partir de : ' . $voyage[$i]['prix'].' €</br>
+        <h2>' . $desc[$i]['titre'] . '</h2>
+        <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
         <p></p>
-        <a href="voyage.php?get=' . $i .'">Réservez Maintenant</a>
+        <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
       </div>
       </div>';
     }
     ?>
   </div>
   <div class="contenant">
-  <?php
+    <?php
     for ($i = 6; $i <= 10; $i++) {
       echo '    <div class="carte">
       <div class="imagerussie"></div>
       <div class="texte">
-        <h2>' . $desc[$i]['titre'].'</h2>
-        <br>À partir de : ' . $voyage[$i]['prix'].' €</br>
+        <h2>' . $desc[$i]['titre'] . '</h2>
+        <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
         <p></p>
-        <a href="voyage.php?get=' . $i .'">Réservez Maintenant</a>
+        <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
       </div>
       </div>';
     }
     ?>
   </div>
   <div class="contenant">
-  <?php
+    <?php
     for ($i = 11; $i <= 15; $i++) {
       echo '    <div class="carte">
       <div class="imagerussie"></div>
       <div class="texte">
-        <h2>' . $desc[$i]['titre'].'</h2>
-        <br>À partir de : ' . $voyage[$i]['prix'].' €</br>
+        <h2>' . $desc[$i]['titre'] . '</h2>
+        <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
         <p></p>
-        <a href="voyage.php?get=' . $i .'">Réservez Maintenant</a>
+        <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
       </div>
       </div>';
     }
