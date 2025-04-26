@@ -22,15 +22,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($etapes[$_POST['voyage']] as $id => $row) {
         $total = $total + $option[$_POST["etape_".$id]]['prix'];
     }
+    $etapeQuery = "";
 
-
-    $commandeQuery = "INSERT INTO commandes (idCompte, idVoyage, nVoyageurs, debut, total, paye, creation) VALUES ('{$_SESSION["id"]}', '{$_POST["voyage"]}', '{$_POST["passengers"]}', '{$_POST["start_date"]}', '$total', '0', NOW()";
+    $commandeQuery = "INSERT INTO commandes (idCompte, idVoyage, nVoyageurs, debut, total, paye, creation) VALUES ('{$_SESSION["id"]}', '{$_POST["voyage"]}', '{$_POST["passengers"]}', '{$_POST["start_date"]}', '$total', '0', NOW())";
     if (mysqli_query($linkDB, $commandeQuery)) {
         $idCommande = mysqli_insert_id($linkDB);
 
         foreach ($etapes[$_POST['voyage']] as $id => $row) {
             $etapeQuery = "INSERT INTO commandesOpt (idCommande, idEtape, idOption) VALUES ('{$idCommande}', '{$id}', '{$_POST["etape_".$id]}')";
-            mysqli_query( $linkDB, $etapeQuery);
+            if(!mysqli_query( $linkDB, $etapeQuery)) {
+                header("Content-Type: application/json");
+                echo json_encode(array("status_code" => "500", "message" => "Erreur serveur", "status_message" => "Internal Server Error", "time" => $datetime->format(DateTime::ATOM)));
+                http_response_code(500);
+                exit();
+            };
         }
 
         header("Location: ../recapitulatif.php?commande=". $idCommande);

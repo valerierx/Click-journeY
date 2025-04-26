@@ -1,6 +1,5 @@
 <?php
 include('getapikey.php');
-setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 ob_start();
 if(!isset($_SESSION)) {
     session_start();
