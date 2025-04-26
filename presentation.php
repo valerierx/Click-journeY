@@ -65,7 +65,7 @@ include('api/linkDB.php');
     <?php
     for ($i = 1; $i <= 5; $i++) {
       echo '    <div class="carte">
-      <div class="imagerussie"></div>
+      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
         <h2>' . $desc[$i]['titre'] . '</h2>
         <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
@@ -80,7 +80,7 @@ include('api/linkDB.php');
     <?php
     for ($i = 6; $i <= 10; $i++) {
       echo '    <div class="carte">
-      <div class="imagerussie"></div>
+      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
         <h2>' . $desc[$i]['titre'] . '</h2>
         <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
@@ -95,7 +95,7 @@ include('api/linkDB.php');
     <?php
     for ($i = 11; $i <= 15; $i++) {
       echo '    <div class="carte">
-      <div class="imagerussie"></div>
+      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
         <h2>' . $desc[$i]['titre'] . '</h2>
         <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>

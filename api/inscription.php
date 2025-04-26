@@ -1,6 +1,6 @@
 <?php
 include('linkDB.php');
-
+$datetime = new DateTime();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Vérification du formulaire
     if (!isset($_POST['nom'], $_POST['prenom'], $_POST['mdp'], $_POST['mdp2'], $_POST['mail'])) {

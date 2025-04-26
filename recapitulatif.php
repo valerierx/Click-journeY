@@ -48,10 +48,10 @@
         <p><strong>Voyage : </strong><?= $voyage[$commandes[$_GET['commande']]['idVoyage']]['titre'] ?></p>
         <p><strong>Destination : </strong>Croatie</p>
         <p><strong>Date de départ : </strong><?php $debut = new DateTime($commandes[$_GET['commande']]['debut']);
-        echo strftime('%d %B %Y', $debut->getTimestamp()); ?></p>
+        echo date('d/m/Y', $debut->getTimestamp()); ?></p>
         <p><strong>Date de retour : </strong><?php $fin = new DateTime($commandes[$_GET['commande']]['debut']);
         $fin->add(new DateInterval('P' . $voyage[$commandes[$_GET['commande']]['idVoyage']]['duree'] . 'D'));
-        echo strftime('%d %B %Y', $fin->getTimestamp()); ?></p>
+        echo date('d/m/Y', $fin->getTimestamp()); ?></p>
         <p><strong>Nombre de voyageurs :
           </strong><?= $commandes[$_GET['commande']]['nVoyageurs'] . " personne " . ($commandes[$_GET['commande']]['nVoyageurs'] > 1 ? "s" : "") ?>
         </p>

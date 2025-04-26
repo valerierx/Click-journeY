@@ -1,6 +1,6 @@
 <?php
 include('linkDB.php');
-
+$datetime = new DateTime();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Utilisateur non connecté
     if (!isset($_SESSION['id'])) {

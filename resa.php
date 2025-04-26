@@ -42,7 +42,7 @@ if (!isset($_SESSION['connecte'])) {
 
         <div class="container-res">
             <div class="img_reservation">
-                <img <?php echo 'src="media/voyage/voyage' . $_GET['get'] . '.jpeg" alt="Image ' . $voyage[$_GET['get']]['titre'] . '"'; ?>>
+                <img <?php echo 'src="media/voyage/voyage' . $_GET['get'] . '.jpg" alt="Image ' . $voyage[$_GET['get']]['titre'] . '"'; ?>>
             </div>
             <div class="encadrement">
                 <h1 class="titre"><?= $voyage[$_GET['get']]['titre'] ?></h1>

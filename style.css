@@ -200,19 +200,8 @@ ul .limenu a:hover {
     display: inline-block;
 }
 
-.imagerussie {
-    background: url('media/russie.jpg') center/cover no-repeat;
+.imagevoyage {
     /*pour centrer, ajuster et pour eviter la répition de l'image*/
-    height: 180px;
-}
-
-.imagealbanie {
-    background: url('media/albanie.jpg') center/cover no-repeat;
-    height: 180px;
-}
-
-.imagecroatie {
-    background: url('media/croatie.jpg') center/cover no-repeat;
     height: 180px;
 }
 
@@ -512,16 +501,17 @@ label[for=mdpoublie] {
     justify-content: center;
     align-items: center;
     height: 80vh;
+    padding-right: 10px;
 }
 
 .profil-elmt {
     background: white;
-    padding: 30px;
+    padding: 10px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    width: 350px;
-
+    width: 500px;
+    height: 80%;
 }
 
 .avatar {
@@ -604,6 +594,56 @@ label[for=mdpoublie] {
     width: 70%
 }
 
+.liste-commandes {
+    justify-items: left;
+    width: 100%;
+    display: inline-block;
+    height: 45%;
+    overflow-y: scroll;
+
+}
+
+.commandeconfirmee {
+    background-color: darkgreen;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+.commandeimpayee {
+    background-color: orange;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.tableau-commandes {
+    width: 100%;
+    margin: 0;
+    padding: 10px 10px;
+    border-collapse: collapse;
+}
+
+.tableau-commandes thead {
+    position: sticky;
+    top: 0;
+}
+.tableau-commandes tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.tableau-commandes th {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.tableau-commandes table,th,td {
+    border: 1px solid #ddd;
+
+}
+
+/*FIN PAGE PROFIL*/
 
 /* Début Récapitulatif d'un voyage*/
 .container {
@@ -934,3 +974,5 @@ div.container-res .titre {
     background-color: #0056b3;
 }
 /* Fin page resa */
+
+

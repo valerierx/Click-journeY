@@ -1,5 +1,6 @@
 <?php
 include 'linkDB.php';
+$datetime = new DateTime();
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ( !isset($_POST['mail'], $_POST['mdp']) ) {
         // Requête vide
