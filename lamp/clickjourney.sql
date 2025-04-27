@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mariadb:3306
--- Généré le : lun. 31 mars 2025 à 21:54
+-- Généré le : dim. 27 avr. 2025 à 16:57
 -- Version du serveur : 11.7.2-MariaDB-ubu2404
 -- Version de PHP : 8.2.27
 
@@ -39293,19 +39293,23 @@ CREATE TABLE `commandes` (
   `nVoyageurs` int(11) NOT NULL,
   `debut` date NOT NULL,
   `total` int(11) NOT NULL,
-  `paye` tinyint(1) NOT NULL
+  `paye` tinyint(1) NOT NULL,
+  `creation` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Déchargement des données de la table `commandes`
 --
 
-INSERT INTO `commandes` (`id`, `idCompte`, `idVoyage`, `nVoyageurs`, `debut`, `total`, `paye`) VALUES
-(1, 2, 2, 1, '2025-12-20', 0, 0),
-(2, 2, 1, 2, '2025-12-13', 0, 0),
-(3, 2, 1, 1, '2025-05-14', 1100, 0),
-(4, 2, 2, 2, '2025-10-20', 1900, 0),
-(5, 2, 1, 1, '2025-04-02', 1400, 0);
+INSERT INTO `commandes` (`id`, `idCompte`, `idVoyage`, `nVoyageurs`, `debut`, `total`, `paye`, `creation`) VALUES
+(1, 2, 2, 1, '2025-12-20', -8, 1, '2025-04-25 13:34:43'),
+(2, 2, 1, 2, '2025-12-13', 0, 1, '2025-04-25 13:34:43'),
+(3, 2, 1, 1, '2025-05-14', 1100, 1, '2025-04-25 13:34:43'),
+(4, 2, 2, 2, '2025-10-20', 1900, 1, '2025-04-25 13:34:43'),
+(5, 2, 1, 1, '2025-04-02', 1400, 1, '2025-04-25 13:34:43'),
+(6, 2, 3, 2, '2025-04-30', 1150, 1, '2025-04-25 13:55:25'),
+(7, 1, 3, 1, '2025-05-01', 1250, 0, '2025-04-26 16:10:59'),
+(8, 2, 3, 1, '2025-04-29', 750, 0, '2025-04-26 16:23:21');
 
 -- --------------------------------------------------------
 
@@ -39336,7 +39340,25 @@ INSERT INTO `commandesOpt` (`idCommande`, `idEtape`, `idOption`) VALUES
 (4, 3, 1),
 (4, 4, 2),
 (4, 5, 1),
-(5, 1, 4);
+(5, 1, 4),
+(6, 1, 1),
+(6, 2, 0),
+(6, 3, 0),
+(6, 4, 0),
+(6, 5, 0),
+(6, 6, 4),
+(7, 1, 1),
+(7, 2, 0),
+(7, 3, 0),
+(7, 4, 1),
+(7, 5, 0),
+(7, 6, 4),
+(8, 1, 0),
+(8, 2, 0),
+(8, 3, 0),
+(8, 4, 0),
+(8, 5, 0),
+(8, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -39360,8 +39382,8 @@ CREATE TABLE `comptes` (
 --
 
 INSERT INTO `comptes` (`idCompte`, `nom`, `prenom`, `role`, `newsletter`, `naissance`, `inscription`, `derniereConnexion`) VALUES
-(1, 'Roux', 'Valérie', 0, 1, '2005-12-20', '2025-03-31 12:57:02', '2025-03-31 10:42:24'),
-(2, 'Collin', 'Gweltaz', 0, 1, '2004-04-20', '2025-03-31 12:57:02', '2025-03-31 21:47:27'),
+(1, 'Roux', 'Valérie', 0, 1, '2005-12-20', '2025-03-31 12:57:02', '2025-04-26 16:07:18'),
+(2, 'Collin', 'Gweltaz', 0, 1, '2004-04-20', '2025-03-31 12:57:02', '2025-04-26 16:34:26'),
 (4, 'Test', 'Test', 0, 0, '1879-10-26', '2025-03-31 12:59:22', '2025-03-31 12:59:27'),
 (5, 'Test2', 'Test2', 1, 0, '2003-06-15', '2025-03-31 21:46:46', '2025-03-31 21:46:51');
 
@@ -39547,90 +39569,91 @@ CREATE TABLE `etapes` (
   `persSup` tinyint(4) NOT NULL,
   `lat` float NOT NULL,
   `lon` float NOT NULL,
-  `nom` varchar(100) NOT NULL
+  `nom` varchar(100) NOT NULL,
+  `pays` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 --
 -- Déchargement des données de la table `etapes`
 --
 
-INSERT INTO `etapes` (`idVoyage`, `id`, `titre`, `debut`, `duree`, `persSup`, `lat`, `lon`, `nom`) VALUES
-(1, 1, 'Prague', 1, 3, 2, 50.0737, 14.4185, 'Prague'),
-(2, 1, 'Prague', 1, 1, 2, 50.0737, 14.4185, 'Prague'),
-(2, 2, 'Český Krumlov', 1, 0, 2, 48.8113, 14.3148, 'Český Krumlov'),
-(2, 3, 'Vienne', 4, 0, 2, 48.2089, 16.372, 'Vienne'),
-(2, 4, 'Bratislava', 5, 0, 2, 48.1533, 17.1098, 'Bratislava'),
-(2, 5, 'Budapest', 6, 1, 2, 47.5, 19.0441, 'Budapest'),
-(3, 1, 'Vilnius', 1, 2, 8, 54.6872, 25.2797, 'Vilnius'),
-(3, 2, 'Trakai', 2, 0, 8, 54.6429, 24.9343, 'Trakai'),
-(3, 3, 'Kernavė', 3, 0, 8, 54.8869, 24.8606, 'Kernavė'),
-(3, 4, 'Riga', 3, 1, 8, 56.9496, 24.1052, 'Riga'),
-(3, 5, 'Sigulda', 5, 0, 8, 57.1526, 24.8507, 'Sigulda'),
-(3, 6, 'Tallinn', 5, 2, 8, 59.437, 24.7536, 'Tallinn'),
-(4, 1, 'Pula', 1, 1, 8, 44.8666, 13.8496, 'Pula'),
-(4, 2, 'Rovinj', 2, 0, 8, 45.08, 13.64, 'Rovinj'),
-(4, 3, 'Parc national de Plitvice', 3, 0, 8, 44.8654, 15.582, 'Plitvice'),
-(4, 4, 'Zadar', 3, 1, 8, 44.1194, 15.2314, 'Zadar'),
-(4, 5, 'Šibenik', 4, 0, 8, 43.735, 15.895, 'Šibenik'),
-(4, 6, 'Dubrovnik', 5, 3, 8, 42.6507, 18.0944, 'Dubrovnik'),
-(5, 1, 'Varsovie', 1, 1, 2, 52.2297, 21.0122, 'Varsovie'),
-(5, 2, 'Gdańsk', 2, 1, 2, 54.352, 18.6466, 'Gdańsk'),
-(5, 3, 'Sopot', 3, 0, 2, 54.4416, 18.5601, 'Sopot'),
-(5, 4, 'Gdynia', 3, 0, 2, 54.5189, 18.5305, 'Gdynia'),
-(5, 5, 'Poznań', 4, 1, 2, 52.4064, 16.9252, 'Poznań'),
-(5, 6, 'Wrocław', 6, 0, 2, 51.1079, 17.0385, 'Wrocław'),
-(5, 7, 'Cracovie', 7, 2, 2, 50.0647, 19.945, 'Cracovie'),
-(6, 1, 'Bucarest', 1, 2, 5, 44.4268, 26.1025, 'Bucarest'),
-(6, 2, 'Brașov', 3, 1, 5, 45.6427, 25.5887, 'Brașov'),
-(6, 3, 'Bran', 4, 0, 5, 45.515, 25.3673, 'Bran'),
-(6, 4, 'Sighișoara', 5, 0, 5, 46.2187, 24.7853, 'Sighișoara'),
-(6, 5, 'Sibiu', 6, 0, 5, 45.8035, 24.145, 'Sibiu'),
-(6, 6, 'Curtea de Argeș', 7, 1, 5, 45.1333, 24.6833, 'Curtea de Argeș'),
-(7, 1, 'Tirana', 1, 2, 5, 41.3275, 19.8187, 'Tirana'),
-(7, 2, 'Korçë', 3, 0, 5, 40.6189, 20.7858, 'Korçë'),
-(7, 3, 'Berat', 4, 1, 5, 40.7048, 19.9497, 'Berat'),
-(7, 4, 'Gjirokastër', 6, 0, 5, 40.0755, 20.1389, 'Gjirokastër'),
-(7, 5, 'Himarë', 7, 1, 5, 40.1129, 19.7466, 'Himarë'),
-(8, 1, 'Podgorica', 1, 1, 5, 42.4304, 19.2594, 'Podgorica'),
-(8, 2, 'Kolašin', 2, 0, 5, 42.8243, 19.5225, 'Kolašin'),
-(8, 3, 'Žabljak', 3, 0, 5, 43.1542, 19.1238, 'Žabljak'),
-(8, 4, 'Kotor', 4, 0, 5, 42.4247, 18.7712, 'Kotor'),
-(8, 5, 'Herceg Novi', 5, 0, 5, 42.4531, 18.5316, 'Herceg Novi'),
-(8, 6, 'Cetinje', 6, 0, 5, 42.3906, 18.9141, 'Cetinje'),
-(8, 7, 'Ulcinj', 7, 1, 5, 41.9236, 19.2056, 'Ulcinj'),
-(9, 1, 'Belgrade', 1, 2, 8, 44.7866, 20.4489, 'Belgrade'),
-(9, 2, 'Golubac', 3, 0, 8, 44.6531, 21.63, 'Golubac'),
-(9, 3, 'Parc national de Đerdap', 4, 0, 8, 44.5894, 22.095, 'Đerdap'),
-(9, 4, 'Felix Romuliana', 5, 0, 8, 43.8989, 22.1858, 'Gamzigrad'),
-(9, 5, 'Niš', 6, 0, 8, 43.3193, 21.8963, 'Niš'),
-(9, 6, 'Ljubostinja', 7, 0, 8, 43.7333, 20.9667, 'Ljubostinja'),
-(9, 7, 'Žiča', 8, 0, 8, 43.7236, 20.6875, 'Žiča'),
-(9, 8, 'Novi Pazar', 9, 0, 8, 43.1367, 20.5122, 'Novi Pazar'),
-(9, 9, 'Mokra Gora', 10, 0, 8, 43.8, 19.5167, 'Mokra Gora'),
-(9, 10, 'Topola', 11, 1, 8, 44.2533, 20.6819, 'Topola'),
-(10, 1, 'Split', 1, 2, 8, 43.5081, 16.4402, 'Split'),
-(10, 2, 'Šibenik', 3, 0, 8, 43.735, 15.895, 'Šibenik'),
-(10, 3, 'Mostar', 4, 0, 8, 43.3436, 17.8075, 'Mostar'),
-(10, 4, 'Dubrovnik', 5, 2, 8, 42.6507, 18.0944, 'Dubrovnik'),
-(10, 5, 'Kotor', 7, 0, 8, 42.4247, 18.7712, 'Kotor'),
-(10, 6, 'Žabljak', 8, 0, 8, 43.1542, 19.1238, 'Žabljak'),
-(10, 7, 'Parc national du Durmitor', 9, 0, 8, 43.1333, 19.0167, 'Durmitor'),
-(10, 8, 'Podgorica', 10, 0, 8, 42.4304, 19.2594, 'Podgorica'),
-(10, 9, 'Budva', 11, 1, 8, 42.2864, 18.8397, 'Budva'),
-(10, 10, 'Retour à Dubrovnik', 13, 0, 8, 42.6507, 18.0944, 'Dubrovnik'),
-(11, 1, 'Riga', 1, 3, 2, 56.9496, 24.1052, 'Riga'),
-(12, 1, 'Vilnius', 1, 1, 4, 54.6872, 25.2797, 'Vilnius'),
-(12, 2, 'Trakai', 2, 0, 4, 54.6429, 24.9343, 'Trakai'),
-(12, 3, 'Colline des Croix', 3, 0, 4, 56.0156, 23.4167, 'Šiauliai'),
-(12, 4, 'Rundale', 3, 0, 4, 56.4178, 24.0244, 'Rundāle'),
-(12, 5, 'Riga', 3, 1, 4, 56.9496, 24.1052, 'Riga'),
-(12, 6, 'Pärnu', 5, 0, 4, 58.3858, 24.4967, 'Pärnu'),
-(12, 7, 'Tallinn', 5, 2, 4, 59.437, 24.7536, 'Tallinn'),
-(13, 1, 'Tallinn', 1, 3, 2, 59.437, 24.7536, 'Tallinn'),
-(14, 1, 'Vilnius', 1, 3, 2, 54.6872, 25.2797, 'Vilnius'),
-(15, 1, 'Vilnius', 1, 5, 2, 54.6872, 25.2797, 'Vilnius'),
-(15, 2, 'Trakai', 3, 0, 2, 54.6429, 24.9343, 'Trakai'),
-(15, 3, 'Parc national d\'Aukštaitija', 5, 0, 2, 55.3333, 26, 'Ignalina');
+INSERT INTO `etapes` (`idVoyage`, `id`, `titre`, `debut`, `duree`, `persSup`, `lat`, `lon`, `nom`, `pays`) VALUES
+(1, 1, 'Prague', 1, 3, 2, 50.0737, 14.4185, 'Prague', ''),
+(2, 1, 'Prague', 1, 1, 2, 50.0737, 14.4185, 'Prague', ''),
+(2, 2, 'Český Krumlov', 1, 0, 2, 48.8113, 14.3148, 'Český Krumlov', ''),
+(2, 3, 'Vienne', 4, 0, 2, 48.2089, 16.372, 'Vienne', ''),
+(2, 4, 'Bratislava', 5, 0, 2, 48.1533, 17.1098, 'Bratislava', ''),
+(2, 5, 'Budapest', 6, 1, 2, 47.5, 19.0441, 'Budapest', ''),
+(3, 1, 'Vilnius', 1, 2, 8, 54.6872, 25.2797, 'Vilnius', ''),
+(3, 2, 'Trakai', 2, 0, 8, 54.6429, 24.9343, 'Trakai', ''),
+(3, 3, 'Kernavė', 3, 0, 8, 54.8869, 24.8606, 'Kernavė', ''),
+(3, 4, 'Riga', 3, 1, 8, 56.9496, 24.1052, 'Riga', ''),
+(3, 5, 'Sigulda', 5, 0, 8, 57.1526, 24.8507, 'Sigulda', ''),
+(3, 6, 'Tallinn', 5, 2, 8, 59.437, 24.7536, 'Tallinn', ''),
+(4, 1, 'Pula', 1, 1, 8, 44.8666, 13.8496, 'Pula', ''),
+(4, 2, 'Rovinj', 2, 0, 8, 45.08, 13.64, 'Rovinj', ''),
+(4, 3, 'Parc national de Plitvice', 3, 0, 8, 44.8654, 15.582, 'Plitvice', ''),
+(4, 4, 'Zadar', 3, 1, 8, 44.1194, 15.2314, 'Zadar', ''),
+(4, 5, 'Šibenik', 4, 0, 8, 43.735, 15.895, 'Šibenik', ''),
+(4, 6, 'Dubrovnik', 5, 3, 8, 42.6507, 18.0944, 'Dubrovnik', ''),
+(5, 1, 'Varsovie', 1, 1, 2, 52.2297, 21.0122, 'Varsovie', ''),
+(5, 2, 'Gdańsk', 2, 1, 2, 54.352, 18.6466, 'Gdańsk', ''),
+(5, 3, 'Sopot', 3, 0, 2, 54.4416, 18.5601, 'Sopot', ''),
+(5, 4, 'Gdynia', 3, 0, 2, 54.5189, 18.5305, 'Gdynia', ''),
+(5, 5, 'Poznań', 4, 1, 2, 52.4064, 16.9252, 'Poznań', ''),
+(5, 6, 'Wrocław', 6, 0, 2, 51.1079, 17.0385, 'Wrocław', ''),
+(5, 7, 'Cracovie', 7, 2, 2, 50.0647, 19.945, 'Cracovie', ''),
+(6, 1, 'Bucarest', 1, 2, 5, 44.4268, 26.1025, 'Bucarest', ''),
+(6, 2, 'Brașov', 3, 1, 5, 45.6427, 25.5887, 'Brașov', ''),
+(6, 3, 'Bran', 4, 0, 5, 45.515, 25.3673, 'Bran', ''),
+(6, 4, 'Sighișoara', 5, 0, 5, 46.2187, 24.7853, 'Sighișoara', ''),
+(6, 5, 'Sibiu', 6, 0, 5, 45.8035, 24.145, 'Sibiu', ''),
+(6, 6, 'Curtea de Argeș', 7, 1, 5, 45.1333, 24.6833, 'Curtea de Argeș', ''),
+(7, 1, 'Tirana', 1, 2, 5, 41.3275, 19.8187, 'Tirana', ''),
+(7, 2, 'Korçë', 3, 0, 5, 40.6189, 20.7858, 'Korçë', ''),
+(7, 3, 'Berat', 4, 1, 5, 40.7048, 19.9497, 'Berat', ''),
+(7, 4, 'Gjirokastër', 6, 0, 5, 40.0755, 20.1389, 'Gjirokastër', ''),
+(7, 5, 'Himarë', 7, 1, 5, 40.1129, 19.7466, 'Himarë', ''),
+(8, 1, 'Podgorica', 1, 1, 5, 42.4304, 19.2594, 'Podgorica', ''),
+(8, 2, 'Kolašin', 2, 0, 5, 42.8243, 19.5225, 'Kolašin', ''),
+(8, 3, 'Žabljak', 3, 0, 5, 43.1542, 19.1238, 'Žabljak', ''),
+(8, 4, 'Kotor', 4, 0, 5, 42.4247, 18.7712, 'Kotor', ''),
+(8, 5, 'Herceg Novi', 5, 0, 5, 42.4531, 18.5316, 'Herceg Novi', ''),
+(8, 6, 'Cetinje', 6, 0, 5, 42.3906, 18.9141, 'Cetinje', ''),
+(8, 7, 'Ulcinj', 7, 1, 5, 41.9236, 19.2056, 'Ulcinj', ''),
+(9, 1, 'Belgrade', 1, 2, 8, 44.7866, 20.4489, 'Belgrade', ''),
+(9, 2, 'Golubac', 3, 0, 8, 44.6531, 21.63, 'Golubac', ''),
+(9, 3, 'Parc national de Đerdap', 4, 0, 8, 44.5894, 22.095, 'Đerdap', ''),
+(9, 4, 'Felix Romuliana', 5, 0, 8, 43.8989, 22.1858, 'Gamzigrad', ''),
+(9, 5, 'Niš', 6, 0, 8, 43.3193, 21.8963, 'Niš', ''),
+(9, 6, 'Ljubostinja', 7, 0, 8, 43.7333, 20.9667, 'Ljubostinja', ''),
+(9, 7, 'Žiča', 8, 0, 8, 43.7236, 20.6875, 'Žiča', ''),
+(9, 8, 'Novi Pazar', 9, 0, 8, 43.1367, 20.5122, 'Novi Pazar', ''),
+(9, 9, 'Mokra Gora', 10, 0, 8, 43.8, 19.5167, 'Mokra Gora', ''),
+(9, 10, 'Topola', 11, 1, 8, 44.2533, 20.6819, 'Topola', ''),
+(10, 1, 'Split', 1, 2, 8, 43.5081, 16.4402, 'Split', ''),
+(10, 2, 'Šibenik', 3, 0, 8, 43.735, 15.895, 'Šibenik', ''),
+(10, 3, 'Mostar', 4, 0, 8, 43.3436, 17.8075, 'Mostar', ''),
+(10, 4, 'Dubrovnik', 5, 2, 8, 42.6507, 18.0944, 'Dubrovnik', ''),
+(10, 5, 'Kotor', 7, 0, 8, 42.4247, 18.7712, 'Kotor', ''),
+(10, 6, 'Žabljak', 8, 0, 8, 43.1542, 19.1238, 'Žabljak', ''),
+(10, 7, 'Parc national du Durmitor', 9, 0, 8, 43.1333, 19.0167, 'Durmitor', ''),
+(10, 8, 'Podgorica', 10, 0, 8, 42.4304, 19.2594, 'Podgorica', ''),
+(10, 9, 'Budva', 11, 1, 8, 42.2864, 18.8397, 'Budva', ''),
+(10, 10, 'Retour à Dubrovnik', 13, 0, 8, 42.6507, 18.0944, 'Dubrovnik', ''),
+(11, 1, 'Riga', 1, 3, 2, 56.9496, 24.1052, 'Riga', ''),
+(12, 1, 'Vilnius', 1, 1, 4, 54.6872, 25.2797, 'Vilnius', ''),
+(12, 2, 'Trakai', 2, 0, 4, 54.6429, 24.9343, 'Trakai', ''),
+(12, 3, 'Colline des Croix', 3, 0, 4, 56.0156, 23.4167, 'Šiauliai', ''),
+(12, 4, 'Rundale', 3, 0, 4, 56.4178, 24.0244, 'Rundāle', ''),
+(12, 5, 'Riga', 3, 1, 4, 56.9496, 24.1052, 'Riga', ''),
+(12, 6, 'Pärnu', 5, 0, 4, 58.3858, 24.4967, 'Pärnu', ''),
+(12, 7, 'Tallinn', 5, 2, 4, 59.437, 24.7536, 'Tallinn', ''),
+(13, 1, 'Tallinn', 1, 3, 2, 59.437, 24.7536, 'Tallinn', ''),
+(14, 1, 'Vilnius', 1, 3, 2, 54.6872, 25.2797, 'Vilnius', ''),
+(15, 1, 'Vilnius', 1, 5, 2, 54.6872, 25.2797, 'Vilnius', ''),
+(15, 2, 'Trakai', 3, 0, 2, 54.6429, 24.9343, 'Trakai', ''),
+(15, 3, 'Parc national d\'Aukštaitija', 5, 0, 2, 55.3333, 26, 'Ignalina', '');
 
 -- --------------------------------------------------------
 
@@ -39772,6 +39795,45 @@ INSERT INTO `options` (`id`, `titre`, `prix`, `personnesMax`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `pays`
+--
+
+CREATE TABLE `pays` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Déchargement des données de la table `pays`
+--
+
+INSERT INTO `pays` (`id`, `nom`) VALUES
+(1, 'Albanie'),
+(2, 'République Tchèque'),
+(3, 'Serbie'),
+(4, 'Kosovo'),
+(5, 'Lettonie'),
+(6, 'Estonie'),
+(7, 'Lituanie'),
+(8, 'Bosnie-Herzégovine'),
+(9, 'Croatie'),
+(10, 'Pologne'),
+(11, 'Slovaquie'),
+(12, 'Slovénie'),
+(13, 'Roumanie'),
+(14, 'Moldavie'),
+(15, 'Hongrie'),
+(16, 'Russie'),
+(17, 'Biélorussie'),
+(18, 'Ukraine'),
+(19, 'Bulgarie'),
+(20, 'Monténégro'),
+(21, 'Macédoine du Nord'),
+(22, 'Grèce');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `transactions`
 --
 
@@ -39789,9 +39851,16 @@ INSERT INTO `transactions` (`id`, `idCommande`, `status`) VALUES
 ('67eb038ab1835', 2, 0),
 ('67eb03f48375', 3, 1),
 ('67eb07018692697538461', 3, 2),
-('67eb088b216ea28', 3, 0),
+('67eb088b216ea28', 3, 1),
 ('67eb0ca5b6eec72', 5, 2),
-('67eb0cd73c396057802407', 5, 1);
+('67eb0cd73c396057802407', 5, 1),
+('680b944d63e3', 6, 1),
+('680b9dbed84e24', 6, 0),
+('680b9dc0d70d7', 1, 1),
+('680ba5cea342e', 4, 1),
+('680d0593d5e13655896158', 7, 2),
+('680d0879d93db78616', 8, 2),
+('680d0928d74fc53883', 8, 0);
 
 -- --------------------------------------------------------
 
@@ -39870,6 +39939,7 @@ ALTER TABLE `descVoyage`
 -- Index pour la table `etapes`
 --
 ALTER TABLE `etapes`
+  ADD UNIQUE KEY `idVoyage_2` (`idVoyage`,`id`),
   ADD KEY `id` (`id`),
   ADD KEY `idVoyage` (`idVoyage`);
 
@@ -39893,6 +39963,12 @@ ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `pays`
+--
+ALTER TABLE `pays`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `transactions`
 --
 ALTER TABLE `transactions`
@@ -39912,7 +39988,7 @@ ALTER TABLE `voyage`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `login`
