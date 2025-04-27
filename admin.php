@@ -1,4 +1,5 @@
-<?php 
+<?php
+include('api/linkDB.php');
 if(!isset($_SESSION)) {
   session_start();
 }
@@ -72,39 +73,29 @@ if($_SESSION['role'] != '0') {
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Mail</th>
-                <th>Téléphone</th>
+                <th>Date de naissance</th>
                 <th>Statut</th>
-                <th>VIP</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Nom</td>
-                <td>Prénom</td>
-                <td>prenom.nom@email.com</td>
-                <td>0123456789</td>
-                <td>Client</td>
-                <td>Oui</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Nom</td>
-                <td>Prenom</td>
-                <td>prenom.nom@email.com</td>
-                <td>0987654321</td>
-                <td>Client</td>
-                <td>Non</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>CY</td>
-                <td>Tech</td>
-                <td>cy.tech@cytech.fr</td>
-                <td>x</td>
-                <td>Institution</td>
-                <td>Oui</td>
-            </tr>
+        <?php
+        $role = "";
+        foreach($comptes as $compte) {
+            switch($compte['role']) {
+                case '0':
+                    $role = "Administrateur";
+                    break;
+                case '1':
+                    $role = "Particulier";
+                    break;
+                case '2':
+                    $role = "Entreprise";
+                    break;
+            }
+
+            echo '<tr><td>' . $compte['idCompte'] .'</td><td>'. $compte['nom'].'</td><td>'.$compte['prenom'].'</td><td>'.$compte['mail'].'</td><td>'.$compte['naissance'].'</td><td>'.$role.'</td></tr>';
+        }
+        ?>
         </tbody>
         <tfoot>
             <tr>
@@ -179,6 +170,7 @@ if($_SESSION['role'] != '0') {
         <thead>
             <tr>
                 <th>Id réservation</th>
+                <th>Voyage</th>
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Date</th>
@@ -187,34 +179,26 @@ if($_SESSION['role'] != '0') {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>38754</td>
-                <td>Nom</td>
-                <td>Prenom</td>
-                <td>15/05/2025</td>
-                <td>2345</td>
-                <td>
-                    <select class="status">
-                        <option value="En attente">En attente</option>
-                        <option value="Confirmée">Confirmée</option>
-                        <option value="Annulée">Annulée</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>38574</td>
-                <td>Nom</td>
-                <td>Prenom</td>
-                <td>20/05/2025</td>
-                <td>2345</td>
-                <td>
-                    <select class="status">
-                        <option value="En attente">En attente</option>
-                        <option value="Confirmée">Confirmée</option>
-                        <option value="Annulée">Annulée</option>
-                    </select>
-                </td>
-            </tr>
+        <?php
+        $statut = "";
+        foreach($commandesAdm as $commande) {
+
+            echo '<tr><td>'. $commande['id'].'</td><td>'.$commande['titre'].'</td><td>'.$commande['nom'].'</td><td>'.$commande['prenom'].'</td><td>'.$commande['debut'].'</td><td>'.$commande['idCompte'].'</td>';
+            echo '<td><select class="status">';
+            if($commande['paye'] == 0) {
+                echo '<option value="En attente" selected="selected">En attente</option>';
+                echo '<option value="1">Confirmée</option>';
+                echo '<option value="2">Annulée</option>';
+            } else if($commande['paye'] == 1) {
+                echo '<option value="0">En attente</option>';
+                echo '<option value="1" selected="selected">Confirmée</option>';
+                echo '<option value="2">Annulée</option>';
+
+            }
+            echo '</select></td></tr>';
+        }
+
+        ?>
         </tbody>
         <tfoot>
         <tr>
