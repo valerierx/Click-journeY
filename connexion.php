@@ -10,6 +10,7 @@ if($_SESSION['connecte']) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script src="js/index.js"></script>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Connexion</title>
@@ -59,9 +60,12 @@ if($_SESSION['connecte']) {
         <label>
           <input type="email" placeholder="Email" name="mail" required>
         </label>
-        <label>
-          <input type="password" placeholder="Mot de passe" name="mdp" required>
-        </label>
+        <label class="conteneur-mdp">
+          <input type="password" placeholder="Mot de passe" name="mdp" id="motdepasse" required>
+          <span class="bouton-motdepasse" onclick="basculerMotdepasse()">👀</span>
+      </label>
+
+
         <label for="remember">
           <input type="checkbox" id="remember">
           Se souvenir de moi
@@ -111,6 +115,5 @@ if($_SESSION['connecte']) {
     <p>copyright © 2025, CY Eastern</p>
   </div>
 </footer>
-
 </body>
 </html>

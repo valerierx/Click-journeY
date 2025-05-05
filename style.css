@@ -975,4 +975,18 @@ div.container-res .titre {
 }
 /* Fin page resa */
 
-
+.conteneur-mdp {
+    position: relative;
+    display: block;
+  }
+  
+  .bouton-motdepasse {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #6c00d4; /* couleur violette */
+    user-select: none;
+  }
