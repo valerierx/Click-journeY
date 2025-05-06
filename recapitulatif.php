@@ -46,14 +46,24 @@
       <h1>Récapitulatif de votre voyage</h1>
       <div class="details">
         <p><strong>Voyage : </strong><?= $voyage[$commandes[$_GET['commande']]['idVoyage']]['titre'] ?></p>
-        <p><strong>Destination : </strong>Croatie</p>
+        <p>
+            <?php
+            if(count($pays[$commandes[$_GET['commande']]['idVoyage']]) != 1) {
+                echo '<strong>Pays visités :</strong>';
+            } else {
+                echo '<strong>Pays visité :</strong>';
+            }
+            foreach($pays[$commandes[$_GET['commande']]['idVoyage']] as $row) {
+                echo ' ' . $row['nom'] ;
+            }
+            ?></p>
         <p><strong>Date de départ : </strong><?php $debut = new DateTime($commandes[$_GET['commande']]['debut']);
         echo date('d/m/Y', $debut->getTimestamp()); ?></p>
         <p><strong>Date de retour : </strong><?php $fin = new DateTime($commandes[$_GET['commande']]['debut']);
         $fin->add(new DateInterval('P' . $voyage[$commandes[$_GET['commande']]['idVoyage']]['duree'] . 'D'));
         echo date('d/m/Y', $fin->getTimestamp()); ?></p>
         <p><strong>Nombre de voyageurs :
-          </strong><?= $commandes[$_GET['commande']]['nVoyageurs'] . " personne " . ($commandes[$_GET['commande']]['nVoyageurs'] > 1 ? "s" : "") ?>
+          </strong><?= $commandes[$_GET['commande']]['nVoyageurs'] . " personne" . ($commandes[$_GET['commande']]['nVoyageurs'] > 1 ? "s" : "") ?>
         </p>
         <p><strong>Option choisie :</strong>
           <!--table class="detail_table">

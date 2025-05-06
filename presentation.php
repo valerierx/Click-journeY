@@ -53,13 +53,14 @@ include('api/linkDB.php');
   <!--<div class="scrolling-text">
   Profitez d'une Offre Exclusive après l'inscription avec le code Click-journeY !!!
 </div>-->
-  <!--<label>Filtre :</label>
- 
-  <select>
-    <option value="">Choisir une option</option>
-    <option value="Prix Croissant">Prix Croissant</option>
-    <option value="Prix Décroissant">Prix Décroissant</option>
-  </select>-->
+     <div class="contenant">
+         <select>
+             <option value="">Choisir une option</option>
+             <option value="Prix Croissant">Prix Croissant</option>
+             <option value="Prix Décroissant">Prix Décroissant</option>
+         </select>
+     </div>
+
 
   <div class="contenant">
     <?php
@@ -67,7 +68,7 @@ include('api/linkDB.php');
       echo '    <div class="carte">
       <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
-        <h2>' . $desc[$i]['titre'] . '</h2>
+        <h2>' . $voyage[$i]['titre'] . '</h2>
         <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
         <p></p>
         <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
@@ -82,7 +83,7 @@ include('api/linkDB.php');
       echo '    <div class="carte">
       <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
-        <h2>' . $desc[$i]['titre'] . '</h2>
+        <h2>' . $voyage[$i]['titre'] . '</h2>
         <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
         <p></p>
         <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
@@ -97,7 +98,7 @@ include('api/linkDB.php');
       echo '    <div class="carte">
       <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
-        <h2>' . $desc[$i]['titre'] . '</h2>
+        <h2>' . $voyage[$i]['titre'] . '</h2>
         <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
         <p></p>
         <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
@@ -106,7 +107,6 @@ include('api/linkDB.php');
     }
     ?>
   </div>
-
 
 
 

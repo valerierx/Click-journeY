@@ -8,14 +8,8 @@ $linkDB = mysqli_connect("mariadb","valerie","meilleursite2025","clickjourney");
 if ( mysqli_connect_errno() ) {
     exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
-$descQuery = "SELECT * FROM descVoyage ORDER BY idVoyage";
-$descResult = mysqli_query($linkDB, $descQuery);
-$desc = array();
-while ($row = mysqli_fetch_assoc($descResult)) {
-    $desc[$row['idVoyage']] = $row;
-}
 
-$voyageQuery = "SELECT * FROM voyage";
+$voyageQuery = "SELECT * FROM voyage ORDER BY id";
 $voyageResult = mysqli_query($linkDB, $voyageQuery);
 $voyage = array();
 while ($row = mysqli_fetch_assoc($voyageResult)) {
@@ -40,6 +34,13 @@ $etapeOptQuery = "SELECT * FROM etapesOpt ORDER BY idVoyage, idEtape, idOption";
 $etapeOptResult = mysqli_query($linkDB, $etapeOptQuery);
 while ($row = mysqli_fetch_assoc($etapeOptResult)) {
     $etapeOpt[$row['idVoyage']][$row['idEtape']][$row['idOption']] = $row;
+}
+
+$paysQuery = "SELECT p.*, pa.nom FROM paysVoy p, pays pa WHERE p.idPays = pa.id";
+$paysResult = mysqli_query($linkDB, $paysQuery);
+$pays = array();
+while ($row = mysqli_fetch_assoc($paysResult)) {
+    $pays[$row['idVoyage']][$row['idPays']] = $row;
 }
 
 $optionQuery = "SELECT * FROM options";

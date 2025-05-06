@@ -43,7 +43,7 @@
         </div>
         <div class="encadrement">
             <h1 class="titre"><?= $voyage[$_GET['get']]['titre'] ?></h1>
-            <p class="texte-res"><?= $desc[$_GET['get']]['description'] ?></p>
+            <p class="texte-res"><?= $voyage[$_GET['get']]['description'] ?></p>
         </div>
     </div>
 
@@ -68,7 +68,18 @@
         <div class="encadrement">
             <h3>Informations : </h3>
             <ul>
-                <li>Lieu de séjour : Prague, Tchéquie</li>
+                <li>
+                    <?php
+                    if(count($pays[$_GET['get']]) != 1) {
+                        echo 'Pays visités :';
+                    } else {
+                        echo 'Pays visité :';
+                    }
+                    foreach($pays[$_GET['get']] as $row) {
+                        echo ' ' . $row['nom'] ;
+                    }
+                    ?>
+                </li>
                 <li>Les trajets aller et retour ne sont pas pris en charge.</li>
                 <li>Capacité maximale : <?= $voyage[$_GET['get']]['maxi'] ?> personnes.</li>
                 <li>Durée du séjour : <?= $voyage[$_GET['get']]['duree'] ?> jours.</li>

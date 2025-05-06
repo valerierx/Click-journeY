@@ -360,7 +360,7 @@ div.admindiv {
     margin-top: 200px;
 }
 
-select {
+/*select {
     background-color: #0d1b1e;
     color: rgb(237, 184, 50);
     border-radius: 5px;
@@ -370,7 +370,7 @@ option {
     color: #0d1b1e;
     background-color: rgb(237, 184, 50);
     border-radius: 5px;
-}
+}*/
 
 td.td-admin a {
     color: rgb(237, 184, 50);
