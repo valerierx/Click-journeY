@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
+    <script src="js/index.js"></script>
+    <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Inscription</title>
 </head>
@@ -54,9 +55,10 @@
         <label>
           <input type="email" placeholder="Email" name="mail" required>
         </label>
-        <label>
-          <input type="password" placeholder="Mot de passe" name="mdp" required>
-        </label>
+          <label class="conteneur-mdp">
+              <input type="password" placeholder="Mot de passe" name="mdp" id="motdepasse" required>
+              <span class="bouton-motdepasse" onclick="basculerMotdepasse()">👀</span>
+          </label>
         <label>
           <input type="password" placeholder="Confirmation du mot de passe" name="mdp2" required>
         </label>
