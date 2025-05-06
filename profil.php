@@ -6,12 +6,20 @@ if (!isset($_SESSION['connecte'])) {
 }
 ?>
 
+<?php
+// lecture du cookie pour le theme
+$theme = $_COOKIE['theme'] ?? 'style';
+$fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link id="css" rel="stylesheet" type="text/css" href="<?= htmlspecialchars($fiche)?>"> <!-- htmlspecialchars($fiche) sert à sécuriser ce que renvoie $fiche on pourrai faire sans -->
+    <link rel="stylesheet" type="text/css" href="style.css">!!
     <title>Profil</title>
 </head>
 
@@ -47,50 +55,68 @@ if (!isset($_SESSION['connecte'])) {
             <div class="profil-elmt">
                 <img src="media/profil.jpg" alt="Photo de Profil" class="avatar">
                 <?php
-                if (isset($_GET["mail"])) {
-                    echo '<p class="message erreur">
-            L\'adresse mail est déjà utilisée!
-            </p>';
+                if (isset($_GET["succes"])) {
+                    echo '<p class="message valide">
+                Votre profil a été modifié!
+                </p>';
                 }
                 ?>
-                <form action="api/profil.php" method="POST">
-                    <h1>Informations personnelles</h1>
-                    <label for="nom">
-                        <input type="text" autocomplete="off" placeholder="Nom" name="nom"
-                               value="<?php echo $_SESSION['nom']; ?>" required>
-                    </label>
-                    <label>
-                        <input type="text" placeholder="Prénom" name="prenom" value="<?php echo $_SESSION['prenom']; ?>"
-                               required>
-                    </label>
-                    <label>
-                        <input type="date" placeholder="Date de naissance" name="naissance" <?php
-                        if ($_SESSION["naissance"] != "1879-10-26") {
-                            echo 'value="' . $_SESSION["naissance"] . '"';
-                        } ?> required>
-                    </label>
-                    <h3>Adresse postale</h3>
-                    <div class="rue">
-                        <input type="number" autocomplete="off" placeholder="N°" name="numero"
-                               value="<?php echo $_SESSION['numero']; ?>">
-                        <input type="text" placeholder="Rue" name="rue" value="<?php echo $_SESSION['rue']; ?>" required>
-                    </div>
-                    <input type="text" placeholder="Complément d'adresse" name="complement"
-                           value="<?php echo $_SESSION['complement']; ?>">
-                    <div class="rue">
-                        <input type="number" autocomplete="off" placeholder="Code postal" name="codePostal"
-                               value="<?php echo $_SESSION['codePostal']; ?>" required>
-                        <input type="text" placeholder="Commune" name="commune"
-                               value="<?php echo $_SESSION['commune']; ?>" required>
-                    </div>
-                    <!--<select name="commune" id="commune"></select>-->
-                    <button class="modif-btn" type="submit">Modifier le profil</button>
-                </form>
+                <h1>Profil</h1>
+                <p>Nom: <?= $_SESSION['nom'] ?></p>
+                <p>Prénom: <?= $_SESSION['prenom'] ?></p>
+                <p>Email: <?= $_SESSION['mail'] ?></p>
+                <p>Date de naissance : <?= $_SESSION['naissance'] ?></p>
+                <h2>Adresse</h2>
+                <p><?= $_SESSION['numero'] ?> <?= $_SESSION['rue'] ?></p>
+                <?php
+                if (isset($_SESSION["complement"])) {
+                    echo '<p>' . $_SESSION['complement'] . '</p>';
+                }
+                ?>
                 <div class="bouton-array">
+                    <button class="modif-btn"><a href="modifProfil.php">Modifier Profil</a></button>
                     <?php if ($_SESSION['role'] == 0) {
                         echo '<button class="admin-btn"><a href="admin.php">Tableau de bord admin</a></button>';
                     }; ?>
                 </div>
+                <p>Thème: <button id="Theme-bouton" onclick="changerTheme()">🌙</button><p>
+                
+                
+                <script>
+
+                    function lirecookie(name) { //lecture du cookie
+                    let cookies = document.cookie.split("; "); // en crée un tableau avec tout les cookie de la page
+                    for (let i = 0; i < cookies.length; i++) {
+                    let elem = cookies[i].split("="); // création de sous tableau [cle, valeur]
+                    let cle = elem[0];
+                    let valeur = elem[1];
+
+                    if (cle === name) { 
+                        return valeur; // on renvoi la valeur si c'est la bonne clé
+                    }
+                    }
+                    return null;
+                }
+
+
+                    function changerTheme() {
+                    const link = document.getElementById("css");
+                    const btn = document.getElementById("Theme-bouton");
+
+                    const Theme_actuel = link.getAttribute("href").includes("sombre") ? "sombre" : "style"; // Si le href du fichier CSS contient sombre on considère que le theme actuel est sombre
+                    const nouvTheme = Theme_actuel === "sombre" ? "style" : "sombre"; // Si le theme actuel est sombre alors on passe au clair et inversement
+
+                    link.href = nouvTheme + ".css";
+                    document.cookie = "theme=" + nouvTheme + "; path=/; max-age=60"; //création du cookie
+                    btn.textContent = nouvTheme === "sombre" ? "☀️" : "🌙"; // mise a jour de l'affichage du bouton
+                    }
+
+                    
+                    const themeInitial = lirecookie("theme") || "style"; //si lire cookie renvoie null clair par défaut
+                    document.getElementById("Theme-bouton").textContent = themeInitial === "style" ? "☀️" : "🌙"; //affichage du bon emojis dans le bouton
+                </script>
+
+
             </div>
         </section>
 
