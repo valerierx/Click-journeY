@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <script src="js/index.js"></script>
     <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Inscription</title>
@@ -53,11 +52,13 @@
           <input type="text" placeholder="Prénom" name="prenom" required>
         </label>
         <label>
-          <input type="email" placeholder="Email" name="mail" required>
+          <input type="email" placeholder="Email" name="mail" id="email" maxlength="30" required>
+          <div id="compteur-email" class="compteur">0 / 30 caractères</div>
         </label>
           <label class="conteneur-mdp">
-              <input type="password" placeholder="Mot de passe" name="mdp" id="motdepasse" required>
+              <input type="password" placeholder="Mot de passe" name="mdp" id="motdepasse" maxlength="30" required>
               <span class="bouton-motdepasse" onclick="basculerMotdepasse()">👀</span>
+              <div id="compteur-mdp" class="compteur">0 / 30 caractères</div>
           </label>
         <label>
           <input type="password" placeholder="Confirmation du mot de passe" name="mdp2" required>
@@ -110,6 +111,6 @@
     <p>copyright © 2025, CY Eastern</p>
   </div>
 </footer>
-
+<script src="js/index.js"></script>
 </body>
 </html>
