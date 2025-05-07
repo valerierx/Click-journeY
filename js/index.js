@@ -16,5 +16,32 @@ function mettreAJourCompteur(nomID, compteurID) {
     compteur.textContent = `${longueur} / ${maxLength} caractères`;
   });
 }
-mettreAJourCompteur("email", "compteur-email");
-mettreAJourCompteur("motdepasse", "compteur-mdp");
+
+function AdresseValide(email){
+  const mail=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return mail.test(email.trim());
+}
+
+function Email(){
+  const mail=document.getElementById("email");
+  const message=document.getElementById("erreur-email");
+
+    mail.addEventListener("input",()=>{
+      
+      console.log("Saisie détectée :",mail.value);
+    if(mail.value===""){
+      message.style.display="none";
+    }
+    else if(!AdresseValide(mail.value)){
+      message.style.display= "block";
+    }
+  else{
+    message.style.display="none";
+  }
+  });
+}
+
+  mettreAJourCompteur("email", "compteur-email");
+  mettreAJourCompteur("motdepasse", "compteur-mdp");
+  Email();
+

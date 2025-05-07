@@ -51,9 +51,11 @@
         <label>
           <input type="text" placeholder="Prénom" name="prenom" required>
         </label>
-        <label>
-          <input type="email" placeholder="Email" name="mail" id="email" maxlength="30" required>
+        
+        <label> 
+          <input type="email"  placeholder="Email" name="email" id="email" maxlength="30" required>
           <div id="compteur-email" class="compteur">0 / 30 caractères</div>
+          <div id="erreur-email" style="color: red; display: none;">Adresse email invalide</div>
         </label>
           <label class="conteneur-mdp">
               <input type="password" placeholder="Mot de passe" name="mdp" id="motdepasse" maxlength="30" required>
@@ -111,6 +113,6 @@
     <p>copyright © 2025, CY Eastern</p>
   </div>
 </footer>
-<script src="js/index.js"></script>
+<script src="js/index.js" defer></script>
 </body>
 </html>
