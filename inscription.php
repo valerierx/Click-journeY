@@ -53,7 +53,7 @@
         </label>
         
         <label> 
-          <input type="email"  placeholder="Email" name="email" id="email" maxlength="30" required>
+          <input type="email"  placeholder="Email" name="mail" id="email" maxlength="30" required>
           <div id="compteur-email" class="compteur">0 / 30 caractères</div>
           <div id="erreur-email" style="color: red; display: none;">Adresse email invalide</div>
         </label>
