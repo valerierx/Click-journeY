@@ -10,7 +10,6 @@ if($_SESSION['connecte']) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script src="js/index.js"></script>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Connexion</title>
@@ -57,8 +56,9 @@ if($_SESSION['connecte']) {
       }
       ?>
       <form action="api/connexion.php" method="POST">
-        <label>
-          <input type="email" placeholder="Email" name="mail" required>
+        <label> 
+          <input type="email"  placeholder="Email" name="mail" id="email" maxlength="30" required>
+          <div id="erreur-email" style="color: red; display: none;">Adresse email invalide</div>
         </label>
         <label class="conteneur-mdp">
           <input type="password" placeholder="Mot de passe" name="mdp" id="motdepasse" required>
@@ -115,5 +115,6 @@ if($_SESSION['connecte']) {
     <p>copyright © 2025, CY Eastern</p>
   </div>
 </footer>
+<script src="js/index.js"></script>
 </body>
 </html>
