@@ -41,7 +41,28 @@ function Email(){
   });
 }
 
+
+function verifMdp() {
+  const motdepasse = document.getElementById("motdepasse");
+  const confirmation = document.getElementById("confirmation-mdp");
+  const messageErreur = document.getElementById("erreur-mdp");
+  const formulaire = document.querySelector("form");
+
+  if (!motdepasse || !confirmation || !formulaire || !messageErreur) return;
+
+  formulaire.addEventListener("submit", (val) => {
+    if (motdepasse.value !== confirmation.value) {
+      val.preventDefault(); 
+      messageErreur.style.display = "block";
+    } else {
+      messageErreur.style.display = "none";
+    }
+  });
+}
+
+window.addEventListener("load", () => {
   mettreAJourCompteur("email", "compteur-email");
   mettreAJourCompteur("motdepasse", "compteur-mdp");
   Email();
-
+  verifMdp();
+});

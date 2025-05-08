@@ -63,7 +63,8 @@
               <div id="compteur-mdp" class="compteur">0 / 30 caractères</div>
           </label>
         <label>
-          <input type="password" placeholder="Confirmation du mot de passe" name="mdp2" required>
+          <input type="password" placeholder="Confirmation du mot de passe" name="mdp2" id="confirmation-mdp" required>
+          <div id="erreur-mdp" style="color: red; display: none;"> Le mot de passe est incorrecte</div>
         </label>
         <label for="cgu">
           <input type="checkbox" id="cgu" name="cgu" required>
