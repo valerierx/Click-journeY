@@ -1,0 +1,108 @@
+
+<?php
+// lecture du cookie pour le theme
+$theme = $_COOKIE['theme'] ?? 'style';
+$fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link id="css" rel="stylesheet" type="text/css" href="<?= htmlspecialchars($fiche)?>"> <!-- htmlspecialchars($fiche) sert à sécuriser ce que renvoie $fiche on pourrai faire sans -->
+    <title>Recherche</title>
+</head>
+<body>
+
+<div>
+    <nav>
+        <div class="divmenu">
+            <div class="logo1">
+                <a href="index.html"><img src="media/logo.webp" width="400" height="100" alt="Logo"></a>
+            </div>
+            <ul>
+                <li class="limenu"><a href="index.html">Accueil</a></li>
+                <li class="limenu"><a href="presentation.php">Trajets</a></li>
+                <li class="limenu"><a href="recherche.php">Itinéraire</a></li>
+                <li class="limenu"><a href="">Bon plan</a></li>
+                <button class="bouton_menu"><a href="connexion.php">Connexion</a></button>
+            </ul>
+            <i class='bx bx-search-alt'></i>
+            <!--Loupe de recherche-->
+        </div>
+    </nav>
+</div>
+<!-- <img src="europe.jpg">-->
+
+<!--<div class="scrolling-text">
+ Profitez d'une Offre Exclusive après l'inscription avec le code Click-journeY !!!
+</div>-->
+
+<div class="contenant_recherche">
+    <div class="carte_recherche">
+        <div class="texte">
+            <h1 class="titre_recherche">Recherche rapide</h1>
+            <form method="GET" action="recherche.html">
+                <fieldset>
+                    <legend>Pays de départ</legend>
+                    <label for="pays">
+                        <input type="text" id="pays" name="pays" placeholder="" required>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Nombre d'étapes</legend>
+                    <label for="etapes">
+                        <input type="number" id="etapes" name="etapes" min="1" max="3" value="1" required>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Durée</legend>
+                    <label for="duree">
+                        <input type="number" id="duree" name="duree" min="1" max="" value="1" required>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Début</legend>
+                    <label for="debut">
+                        <input type="date" id="debut" name="fin" placeholder="" required>
+                    </label>
+                </fieldset>
+                <button class="inline_submit" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="contenu">
+        <div class="logo">
+            <h2>CY Eastern</h2>
+            <p>top voyage je vous promet</p>
+            <img src="media/" alt="Logo" width="180px" height="100">
+        </div>
+        <div class="colonne">
+            <h3>Ou nous trouver</h3>
+            <p>Av. du Parc, 95000 Cergy</p>
+            <p>2 Av. Adolphe Chauvin, 95300 Pontoise</p>
+            <p>06 xx xx xx xx</p>
+            <p><a href="mailto:exemple@mail.com" style="color: rgb(237, 184, 50);">exemple@mail.com</a></p>
+        </div>
+        <div class="colonne">
+            <h3>Navigation</h3>
+            <ul class="ul-footer">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Présentation</a></li>
+                <li><a href="#">Nos services</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
+                <li><a href="inscription.php">Inscription</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright © 2025, CY Eastern</p>
+    </div>
+</footer>
+
+</body>
+</html>

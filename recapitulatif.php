@@ -1,12 +1,21 @@
 <?php include('api/linkDB.php'); ?>
 
+
+<?php
+// lecture du cookie pour le theme
+$theme = $_COOKIE['theme'] ?? 'style';
+$fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <title>Récapitulatif de votre voyage</title>
-  <link rel="stylesheet" href="style.css">
+  <link id="css" rel="stylesheet" type="text/css" href="<?= htmlspecialchars($fiche)?>"> <!-- htmlspecialchars($fiche) sert à sécuriser ce que renvoie $fiche on pourrai faire sans -->
 
 </head>
 
@@ -31,7 +40,7 @@
           <ul>
             <li class="limenu"><a href="index.html">Accueil</a></li>
             <li class="limenu"><a href="presentation.php">Trajets</a></li>
-            <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
+            <li class="limenu"><a href="recherche.php">Itinéraire</a></li>
             <li class="limenu"><a href="">Bon plan</a></li>
               <button class="bouton_menu"><a href="panier.php">Panier</a></button>
             <button class="bouton_menu"><a href="profil.php">Profil</a></button>

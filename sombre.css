@@ -1,0 +1,1059 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-optical-sizing: auto;
+    background-image: url(media/paysage2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    image-rendering: crisp-edges;
+    background-attachment: fixed;
+
+}
+
+img[alt="Logo"] {
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+/*debut Accueil*/
+/*debut Menu*/
+.divmenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 0 50px;
+}
+
+li.limenu {
+    display: inline-block;
+    margin-left: -100px;
+}
+
+.limenu a {
+    color: rgb(237, 184, 50);
+    font-size: 20px;
+    margin-right: 140px;
+
+}
+
+ul .limenu a:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+.bouton_menu {
+
+    background-color: rgb(27, 25, 25);
+    color: rgb(237, 184, 50);
+    border-radius: 20px;
+    padding: 10px;
+
+}
+
+.bouton-text-sombre{
+
+    color: rgb(237, 184, 50);
+
+}
+
+
+.logo1 {
+    padding: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    justify-content: flex-end;
+}
+
+/*fin Menu*/
+/*Debut description accueil avec onglet inscription*/
+.section_accueil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.accueil_contenu1 {
+    display: flex;
+    align-items: center;
+    background-color: #0d1b1e;
+    width: 500px;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.accueil_image {
+    width: 40%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.accueil_texte {
+    width: 60%;
+    padding: 0 20px;
+    text-align: left;
+    color: rgb(237, 184, 50);
+}
+
+.accueil_titre1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.accueil_p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.accueil_btn {
+    background: #6c00d4;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.accueil_btn:hover {
+    background: grey;
+}
+
+/*Fin description accueil avec onglet inscription*/
+/*fin Accueil*/
+/*Debut Présentation*/
+/*Debut barre de recherche*/
+.barre-recherche {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.recherche {
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50);
+    border: 2px solid rgb(237, 184, 50); /* pas juste border-color */
+    width: 500px !important;
+    padding: 8px;   
+    border-radius: 15px;
+    outline: none;
+    font-size: 14px;   
+}
+
+.bouton-recherche {
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50);
+    border-color: rgb(237, 184, 50);
+    padding: 6px 10px;
+    margin-left: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/*Fin barre de recherche*/
+/*Debut Carte */
+.contenant {
+    /*créer pour dédier un emplacement pour les élements*/
+    display: flex;
+    /* Aligner les élements en ligne */
+    gap: 20px;
+    /* Espacement entre chaque éléments */
+    justify-content: center;
+    margin-bottom: 60px !important;
+    width: 100%;
+}
+
+.menu-deroulant-sombre{
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50);
+}
+
+.carte {
+    width: 300px;
+    background: #0d1b1e;
+    color: rgb(237, 184, 50);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+.carte_recherche fieldset {
+    display: inline-block;
+}
+
+.contenant_recherche {
+    /*créer pour dédier un emplacement pour les élements*/
+    gap: 20px;
+    /* Espacement entre chaque éléments */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+
+}
+
+.carte_recherche {
+    background: white;
+    border-radius: 10px;
+    margin-top: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: inline-block;
+    background-color: #0d1b1e;
+}
+
+.imagevoyage {
+    /*pour centrer, ajuster et pour eviter la répition de l'image*/
+    height: 180px;
+}
+
+
+.texte {
+    padding: 15px;
+    color: rgb(237, 184, 50);
+}
+
+.texte h2 {
+    font-size: 18px;
+    color: rgb(237, 184, 50);
+    margin: 10px 0;
+}
+
+.texte p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.texte a {
+    text-decoration: none;
+    background-color: #6c00d4;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+
+.texte a:hover {
+    background-color: #6c00d4;
+}
+
+/*Fin carte*/
+
+/*Présentation fin*/
+
+
+
+/*Body admin début*/
+
+#haut-de-page {
+    display: flex;
+    justify-content: center;
+}
+
+.admin_warn {
+    border-color: yellow;
+    background-color: #0d1b1e;
+    color: white;
+}
+
+.warn_image {
+    border: none;
+    padding: 5px;
+}
+
+.warn_text {
+    border: none;
+    padding: 5px;
+    font-size: larger
+}
+
+.admin {
+    background-image: url(media/paysage2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    image-rendering: crisp-edges;
+    background-attachment: fixed;
+
+}
+
+nav.adminbar {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+}
+
+ul.ul-adminbar {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    list-style: none;
+    background: #0d1b1e;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+ul.ul-adminbar li {
+    display: inline-block;
+}
+
+ul.ul-adminbar li a {
+    margin: 25px;
+}
+
+nav.adminbar a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.4s;
+}
+
+
+nav.adminbar a:visited {
+    color: white;
+}
+
+nav.adminbar a:hover {
+    color: rgb(237, 184, 50);
+}
+
+table.admintable {
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50);
+    padding: 4px;
+    border-radius: 5px;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.admintable td {
+    padding: 12px 15px;
+}
+
+.admintable tbody tr:hover {
+    background-color: #253134;
+}
+
+
+table caption.admintable {
+    background-color: #0d1b1e;
+    text-align: left;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+td>button {
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50);
+    border-radius: 5px;
+}
+
+div.admindiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+/*select {
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50);
+    border-radius: 5px;
+}
+
+option {
+    color: #0d1b1e;
+    background-color: rgb(237, 184, 50);
+    border-radius: 5px;
+}*/
+
+td.td-admin a {
+    color: rgb(237, 184, 50);
+    text-decoration: none;
+    transition: color 0.4s;
+}
+
+
+td.td-admin a:visited {
+    color: rgb(237, 184, 50);
+}
+
+td.td-admin a:hover {
+    color: white;
+}
+
+td.td-admin-modif {
+    text-align: center;
+}
+
+/*Body admin fin*/
+
+
+/*Footer début*/
+footer {
+    background-color: #0d1b1e;
+    color: white;
+    padding: 15px 0;
+    margin-top: 280px;
+}
+
+.contenu {
+    display: flex;
+    max-width: 850px;
+    margin: auto;
+}
+
+.colonne,
+.logo {
+    min-width: 300px;
+    margin: 10px;
+}
+
+h3.footer_h3 {
+    color: white;
+}
+
+ul.ul-footer {
+    list-style: none;
+    padding: 0;
+}
+
+ul.ul-footer li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.4s;
+}
+
+ul.ul-footer li a:hover {
+    color: rgb(237, 184, 50);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+}
+
+/*Footer fin*/
+
+/*Connexion début*/
+button[type=submit] {
+    background: #6c00d4;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.titre_recherche {
+    text-align: center;
+}
+
+.inline_submit {
+    width: unset !important;
+}
+
+button[type=submit]:hover {
+    background: grey;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date],
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+label[for=cgu],
+label[for=newsletter],
+label[for=mdpoublie] {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    text-align: left;
+}
+
+.lien {
+    all: revert !important;
+    text-align: left !important;
+}
+
+/*¨Profil*/
+.profil {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding-right: 10px;
+    
+}
+
+.profil-elmt {
+    background-color: #0d1b1e;
+    color: rgb(237, 184, 50);   
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgb(237, 184, 50, 0.5);
+    border-radius: 10px;
+    width: 500px;
+    height: 95%;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+#Theme-bouton{
+    border-radius: 5px;
+    background-color: white;
+    color: #0d1b1e;
+    
+}
+
+
+.modif-btn {
+    background: #6c00d4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modif-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.admin-btn {
+    background: #0c915a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.bouton-array {
+    display: table;
+    margin: auto;
+}
+
+.message {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.erreur {
+    border-color: #e76f51;
+    background-color: rgba(231, 111, 81, 0.1);
+}
+
+.avertissement {
+    border-color: rgb(237, 184, 50);
+    background-color: rgba(42, 157, 143, 0.1);
+}
+
+.info {
+    border-color: #0096c7;
+    background-color: rgba(0, 150, 199, 0.1);
+}
+
+.valide {
+    border-color: #00b353;
+    background-color: rgba(0, 179, 83, 0.1);
+}
+
+.rue {
+    display: flex;
+    gap: 2px
+}
+
+.rue input[name="numero"] {
+    width: 30%;
+}
+
+.rue input[name="codePostal"] {
+    width: 70%
+}
+
+.liste-commandes {
+    justify-items: left;
+    width: 100%;
+    display: inline-block;
+    height: 45%;
+    overflow-y: scroll;
+
+}
+
+.commandeconfirmee {
+    background-color: darkgreen;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+.commandeimpayee {
+    background-color: orange;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.tableau-commandes {
+    width: 100%;
+    margin: 0;
+    padding: 10px 10px;
+    border-collapse: collapse;
+}
+
+.tableau-commandes tbody tr:nth-child(odd) {
+    background-color: #0d1b1e;
+}
+
+.tableau-commandes tbody tr:nth-child(even) {
+    background-color: #2f0a53;
+  }
+  
+
+.tableau-commandes thead {
+    position: sticky;
+    top: 0;
+}
+.tableau-commandes tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.tableau-commandes th {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.tableau-commandes table,th,td {
+    border: 1px solid #ddd;
+
+}
+
+/*FIN PAGE PROFIL*/
+
+/* Début Récapitulatif d'un voyage*/
+.container {
+    margin-top: 40px;
+    max-width: 1000px;
+    margin-left: 10%;
+    background: #0d1b1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgb(237, 184, 50, 0.5);
+    color: rgb(237, 184, 50);
+}
+
+/* h1 {
+    text-align: center;
+    color: #6c00d4;
+  }*/
+
+.details {
+    color: rgb(237, 184, 50);
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.details strong {
+    color: #504949;
+}
+
+.total {
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #504949;
+}
+
+.btn-payer {
+    display: block;
+    width: 50%;
+    margin-top: 30px;
+    margin: auto;
+    background-color: #6c00d4;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-payer:hover {
+    background-color: #5300a6;
+}
+
+
+.detail_table {
+
+    border-color: #6c00d4;
+    border-width: 5px;
+    border-spacing: 5px;
+
+}
+
+
+/*Fin Récapitulatif voyage*/
+
+/*Début confirmation de paiement*/
+.confirmation-container {
+    max-width: 600px;
+    margin: 100px auto;
+    background: #0d1b1e;
+    color: white;
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgb(237, 184, 50, 0.5);
+    font-family: Arial, sans-serif;
+    color: rgb(237, 184, 50);
+}
+
+.confirmation-container h1 {
+    color: #6c00d4;
+    margin-bottom: 20px;
+}
+
+.confirmation-container p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.telechargements {
+    margin-top: 30px;
+}
+
+.btn-telechargement {
+    display: inline-block;
+    background-color: #6c00d4;
+    color: white;
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-telechargement:hover {
+    background-color: #5300a6;
+}
+
+.btn-retour {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-retour:hover {
+    background-color: #555;
+}
+
+/*Fin de confirmation de pe 
+
+/* Début page voyage reservation */
+
+.body_reservation {
+    background-image: url(media/sunset.jpg);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+div.container-res {
+    margin-top: 40px;
+    max-width: 1000px;
+    margin-left: 10%;
+    background: #0d1b1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgb(237, 184, 50, 0.5);
+    display: flex;
+}
+
+div.container-res .titre {
+    margin: auto;
+    width: 100%;
+    /* Ajuste la largeur du texte */
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.encadrement {
+    border-color: rgb(237, 184, 50);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 10px;
+    color: rgb(237, 184, 50);
+}
+
+.texte-res {
+    max-width: 60ch;
+    /* Limite à environ 50 caractères par ligne */
+    margin: 0 auto;
+    /* Centre horizontalement */
+    text-align: left;
+    /* Centre le texte */
+    font-size: 18px;
+    /* Taille de police adaptée */
+    line-height: 1.6;
+    /* Espacement pour une meilleure lisibilité */
+    padding: 20px;
+    /* Ajoute un peu d’espace autour */
+}
+
+.container-res2 {
+    margin-top: 30px;
+    max-width: 1000px;
+    margin-left: 10%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.img_reservation img {
+    width: 85%;
+    border-radius: 10px;
+    border-color: black;
+    border-style: double;
+}
+
+.prix_reservation {
+    padding-bottom: 20px;
+    width: 450px;
+    font-size: 24px;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.bouton1-res {
+    padding: 10px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.bouton2-res {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.bouton3-res {
+    display: block;
+    width: 30%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.div2reservation {
+    margin-top: 20px;
+    color: rgb(237, 184, 50);
+}
+
+.container-ul{
+    color: rgb(237, 184, 50);
+    accent-color: #6c00d4;
+}
+
+.btn-paiement {
+    background-color: #6c00d4;
+    /* Violet */
+    color: white;
+    /* Texte en blanc */
+    font-size: 16px;
+    /* Taille de police */
+    padding: 12px 24px;
+    /* Espacement interne */
+    border-radius: 8px;
+    /* Bords arrondis */
+    border: none;
+    /* Suppression de la bordure */
+    cursor: pointer;
+    /* Curseur en forme de main */
+    transition: all 0.3s ease;
+    /* Animation douce */
+}
+
+.btn-paiement:hover {
+    background-color: #5800a3;
+    /* Violet un peu plus foncé au survol */
+    transform: scale(1.05);
+    /* Agrandissement au survol */
+}
+
+.btn-paiement:active {
+    background-color: #450080;
+    /* Couleur plus sombre quand le bouton est pressé */
+}
+
+.btn-paiement:focus {
+    outline: none;
+    /* Supprimer le contour lors du focus */
+}
+
+
+/*Fin page réservation */
+
+/* Debut page resa */
+.booking-info {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    color: rgb(237, 184, 50);
+}
+
+.booking-info li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #11262b;
+    border-color: rgb(237, 184, 50);
+    border-radius: 5px;
+    border-radius: 4px;
+}
+
+.titre-reservation{
+    color: rgb(237, 184, 50);
+}
+
+
+.booking-info label {
+    display: inline-block;
+    width: 180px;
+    font-weight: bold;
+}
+
+
+.booking-info input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.info-note {
+    color: #555;
+    font-style: italic;
+}
+
+.form-actions {
+    display: flex;
+    margin: auto;
+    width: 200px !important;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+}
+
+.form-actions button:hover {
+    background-color: #0056b3;
+}
+/* Fin page resa */
+
+.conteneur-mdp {
+    position: relative;
+    display: block;
+  }
+  
+  .bouton-motdepasse {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #6c00d4; /* couleur violette */
+    user-select: none;
+  }

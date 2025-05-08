@@ -19,7 +19,6 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
 <head>
     <meta charset="UTF-8">
     <link id="css" rel="stylesheet" type="text/css" href="<?= htmlspecialchars($fiche)?>"> <!-- htmlspecialchars($fiche) sert à sécuriser ce que renvoie $fiche on pourrai faire sans -->
-    <link rel="stylesheet" type="text/css" href="style.css">!!
     <title>Profil</title>
 </head>
 
@@ -34,7 +33,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
             <ul>
                 <li class="limenu"><a href="index.html">Accueil</a></li>
                 <li class="limenu"><a href="presentation.php">Trajets</a></li>
-                <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
+                <li class="limenu"><a href="recherche.php">Itinéraire</a></li>
                 <li class="limenu"><a href="">Bon plans</a></li>
                 <?php
                 if (!$_SESSION['connecte']) {
@@ -108,43 +107,6 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                     </div>
                 </form>
                 <p>Thème: <button id="Theme-bouton" onclick="changerTheme()">🌙</button><p>
-                
-                
-                <script>
-
-                    function lirecookie(name) { //lecture du cookie
-                    let cookies = document.cookie.split("; "); // en crée un tableau avec tout les cookie de la page
-                    for (let i = 0; i < cookies.length; i++) {
-                    let elem = cookies[i].split("="); // création de sous tableau [cle, valeur]
-                    let cle = elem[0];
-                    let valeur = elem[1];
-
-                    if (cle === name) { 
-                        return valeur; // on renvoi la valeur si c'est la bonne clé
-                    }
-                    }
-                    return null;
-                }
-
-
-                    function changerTheme() {
-                    const link = document.getElementById("css");
-                    const btn = document.getElementById("Theme-bouton");
-
-                    const Theme_actuel = link.getAttribute("href").includes("sombre") ? "sombre" : "style"; // Si le href du fichier CSS contient sombre on considère que le theme actuel est sombre
-                    const nouvTheme = Theme_actuel === "sombre" ? "style" : "sombre"; // Si le theme actuel est sombre alors on passe au clair et inversement
-
-                    link.href = nouvTheme + ".css";
-                    document.cookie = "theme=" + nouvTheme + "; path=/; max-age=60"; //création du cookie
-                    btn.textContent = nouvTheme === "sombre" ? "☀️" : "🌙"; // mise a jour de l'affichage du bouton
-                    }
-
-                    
-                    const themeInitial = lirecookie("theme") || "style"; //si lire cookie renvoie null clair par défaut
-                    document.getElementById("Theme-bouton").textContent = themeInitial === "style" ? "☀️" : "🌙"; //affichage du bon emojis dans le bouton
-                </script>
-
-
             </div>
         </section>
 
@@ -216,7 +178,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         </div>
     </footer>
 
-
+    <script src="js/cookie.js"></script> 
 </body>
 
 </html>
