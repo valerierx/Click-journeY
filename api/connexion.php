@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             // NOUVEAU COMPTE
             if($_SESSION['derniereConnexion'] == "0000-00-00 00:00:00") {
-                header('Location: ../modifProfil.php?nouveau');
+                header('Location: ../profil.php?nouveau');
             }
 
             header('Location: ../index.php');
