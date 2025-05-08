@@ -34,7 +34,8 @@ if (!isset($_SESSION['connecte'])) {
                     if (!$_SESSION['connecte']) {
                         echo '<button class="bouton_menu"><a href="connexion.php">Connexion</a></button>';
                     } else {
-                        echo '<button class="bouton_menu"><a href="profil.php">Profil</a></button>
+
+                        echo '<button class="bouton_menu"><a href="panier.php">Panier</a></button><button class="bouton_menu"><a href="profil.php">Profil</a></button>
         <button class="bouton_menu"><a href="index.php?logout=1">Déconnexion</a></button>';
                     }
                     ?>

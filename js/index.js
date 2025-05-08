@@ -60,6 +60,53 @@ function verifMdp() {//Vérification que le mdp et sa confirmation correspondent
   });
 }
 
+function trierVoyages() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const selectTri = document.querySelector('select');
+
+    selectTri.addEventListener('change', function() {
+      const option = this.value;
+      const contenants = document.querySelectorAll('.contenant');
+      let voyages = [];
+
+      contenants.forEach(contenant => {
+        const cartes = contenant.querySelectorAll('.carte');
+        cartes.forEach(carte => {
+          voyages.push(carte);
+        });
+      });
+
+      if (option === 'prixCrois' || option === 'prixDec') {
+        voyages.sort((a, b) => {
+          const prixA = parseInt(a.dataset.prix);
+          const prixB = parseInt(b.dataset.prix);
+          return option === 'prixCrois' ? prixA - prixB : prixB - prixA;
+        });
+      } else if (option === 'jourCrois' || option === 'jourDec') {
+        voyages.sort((a, b) => {
+          const jourA = parseInt(a.dataset.jours);
+          const jourB = parseInt(b.dataset.jours);
+          return option === 'jourCrois' ? jourA - jourB : jourB - jourA;
+        });
+      }
+
+      contenants.forEach(contenant => {
+        contenant.innerHTML = '';
+      });
+
+      voyages.forEach((voyage, index) => {
+        const contenantIndex = Math.floor(index / 5);
+        if (contenants[contenantIndex]) {
+          contenants[contenantIndex].appendChild(voyage);
+        }
+      });
+    });
+  });
+}
+if(location.pathname == "/presentation.php") {
+  trierVoyages();
+}
+
 window.addEventListener("load", () => {
   mettreAJourCompteur("email", "compteur-email");
   mettreAJourCompteur("motdepasse", "compteur-mdp");

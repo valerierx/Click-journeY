@@ -10,8 +10,9 @@ include('api/linkDB.php');
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Presentation</title>
 </head>
-
 <body id="haut">
+<script src="js/index.js"></script>
+
   <div>
     <nav>
       <div class="divmenu">
@@ -27,7 +28,7 @@ include('api/linkDB.php');
           if (!$_SESSION['connecte']) {
             echo '<button class="bouton_menu"><a href="connexion.php">Connexion</a></button>';
           } else {
-            echo '<button class="bouton_menu"><a href="profil.php">Profil</a></button>
+            echo '<button class="bouton_menu"><a href="panier.php">Panier</a></button><button class="bouton_menu"><a href="profil.php">Profil</a></button>
         <button class="bouton_menu"><a href="index.php?logout=1">Déconnexion</a></button>';
           }
           ?>
@@ -53,11 +54,14 @@ include('api/linkDB.php');
   <!--<div class="scrolling-text">
   Profitez d'une Offre Exclusive après l'inscription avec le code Click-journeY !!!
 </div>-->
-     <div class="contenant">
+     <div>
          <select>
-             <option value="">Choisir une option</option>
-             <option value="Prix Croissant">Prix Croissant</option>
-             <option value="Prix Décroissant">Prix Décroissant</option>
+             <option value="">Trier les voyages</option>
+             <option value="prixCrois">Prix Croissant</option>
+             <option value="prixDec">Prix Décroissant</option>
+             <option value="jourCrois">Plus court</option>
+             <option value="jourDec">Plus long</option>
+
          </select>
      </div>
 
@@ -65,7 +69,7 @@ include('api/linkDB.php');
   <div class="contenant">
     <?php
     for ($i = 1; $i <= 5; $i++) {
-      echo '    <div class="carte">
+      echo '    <div class="carte" data-prix="'.$voyage[$i]['prix'].'" data-jours="'.$voyage[$i]['duree'].'">
       <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
         <h2>' . $voyage[$i]['titre'] . '</h2>
@@ -80,7 +84,7 @@ include('api/linkDB.php');
   <div class="contenant">
     <?php
     for ($i = 6; $i <= 10; $i++) {
-      echo '    <div class="carte">
+      echo '<div class="carte" data-prix="'.$voyage[$i]['prix'].'"data-jours="'.$voyage[$i]['duree'].'">
       <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
         <h2>' . $voyage[$i]['titre'] . '</h2>
@@ -95,7 +99,7 @@ include('api/linkDB.php');
   <div class="contenant">
     <?php
     for ($i = 11; $i <= 15; $i++) {
-      echo '    <div class="carte">
+      echo '    <div class="carte" data-prix="'.$voyage[$i]['prix'].'" data-jours="'.$voyage[$i]['duree'].'" >
       <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
       <div class="texte">
         <h2>' . $voyage[$i]['titre'] . '</h2>

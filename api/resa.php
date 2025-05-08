@@ -28,6 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (mysqli_query($linkDB, $commandeQuery)) {
         $idCommande = mysqli_insert_id($linkDB);
 
+        $panierQuery = "INSERT INTO panier (idCompte, idCommande) VALUES ('{$_SESSION['id']}', '{$idCommande}')";
+        if(!mysqli_query( $linkDB, $panierQuery)) {
+            header("Content-Type: application/json");
+            echo json_encode(array("status_code" => "500", "message" => "Erreur serveur", "status_message" => "Internal Server Error", "time" => $datetime->format(DateTime::ATOM)));
+            http_response_code(500);
+            exit();
+        };
+
         foreach ($etapes[$_POST['voyage']] as $id => $row) {
             $etapeQuery = "INSERT INTO commandesOpt (idCommande, idEtape, idOption) VALUES ('{$idCommande}', '{$id}', '{$_POST["etape_".$id]}')";
             if(!mysqli_query( $linkDB, $etapeQuery)) {

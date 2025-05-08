@@ -26,8 +26,10 @@ if(!$_SESSION['connecte']) {
         <li class="limenu"><a href="presentation.php">Trajets</a></li>
       <li class="limenu"><a href="recherche.php">Itinéraire</a></li>
       <li class="limenu"><a href="">Bon plan</a></li>
-      <button class="bouton_menu"><a href="connexion.php">Connexion</a></button>
-      <button class="bouton_menu"><a href="profil.php">Profil</a></button>
+        <button class="bouton_menu"><a href="panier.php">Panier</a></button>
+        <button class="bouton_menu"><a href="index.php?logout=1">Déconnexion</a></button>
+        <button class="bouton_menu"><a href="profil.php">Profil</a></button>
+
       </ul>
       <i class='bx bx-search-alt'></i>
         <!--Loupe de recherche-->

@@ -43,6 +43,10 @@ while ($row = mysqli_fetch_assoc($paysResult)) {
     $pays[$row['idVoyage']][$row['idPays']] = $row;
 }
 
+$panierQuery = "SELECT idCommande FROM panier WHERE idCompte='{$_SESSION['id']}'";
+$panierResult = mysqli_query($linkDB, $panierQuery);
+$panier = mysqli_fetch_all($panierResult, MYSQLI_ASSOC);
+
 $optionQuery = "SELECT * FROM options";
 $optionResult = mysqli_query($linkDB, $optionQuery);
 $option = array();

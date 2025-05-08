@@ -33,7 +33,9 @@
             <li class="limenu"><a href="presentation.php">Trajets</a></li>
             <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
             <li class="limenu"><a href="">Bon plan</a></li>
+              <button class="bouton_menu"><a href="panier.php">Panier</a></button>
             <button class="bouton_menu"><a href="profil.php">Profil</a></button>
+              <button class="bouton_menu"><a href="index.php?logout=1">Déconnexion</a></button>
           </ul>
 
           <i class='bx bx-search-alt'></i>
