@@ -523,6 +523,11 @@ label[for=mdpoublie] {
     margin-bottom: 15px;
 }
 
+#Theme-bouton{
+    border-radius: 5px;
+    background-color: #0d1b1e;
+  }
+
 .modif-btn {
     background: #6c00d4;
     color: white;
@@ -992,3 +997,4 @@ div.container-res .titre {
     color: #6c00d4; /* couleur violette */
     user-select: none;
   }
+
