@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mariadb:3306
--- Généré le : mar. 06 mai 2025 à 22:18
+-- Généré le : jeu. 08 mai 2025 à 16:00
 -- Version du serveur : 11.7.2-MariaDB-ubu2404
 -- Version de PHP : 8.2.27
 
@@ -39319,7 +39319,10 @@ INSERT INTO `commandes` (`id`, `idCompte`, `idVoyage`, `nVoyageurs`, `debut`, `t
 (12, 8, 2, 2, '2025-05-15', 1600, 1, '2025-05-02 13:43:01'),
 (13, 5, 3, 8, '2025-05-18', 1200, 0, '2025-05-06 15:06:39'),
 (14, 5, 3, 7, '2025-05-24', 8400, 1, '2025-05-06 15:10:34'),
-(15, 2, 15, 888, '2025-05-23', 972660, 1, '2025-05-06 15:37:11');
+(15, 2, 15, 888, '2025-05-23', 972660, 1, '2025-05-06 15:37:11'),
+(16, 2, 3, 6, '2025-05-23', 7300, 0, '2025-05-08 14:08:12'),
+(17, 2, 2, 1, '2025-05-31', 1100, 0, '2025-05-08 14:34:55'),
+(18, 2, 2, 1, '2025-05-31', 1100, 0, '2025-05-08 14:35:56');
 
 -- --------------------------------------------------------
 
@@ -39400,7 +39403,18 @@ INSERT INTO `commandesOpt` (`idCommande`, `idEtape`, `idOption`) VALUES
 (14, 6, 0),
 (15, 1, 4),
 (15, 2, 0),
-(15, 3, 0);
+(15, 3, 0),
+(16, 1, 0),
+(16, 2, 0),
+(16, 3, 0),
+(16, 4, 0),
+(16, 5, 0),
+(16, 6, 1),
+(18, 1, 0),
+(18, 2, 0),
+(18, 3, 0),
+(18, 4, 0),
+(18, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -39425,7 +39439,7 @@ CREATE TABLE `comptes` (
 
 INSERT INTO `comptes` (`idCompte`, `nom`, `prenom`, `role`, `newsletter`, `naissance`, `inscription`, `derniereConnexion`) VALUES
 (1, 'Roux', 'Valérie', 0, 1, '2005-12-20', '2025-03-31 12:57:02', '2025-04-26 16:07:18'),
-(2, 'Collin', 'Gweltaz', 0, 1, '2004-04-20', '2025-03-31 12:57:02', '2025-05-06 22:17:49'),
+(2, 'Collin', 'Gweltaz', 0, 1, '2004-04-20', '2025-03-31 12:57:02', '2025-05-08 14:07:59'),
 (4, 'Test', 'Test', 0, 0, '1879-10-26', '2025-03-31 12:59:22', '2025-03-31 12:59:27'),
 (5, 'Test2', 'Test2', 1, 0, '2003-06-15', '2025-03-31 21:46:46', '2025-05-06 13:28:04'),
 (6, 'Sinet', 'Mathis', 2, 0, '2005-11-09', '2025-04-28 08:27:11', '2025-04-28 08:27:37'),
@@ -39842,6 +39856,25 @@ INSERT INTO `options` (`id`, `titre`, `prix`, `personnesMax`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `panier`
+--
+
+CREATE TABLE `panier` (
+  `idCompte` int(11) NOT NULL,
+  `idCommande` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT INTO `panier` (`idCompte`, `idCommande`) VALUES
+(2, 16),
+(2, 18);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `pays`
 --
 
@@ -39957,7 +39990,9 @@ INSERT INTO `transactions` (`id`, `idCommande`, `status`) VALUES
 ('6814cbe5a4c4e11032', 12, 1),
 ('681a257f95cf364', 13, 0),
 ('681a266ab42ed9440133', 14, 1),
-('681a2ca762027565271768', 15, 1);
+('681a2ca762027565271768', 15, 1),
+('681cbacc20ac3762008046', 16, 0),
+('681cc14cc59', 18, 0);
 
 -- --------------------------------------------------------
 
@@ -40061,6 +40096,12 @@ ALTER TABLE `options`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `panier`
+--
+ALTER TABLE `panier`
+  ADD UNIQUE KEY `idCommande` (`idCommande`);
+
+--
 -- Index pour la table `pays`
 --
 ALTER TABLE `pays`
@@ -40092,7 +40133,7 @@ ALTER TABLE `voyage`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `login`
