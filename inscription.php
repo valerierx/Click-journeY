@@ -29,15 +29,9 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         <button class="bouton_menu"><a href="connexion.php">Connexion</a></button>
       </ul>
       <i class='bx bx-search-alt'></i>
-      <!--Loupe de recherche-->
     </div>
   </nav>
 </div>
-<!-- <img src="europe.jpg">-->
-
-<!--<div class="scrolling-text">
- Profitez d'une Offre Exclusive après l'inscription avec le code Click-journeY !!!
-</div>-->
 
 <div class="contenant">
   <div class="carte">

@@ -55,6 +55,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
             <div class="encadrement">
                 <h1 class="titre"><?= $voyage[$_GET['get']]['titre'] ?></h1>
                 <p class="texte-res"><?= $voyage[$_GET['get']]['description'] ?></p>
+                <h3 id="prixbase" data-prix="<?=$voyage[$_GET['get']]['prix']?>">Prix de base: <?=$voyage[$_GET['get']]['prix']?> €</h3>
             </div>
         </div>
         <form action="api/resa.php" method="POST">
@@ -75,7 +76,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                         foreach ($etapeOpt[$_GET['get']][$id] as $idOpt => $row2) {
                             $optionData = $option[$row2['idOption']];
                             echo '<li>';
-                            echo '<input type="radio" name="etape_' . $id . '" id="option_' . $id . '_' . $optionData['id'] . '" value="' . $optionData['id'] . '">';
+                            echo '<input type="radio" name="etape_' . $id . '" id="option_' . $id . '_' . $optionData['id'] . '" value="' . $optionData['id'] .'" data-prix="'. $optionData['prix'] . '" >';
                             echo '<label for="option_' . $id . '_' . $optionData['id'] . '">';
                             echo htmlspecialchars($optionData['titre']) . ' - ' . $optionData['prix'] . '€ (Max ' . $optionData['personnesMax'] . ' personnes)';
                             echo '</label>';
@@ -129,6 +130,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                     <li class="info-note">Des activités sont incluses dans la formule de base du voyage.</li>
                     <li class="info-note">N'oubliez pas de consulter la section "Étapes" pour sélectionner des
                         options complémentaires avant la validation finale.</li>
+                    <li class="info-note"><h3 id="prixtotal">Total: <?=$voyage[$_GET['get']]['prix']?> €</h3></li>
                 </ul>
                 
 
