@@ -20,16 +20,6 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
 </head>
 
 <body>
-  <!DOCTYPE html>
-  <html lang="fr">
-
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Recherche</title>
-  </head>
-
-  <body>
 
     <div>
       <nav>
