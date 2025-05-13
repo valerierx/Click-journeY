@@ -6,12 +6,20 @@ if (!isset($_SESSION['connecte'])) {
 }
 ?>
 
+<?php
+// lecture du cookie pour le theme
+$theme = $_COOKIE['theme'] ?? 'style';
+$fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link id="css" rel="stylesheet" type="text/css" href="<?= htmlspecialchars($fiche)?>"> <!-- htmlspecialchars($fiche) sert à sécuriser ce que renvoie $fiche on pourrai faire sans -->
     <title>Réservation</title>
 </head>
 
@@ -25,7 +33,7 @@ if (!isset($_SESSION['connecte'])) {
                 <ul>
                     <li class="limenu"><a href="index.html">Accueil</a></li>
                     <li class="limenu"><a href="presentation.php">Trajets</a></li>
-                    <li class="limenu"><a href="recherche.html">Itinéraire</a></li>
+                    <li class="limenu"><a href="recherche.php">Itinéraire</a></li>
                     <li class="limenu"><a href="">Bon plans</a></li>
                     <?php
                     if (!$_SESSION['connecte']) {
