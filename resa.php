@@ -24,6 +24,9 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
 </head>
 
 <body id="haut">
+
+            <script type="module" src="js/resa.js"></script>
+
     <div>
         <nav>
             <div class="divmenu">
@@ -58,88 +61,17 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                 <h3 id="prixbase" data-prix="<?=$voyage[$_GET['get']]['prix']?>">Prix de base: <?=$voyage[$_GET['get']]['prix']?> €</h3>
             </div>
         </div>
-        <form action="api/resa.php" method="POST">
+        <div class="container-res">
+            <h1>Réservation Voyage</h1>
+        <form id="voyageForm" action="api/resa.php" method="POST">
+                        <div class="prix-total">Total : <span id="prixTotal">0</span> €</div>
 
-            <div class="container-res">
-                <ul>
-                    <?php
-                    foreach ($etapes[$_GET['get']] as $id => $row) {
-                        echo '<li><h4>Etape ' . $id . ' : ' . $row['titre'] . '</h4>';
-                        echo '<ul>';
 
-                        // Add "None" option first
-                        echo '<li>';
-                        echo '<input type="radio" name="etape_' . $id . '" id="none_' . $id . '" value="0" checked>';
-                        echo '<label for="none_' . $id . '">Sans option</label>';
-                        echo '</li>';
-
-                        foreach ($etapeOpt[$_GET['get']][$id] as $idOpt => $row2) {
-                            $optionData = $option[$row2['idOption']];
-                            echo '<li>';
-                            echo '<input type="radio" name="etape_' . $id . '" id="option_' . $id . '_' . $optionData['id'] . '" value="' . $optionData['id'] .'" data-prix="'. $optionData['prix'] . '" >';
-                            echo '<label for="option_' . $id . '_' . $optionData['id'] . '">';
-                            echo htmlspecialchars($optionData['titre']) . ' - ' . $optionData['prix'] . '€ (Max ' . $optionData['personnesMax'] . ' personnes)';
-                            echo '</label>';
-                            echo '</li>';
-                        }
-
-                        echo '</ul></li>';
-                    }
-                    ?>
-                </ul>
-            </div>
-
-            <div class="container-res">
-                <h3>Informations de réservation</h3>
-                <ul class="booking-info">
-                    <li>
-                        <label for="passengers">Nombre de participants :</label>
-                        <select name="passengers" id="passengers" required>
-                            <?php
-                            $maxCapacity = $voyage[$_GET['get']]['maxi'];
-                            for ($i = 1; $i <= $maxCapacity; $i++) {
-                                echo "<option value='$i'>$i personne" . ($i > 1 ? "s" : "") . "</option>";
-                            }
-                            ?>
-                        </select>
-                        (Capacité maximale : <?= $maxCapacity ?> personnes)
-                    </li>
-
-                    <li>
-                        <label for="start_date">Date de début :</label>
-                        <input type="date" name="start_date" id="start_date" required min="<?= date('Y-m-d') ?>"
-                            max="<?= date('Y-m-d', strtotime('+1 year')) ?>">
-                    </li>
-
-                    <li class="info-note">
-                        <?php
-                        if(count($pays[$_GET['get']]) != 1) {
-                            echo 'Pays visités :';
-                        } else {
-                            echo 'Pays visité :';
-                        }
-                        foreach($pays[$_GET['get']] as $row) {
-                            echo ' ' . $row['nom'] ;
-                        }
-                        ?>
-                    </li>
-                    <li class="info-note">Les trajets aller et retour ne sont pas pris en charge.</li>
-                    <li class="info-note">Durée du séjour : <?= $voyage[$_GET['get']]['duree'] ?> jours.</li>
-                    <li class="info-note">Les services hôteliers, ainsi que les petits-déjeuners et dîners, sont
-                        pris en charge.</li>
-                    <li class="info-note">Des activités sont incluses dans la formule de base du voyage.</li>
-                    <li class="info-note">N'oubliez pas de consulter la section "Étapes" pour sélectionner des
-                        options complémentaires avant la validation finale.</li>
-                    <li class="info-note"><h3 id="prixtotal">Total: <?=$voyage[$_GET['get']]['prix']?> €</h3></li>
-                </ul>
-                
-
-            </div>
-            <input type="hidden" name="voyage" id="voyage" value="<?=$_GET['get']?>">
             <div class="form-actions">
                 <button type="submit">Commander</button>
             </div>
-        </form>
+            </form>
+        </div>
 
 
         <footer>
