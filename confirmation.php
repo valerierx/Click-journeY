@@ -6,11 +6,18 @@ if(!$_SESSION['connecte']) {
   header('Location: index.php');
 }
 ?>
+
+<?php
+// lecture du cookie pour le theme
+$theme = $_COOKIE['theme'] ?? 'style';
+$fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link id="css" rel="stylesheet" type="text/css" href="<?= htmlspecialchars($fiche)?>">
   <title>Confirmation Paiement</title>
 </head>
 <body id="haut">

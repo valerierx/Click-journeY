@@ -59,6 +59,11 @@ ul .limenu a:hover {
 
 }
 
+.bouton_menu a:visited{
+
+    color: inherit;
+}
+
 .bouton-text-sombre{
 
     color: rgb(237, 184, 50);
@@ -836,6 +841,7 @@ div.container-res {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgb(237, 184, 50, 0.5);
+    color: rgb(237, 184, 50);
     display: flex;
 }
 
@@ -1016,7 +1022,7 @@ div.container-res .titre {
 }
 
 .info-note {
-    color: #555;
+    color: #ffffff;
     font-style: italic;
 }
 
