@@ -24,4 +24,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         http_response_code(400);
         exit();
     }
+} else {
+    header("Content-Type: application/json");
+    echo json_encode(array("status_code" => 404, "message" => "Not Found", "status_message" => "Not Found", "time" => $datetime->format(DateTime::ATOM)));
+    http_response_code(404);
+    exit();
 }
