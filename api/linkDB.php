@@ -66,7 +66,7 @@ if(isset($_SESSION['id'])) {
     $commandesOptQuery = "SELECT co.* FROM commandesOpt co JOIN commandes c ON co.idCommande = c.id WHERE c.idCompte='{$_SESSION['id']}'";
     $commandesOptResult = mysqli_query($linkDB, $commandesOptQuery);
     while ($row = mysqli_fetch_assoc($commandesOptResult)) {
-        $commandesOpt[$row['idCommande']][$row['idEtape']] = $row;
+        $commandesOpt[$row['idCommande']][$row['idEtape']][$row['idOption']] = $row;
     }
 }
 

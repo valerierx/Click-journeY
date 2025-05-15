@@ -52,60 +52,46 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         <!-- Section Profil -->
         <section class="profil">
             <div class="profil-elmt">
-                <?php
-                if (isset($_GET["succes"])) {
-                    echo '<p class="message valide">
-                Votre profil a été modifié!
-                </p>';
-                }
-                ?>
-
-                <?php
-                if (isset($_GET["mail"])) {
-                    echo '<p class="message erreur">
-            L\'adresse mail est déjà utilisée!
-            </p>';
-                }
-                ?>
-                <form action="api/profil.php" method="POST">
+                <form method="POST">
                     <h1>Informations personnelles</h1>
                     <label for="nom">
                         <input type="text" autocomplete="off" placeholder="Nom" name="nom"
-                               value="<?php echo $_SESSION['nom']; ?>" required>
+                               value="<?php echo htmlspecialchars($_SESSION['nom']); ?>" required disabled>
                     </label>
                     <label>
-                        <input type="text" placeholder="Prénom" name="prenom" value="<?php echo $_SESSION['prenom']; ?>"
-                               required>
+                        <input type="text" placeholder="Prénom" name="prenom" value="<?php echo htmlspecialchars($_SESSION['prenom']); ?>"
+                               required disabled>
                     </label>
                     <label>
                         <input type="date" placeholder="Date de naissance" name="naissance" <?php
                         if ($_SESSION["naissance"] != "1879-10-26") {
-                            echo 'value="' . $_SESSION["naissance"] . '"';
-                        } ?> required>
+                            echo 'value="' . htmlspecialchars($_SESSION["naissance"]) . '"';
+                        } ?> required disabled>
                     </label>
                     <h3>Adresse postale</h3>
                     <div class="rue">
                         <input type="number" autocomplete="off" placeholder="N°" name="numero"
-                               value="<?php echo $_SESSION['numero']; ?>">
-                        <input type="text" placeholder="Rue" name="rue" value="<?php echo $_SESSION['rue']; ?>" required>
+                               value="<?php echo htmlspecialchars($_SESSION['numero']); ?>" disabled>
+                        <input type="text" placeholder="Rue" name="rue" value="<?php echo htmlspecialchars($_SESSION['rue']); ?>" required disabled>
                     </div>
                     <input type="text" placeholder="Complément d'adresse" name="complement"
-                           value="<?php echo $_SESSION['complement']; ?>">
+                           value="<?php echo htmlspecialchars($_SESSION['complement']); ?>" disabled>
                     <div class="rue">
                         <input type="number" autocomplete="off" placeholder="Code postal" name="codePostal"
-                               value="<?php echo $_SESSION['codePostal']; ?>" required>
+                               value="<?php echo htmlspecialchars($_SESSION['codePostal']); ?>" required disabled>
                         <input type="text" placeholder="Commune" name="commune"
-                               value="<?php echo $_SESSION['commune']; ?>" required>
+                               value="<?php echo htmlspecialchars($_SESSION['commune']); ?>" required disabled>
                     </div>
                     <!--<select name="commune" id="commune"></select>-->
                     <div class="bouton-array">
-                        <button class="submit" type="submit">Modifier le profil</button>
+                        <button id="modif" type="button" onclick="modifProfil()">Modifier le profil</button>
                         <?php if ($_SESSION['role'] == 0) {
                             echo '<button class="admin-btn"><a href="admin.php">Tableau de bord admin</a></button>';
                         }; ?>
 
                     </div>
                 </form>
+
                 <p>Thème: <button id="Theme-bouton" onclick="changerTheme()">🌙</button><p>
             </div>
         </section>
@@ -178,7 +164,8 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         </div>
     </footer>
 
-    <script src="js/cookie.js"></script> 
+    <script src="js/cookie.js"></script>
+    <script src="js/profil.js"></script>
 </body>
 
 </html>

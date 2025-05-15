@@ -109,7 +109,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
 
           if (!empty($commandesOpt) && isset($commandesOpt[$commandeId])) {
             echo '<th>Etape</th>';
-            echo '<th>Option Titre</th>';
+            echo '<th>Option</th>';
             echo '<th>Prix</th>';
             echo '<th>Personnes Max</th>';
           }
@@ -118,19 +118,19 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
 
           if ($commandeId && isset($commandesOpt[$commandeId])) {
             foreach ($commandesOpt[$commandeId] as $item) {
-              echo '<tr>';
-              // Main commandeOpt data
-              echo '<td>' . htmlspecialchars($item['idEtape']) . '</td>';
-              // Additional option info
-              $optionId = $item['idOption'];
-              if (isset($option[$optionId]) && $optionId != "0") {
-                echo '<td>' . htmlspecialchars($option[$optionId]['titre']) . '</td>';
-                echo '<td>' . htmlspecialchars($option[$optionId]['prix']) . '€</td>';
-                echo '<td>' . htmlspecialchars($option[$optionId]['personnesMax']) . '</td>';
-              } else {
-                echo '<td colspan="3">Aucune option</td>';
-              }
-              echo '</tr>';
+                foreach($item as $row) {
+                    echo '<tr>';
+                    echo '<td>' . htmlspecialchars($row['idEtape']) . '</td>';
+
+                    if (isset($option[$row['idOption']]) && $row['idOption'] != "0") {
+                        echo '<td>' . htmlspecialchars($option[$row['idOption']]['titre']) . '</td>';
+                        echo '<td>' . htmlspecialchars($option[$row['idOption']]['prix']) . '€</td>';
+                        echo '<td>' . htmlspecialchars($option[$row['idOption']]['personnesMax']) . '</td>';
+                    } else {
+                        echo '<td colspan="3">Aucune option</td>';
+                    }
+                    echo '</tr>';
+                }
             }
           } else {
             echo '<tr><td colspan="6">Aucune commande trouvée</td></tr>';
