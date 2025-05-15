@@ -62,30 +62,6 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
 
             <div class="container-res">
                 <ul>
-                    <?php
-                    foreach ($etapes[$_GET['get']] as $id => $row) {
-                        echo '<li><h4>Etape ' . $id . ' : ' . $row['titre'] . '</h4>';
-                        echo '<ul>';
-
-                        // Add "None" option first
-                        echo '<li>';
-                        echo '<input type="radio" name="etape_' . $id . '" id="none_' . $id . '" value="0" checked>';
-                        echo '<label for="none_' . $id . '">Sans option</label>';
-                        echo '</li>';
-
-                        foreach ($etapeOpt[$_GET['get']][$id] as $idOpt => $row2) {
-                            $optionData = $option[$row2['idOption']];
-                            echo '<li>';
-                            echo '<input type="radio" name="etape_' . $id . '" id="option_' . $id . '_' . $optionData['id'] . '" value="' . $optionData['id'] .'" data-prix="'. $optionData['prix'] . '" >';
-                            echo '<label for="option_' . $id . '_' . $optionData['id'] . '">';
-                            echo htmlspecialchars($optionData['titre']) . ' - ' . $optionData['prix'] . '€ (Max ' . $optionData['personnesMax'] . ' personnes)';
-                            echo '</label>';
-                            echo '</li>';
-                        }
-
-                        echo '</ul></li>';
-                    }
-                    ?>
                 </ul>
             </div>
 
@@ -140,6 +116,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                 <button type="submit">Commander</button>
             </div>
         </form>
+        <script src="js/resa.js"></script>
 
 
         <footer>
