@@ -1,5 +1,4 @@
 <?php
-// TODO: mise à jour $_SESSION
 require 'linkDB.php';
 $datetime = new DateTime();
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,6 +9,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $profileQuery = "UPDATE comptes SET nom='{$body->nom}', prenom='{$body->prenom}', naissance='{$body->naissance}' WHERE idCompte={$_SESSION["id"]};";
         $profileQuery .= "INSERT INTO adresses (idCompte, numero, rue, complement, codePostal, commune) VALUES ('{$_SESSION["id"]}', '{$body->numero}', '{$body->rue}', '{$body->complement}', '{$body->codePostal}', '{$body->commune}') ON DUPLICATE KEY UPDATE numero='{$body->numero}', rue='{$body->rue}', complement='{$body->complement}', codePostal='{$body->codePostal}', commune='{$body->commune}'";
         if (mysqli_multi_query($linkDB, $profileQuery)) {
+            $_SESSION["nom"] = $body->nom;
+            $_SESSION["prenom"] = $body->prenom;
+            $_SESSION["naissance"] = $body->naissance;
+            $_SESSION["numero"] = $body->numero;
+            $_SESSION["rue"] = $body->rue;
+            $_SESSION["complement"] = $body->complement;
+            $_SESSION["codePostal"] = $body->codePostal;
+            $_SESSION["commune"] = $body->commune;
             echo json_encode(array("status_code" => 200, "message" => "Modifié avec succès", "status_message" => "OK", "time" => $datetime->format(DateTime::ATOM)));
             http_response_code(200);
             exit();
