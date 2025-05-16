@@ -2,6 +2,12 @@
 require '../linkDB.php';
 $datetime = new DateTime();
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+    if($_SESSION["role"] != 0) {
+        header("Content-Type: application/json");
+        echo json_encode(array("status_code" => 401, "message" => "Permission non accordée", "status_message" => "Unauthorized", "time" => $datetime->format(DateTime::ATOM)));
+        http_response_code(401);
+        exit();
+    }
     header("Content-Type: application/json");
     $body = json_decode(file_get_contents('php://input'));
     if(!empty($body) || !empty($body->nom) || !empty($body->prenom) || !empty($body->naissance) || !empty($body->idCompte) || !empty($body->newsletter)) {

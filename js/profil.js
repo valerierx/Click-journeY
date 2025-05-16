@@ -14,6 +14,10 @@ function formDataToJSON(formData) {
 bouton = document.getElementById("modif");
 
 bouton.onclick = (e) => {
+    messages = document.querySelectorAll(".message");
+    if(messages.length > 0) {
+        messages.forEach(message => message.remove());
+    }
     if(bouton.type === "button") {
         e.preventDefault();
         bouton.type = "submit";
@@ -26,7 +30,6 @@ bouton.onclick = (e) => {
     formulaire.onsubmit = async (e) => {
         e.preventDefault();
         const formData = formDataToJSON(new FormData(formulaire))
-        console.log(formData)
         let response = await fetch('/api/profil.php', {
             method: 'POST',
             body: formData,
@@ -37,6 +40,11 @@ bouton.onclick = (e) => {
             valide.className = "message valide";
             valide.textContent = "Votre profil a été modifié!";
             formulaire.parentNode.insertBefore(valide, formulaire);
+            bouton.textContent = "Modifier le profil";
+            bouton.type = "button";
+            document.querySelectorAll("input").forEach(champ => {
+                champ.toggleAttribute('disabled');
+            });
         } else {
             let erreur = document.createElement("p");
             erreur.className = "message erreur";
@@ -44,4 +52,6 @@ bouton.onclick = (e) => {
             formulaire.parentNode.insertBefore(erreur, formulaire);
         }
     };
+
+
 }
