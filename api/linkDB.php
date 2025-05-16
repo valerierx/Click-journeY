@@ -78,10 +78,4 @@ if($_SESSION['role'] == 0) {
     while ($row = mysqli_fetch_assoc($compteResult)) {
         $comptes[$row['idCompte']] = $row;
     }
-
-    $commandesAdmQuery = "SELECT c.*, v.titre, co.nom, co.prenom FROM commandes c, voyage v, comptes co WHERE c.idVoyage = v.id AND c.idCompte = co.idCompte;";
-    $commandesAdmResult = mysqli_query($linkDB, $commandesAdmQuery);
-    while ($row = mysqli_fetch_assoc($commandesAdmResult)) {
-        $commandesAdm[$row['id']] = $row;
-    }
 }

@@ -185,26 +185,32 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                 <th>Statut</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tablecommandes">
         <?php
-        $statut = "";
+        /*$statut = "";
         foreach($commandesAdm as $commande) {
 
             echo '<tr><td>'. $commande['id'].'</td><td>'.$commande['titre'].'</td><td>'.$commande['nom'].'</td><td>'.$commande['prenom'].'</td><td>'.$commande['debut'].'</td><td>'.$commande['idCompte'].'</td>';
-            echo '<td><select class="status">';
-            if($commande['paye'] == 0) {
-                echo '<option value="En attente" selected="selected">En attente</option>';
-                echo '<option value="1">Confirmée</option>';
-                echo '<option value="2">Annulée</option>';
-            } else if($commande['paye'] == 1) {
-                echo '<option value="0">En attente</option>';
-                echo '<option value="1" selected="selected">Confirmée</option>';
-                echo '<option value="2">Annulée</option>';
-
+            echo '<td><select class="status" data-id="'. $commande['id'] . '">';
+            switch($commande['paye']) {
+                case '0':
+                    echo '<option value="En attente" selected="selected">En attente</option>';
+                    echo '<option value="1">Confirmée</option>';
+                    echo '<option value="2">Annulée</option>';
+                    break;
+                case '1':
+                    echo '<option value="0">En attente</option>';
+                    echo '<option value="1" selected="selected">Confirmée</option>';
+                    echo '<option value="2">Annulée</option>';
+                    break;
+                case '2':
+                    echo '<option value="0">En attente</option>';
+                    echo '<option value="1">Confirmée</option>';
+                    echo '<option value="2" selected="selected">Annulée</option>';
+                    break;
             }
             echo '</select></td></tr>';
-        }
-
+        }*/
         ?>
         </tbody>
         <tfoot>
@@ -212,8 +218,9 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
 
             <td><button><- précédent </button>  | <button>suivant -> </button> </td>
             <td>1/..</td>
-            <td class="td-admin-modif"><button>Modifier</button></td>
+            <td class="td-admin-modif"><button id="modifResa">Modifier</button></td>
             <td  class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
+            <td id="msgcommandes" colspan="3"></td>
         </tr>
     </tfoot>
     </table>
@@ -302,7 +309,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         <p>copyright © 2025, CY Eastern</p>
     </div>
   </footer>
-
+<script src="js/admin.js"></script>
 </body>
 
 
