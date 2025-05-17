@@ -38,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../inscription.php?mail");
         } else {
             $passwordHashed = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
-            $mail = $_POST['mail'];
-            $prenom = $_POST['prenom'];
-            $nom = $_POST['nom'];
+            $mail = mysqli_real_escape_string($linkDB, $_POST['mail']);
+            $prenom = mysqli_real_escape_string($linkDB, $_POST['prenom']);
+            $nom = mysqli_real_escape_string($linkDB, $_POST['nom']);
             $newsletter = isset($_POST['newsletter']) && $_POST['newsletter'] == '1' ? 1 : 0;
 
             $query = "INSERT INTO login (mail, motdepasse) VALUES ('$mail', '$passwordHashed')";

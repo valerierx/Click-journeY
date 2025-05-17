@@ -50,7 +50,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
     echo '<h1>Paiement confirmé ✅</h1>
     <p>Merci pour votre réservation !</p>
     <p>Un e-mail de confirmation vous a été envoyé.</p>
-    <p>Id de transaction : '. $_SESSION['transid'] . '</p>
+    <p>Id de transaction : '. htmlspecialchars($_SESSION['transid']) . '</p>
 
     <div class="telechargements">
       <a href="recapitulatif.pdf" download class="btn-telechargement">📄 Télécharger le récapitulatif</a>
@@ -58,14 +58,14 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
     </div>';
   } else if(isset($_GET['cancel'])) {
       echo '  <h1>Commande annulée</h1>
-    <p>La commande '. $_GET["commande"] . ' a bien été annulée.</p>
-    <p>La somme de '. $commandes[$_GET["commande"]]['total'] . '€ ne vous a pas été facturée.</p>
+    <p>La commande '. htmlspecialchars($_GET["commande"]) . ' a bien été annulée.</p>
+    <p>La somme de '. htmlspecialchars($commandes[$_GET["commande"]]['total']) . '€ ne vous a pas été facturée.</p>
     <a href="profil.php" class="btn-telechargement">Mes voyages</a>';
    } else {
     echo '  <h1>Paiement refusé ⛔</h1>
     <p>Veuillez réesayer votre achat.</p>
-    <p>Id de transaction : '. $_SESSION['transid'] . '</p>
-    <a href="recapitulatif.php?commande='.$_GET['commande']. '" class="btn-fail">Réessayer</a>';
+    <p>Id de transaction : '. htmlspecialchars($_SESSION['transid']) . '</p>
+    <a href="recapitulatif.php?commande='.htmlspecialchars($_GET['commande']). '" class="btn-fail">Réessayer</a>';
  }
 ?>
 

@@ -117,7 +117,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                         foreach ($commandes as $commande) {
                             $creation = new DateTime($commande['debut']);
 
-                            echo "<tr><td>" . $voyage[$commande['idVoyage']]['titre'] . "</td><td>" . date('d F Y', $creation->getTimestamp()) . "</td>";
+                            echo "<tr><td>" . htmlspecialchars($voyage[$commande['idVoyage']]['titre']) . "</td><td>" . date('d F Y', $creation->getTimestamp()) . "</td>";
                             if ($commande['paye'] == 1) {
                                 //PAYE
                                 echo '<td><button class="commandeconfirmee"><a >Confirmée</a></button></td></tr>';

@@ -61,14 +61,14 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
             $fin = new DateTime($commandes[$commande['idCommande']]['debut']);
             $fin->add(new DateInterval('P' . $voyage[$commandes[$commande['idCommande']]['idVoyage']]['duree'] . 'D'));
 
-            echo '<h2>Voyage : '.  $voyage[$commandes[$commande['idCommande']]['idVoyage']]['titre'] .'</h2><p>';
+            echo '<h2>Voyage : '.  htmlspecialchars($voyage[$commandes[$commande['idCommande']]['idVoyage']]['titre']) .'</h2><p>';
             if(count($pays[$commandes[$commande['idCommande']]['idVoyage']]) != 1) {
                 echo '<strong>Pays visités :</strong>';
             } else {
                 echo '<strong>Pays visité :</strong>';
             }
             foreach($pays[$commandes[$commande['idCommande']]['idVoyage']] as $row) {
-                echo ' ' . $row['nom'] ;
+                echo ' ' . htmlspecialchars($row['nom']) ;
             }
             echo '</p><p><strong>Date de départ : </strong>' . date('d/m/Y', $debut->getTimestamp()) . '</p><p><strong>Date de retour : </strong>' . date('d/m/Y', $fin->getTimestamp()) . '</p><p><strong>Nombre de voyageurs :</strong> ' . $commandes[$commande['idCommande']]['nVoyageurs'] . " personne" . ($commandes[$commande['idCommande']]['nVoyageurs'] > 1 ? "s" : "");
             echo '<p><strong>Option choisie :</strong>';
@@ -103,12 +103,13 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                     echo '</tr>';
                 }
             } else {
-                echo '<tr><td colspan="6">Aucune commande trouvée</td></tr>';
+                echo '<tr><td colspan="3">Aucune option</td></tr>';
             }
 
             echo '</tbody></table>';
 
-            echo '<a href="recapitulatif.php?commande='. $commande['idCommande'] . '" class="bouton1-res">Visualiser la commande</a>';
+            echo '<a href="recapitulatif.php?commande='. $commande['idCommande'] . '" class="bouton1-res">Visualiser la commande</a>
+              <a class="btn-retour" href="/api/cancel.php?commande=' . $commande['idCommande'] . '">Annuler la commande</a>';
 
 
         }

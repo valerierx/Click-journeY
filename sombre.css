@@ -98,6 +98,8 @@ ul .limenu a:hover {
 
 }
 
+
+
 .accueil_image {
     width: 40%;
     height: auto;
@@ -510,6 +512,15 @@ input[type=number] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    color: black;
+}
+
+input[type=text]::placeholder,
+input[type=email]::placeholder,
+input[type=password]::placeholder,
+input[type=date]::placeholder,
+input[type=number]::placeholder {
+    color: #4D3714;
 }
 
 label[for=cgu],

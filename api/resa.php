@@ -28,8 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     }
+    $voyage = mysqli_real_escape_string($linkDB, $_POST["voyage"]);
+    $passengers = mysqli_real_escape_string($linkDB, $_POST["passengers"]);
+    $start_date = mysqli_real_escape_string($linkDB, $_POST['start_date']);
 
-    $commandeQuery = "INSERT INTO commandes (idCompte, idVoyage, nVoyageurs, debut, total, paye, creation) VALUES ('{$_SESSION["id"]}', '{$_POST["voyage"]}', '{$_POST["passengers"]}', '{$_POST["start_date"]}', '$total', '0', NOW())";
+    $commandeQuery = "INSERT INTO commandes (idCompte, idVoyage, nVoyageurs, debut, total, paye, creation) VALUES ('{$_SESSION["id"]}', '{$voyage}', '{$passengers}', '{$start_date}', '$total', '0', NOW())";
     if (mysqli_query($linkDB, $commandeQuery)) {
         $idCommande = mysqli_insert_id($linkDB);
 

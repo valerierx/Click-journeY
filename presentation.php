@@ -77,11 +77,11 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
   <div class="contenant">
     <?php
     for ($i = 1; $i <= 5; $i++) {
-      echo '    <div class="carte" data-prix="'.$voyage[$i]['prix'].'" data-jours="'.$voyage[$i]['duree'].'">
-      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
+      echo '    <div class="carte" data-prix="'.htmlspecialchars($voyage[$i]['prix']).'" data-jours="'.htmlspecialchars($voyage[$i]['duree']).'">
+      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . htmlspecialchars($voyage[$i]['titre']) . '" >
       <div class="texte">
-        <h2>' . $voyage[$i]['titre'] . '</h2>
-        <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
+        <h2>' . htmlspecialchars($voyage[$i]['titre']) . '</h2>
+        <br>À partir de : ' . htmlspecialchars($voyage[$i]['prix']) . ' €</br>
         <p></p>
         <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
       </div>
@@ -92,11 +92,11 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
   <div class="contenant">
     <?php
     for ($i = 6; $i <= 10; $i++) {
-      echo '<div class="carte" data-prix="'.$voyage[$i]['prix'].'"data-jours="'.$voyage[$i]['duree'].'">
-      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
+      echo '<div class="carte" data-prix="'.htmlspecialchars($voyage[$i]['prix']).'"data-jours="'.htmlspecialchars($voyage[$i]['duree']).'">
+      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . htmlspecialchars($voyage[$i]['titre']) . '" >
       <div class="texte">
-        <h2>' . $voyage[$i]['titre'] . '</h2>
-        <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
+        <h2>' . htmlspecialchars($voyage[$i]['titre']) . '</h2>
+        <br>À partir de : ' . htmlspecialchars($voyage[$i]['prix']) . ' €</br>
         <p></p>
         <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
       </div>
@@ -107,11 +107,11 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
   <div class="contenant">
     <?php
     for ($i = 11; $i <= 15; $i++) {
-      echo '    <div class="carte" data-prix="'.$voyage[$i]['prix'].'" data-jours="'.$voyage[$i]['duree'].'" >
-      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . $voyage[$i]['titre'] . '" >
+      echo '    <div class="carte" data-prix="'.htmlspecialchars($voyage[$i]['prix']).'" data-jours="'.htmlspecialchars($voyage[$i]['duree']).'" >
+      <img class="imagevoyage" src="media/voyage/voyage' . $i . '.jpg" alt="Image ' . htmlspecialchars($voyage[$i]['titre']) . '" >
       <div class="texte">
-        <h2>' . $voyage[$i]['titre'] . '</h2>
-        <br>À partir de : ' . $voyage[$i]['prix'] . ' €</br>
+        <h2>' . htmlspecialchars($voyage[$i]['titre']) . '</h2>
+        <br>À partir de : ' . htmlspecialchars($voyage[$i]['prix']) . ' €</br>
         <p></p>
         <a href="voyage.php?get=' . $i . '">Réservez Maintenant</a>
       </div>

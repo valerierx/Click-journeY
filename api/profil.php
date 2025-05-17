@@ -5,9 +5,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Content-Type: application/json");
     $body = json_decode(file_get_contents('php://input'));
     if(!empty($body) || !empty($body->nom) || !empty($body->prenom) || !empty($body->naissance) || !empty($body->idCompte) || !empty($body->newsletter)) {
+        $nom = mysqli_real_escape_string($linkDB, $body->nom);
+        $prenom = mysqli_real_escape_string($linkDB, $body->prenom);
+        $naissance = mysqli_real_escape_string($linkDB, $body->naissance);
+        $rue = mysqli_real_escape_string($linkDB, $body->rue);
+        $complement = mysqli_real_escape_string($linkDB, $body->complement);
+        $commune = mysqli_real_escape_string($linkDB, $body->commune);
+        $codePostal = mysqli_real_escape_string($linkDB, $body->codePostal);
+
+
         $tmp = intval($body->newsletter);
-        $profileQuery = "UPDATE comptes SET nom='{$body->nom}', prenom='{$body->prenom}', naissance='{$body->naissance}' WHERE idCompte={$_SESSION["id"]};";
-        $profileQuery .= "INSERT INTO adresses (idCompte, numero, rue, complement, codePostal, commune) VALUES ('{$_SESSION["id"]}', '{$body->numero}', '{$body->rue}', '{$body->complement}', '{$body->codePostal}', '{$body->commune}') ON DUPLICATE KEY UPDATE numero='{$body->numero}', rue='{$body->rue}', complement='{$body->complement}', codePostal='{$body->codePostal}', commune='{$body->commune}'";
+        $profileQuery = "UPDATE comptes SET nom='{$nom}', prenom='{$prenom}', naissance='{$naissance}' WHERE idCompte={$_SESSION["id"]};";
+        $profileQuery .= "INSERT INTO adresses (idCompte, numero, rue, complement, codePostal, commune) VALUES ('{$_SESSION["id"]}', '{$body->numero}', '{$rue}', '{$complement}', '{$codePostal}', '{$commune}') ON DUPLICATE KEY UPDATE numero='{$body->numero}', rue='{$rue}', complement='{$complement}', codePostal='{$codePostal}', commune='{$commune}'";
         if (mysqli_multi_query($linkDB, $profileQuery)) {
             $_SESSION["nom"] = $body->nom;
             $_SESSION["prenom"] = $body->prenom;

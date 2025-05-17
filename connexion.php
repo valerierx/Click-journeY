@@ -77,7 +77,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
           Se souvenir de moi
         </label>
         <br>
-          <a class="lien" href="mdpoublie.html">Mot de passse oublié ?</a>
+          <a class="lien" href="mdpoublie.php">Mot de passse oublié ?</a>
         </br>
         <br>
         <button class="submit" type="submit">Se connecter</button>

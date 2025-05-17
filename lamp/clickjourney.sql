@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : mariadb:3306
--- Généré le : jeu. 08 mai 2025 à 16:00
+-- Généré le : sam. 17 mai 2025 à 22:57
 -- Version du serveur : 11.7.2-MariaDB-ubu2404
 -- Version de PHP : 8.2.27
 
@@ -41,12 +41,29 @@ CREATE TABLE `adresses` (
 --
 
 INSERT INTO `adresses` (`idCompte`, `numero`, `rue`, `complement`, `codePostal`, `commune`) VALUES
-(1, '15', 'Boulevard du Port', 'Appartement 602', '95000', 'Cergy'),
-(2, '2', 'Avenue du Parc', 'Batiment Turing', '95000', 'Cergy'),
+(1, '-1', 'exponentielle de x', 'p', '95000', 'Cergy'),
+(2, '2', 'Avenue du Parc', 'Cauchy 304', '95000', 'Cergy'),
 (5, '2', 'Rue Lebon', '', '95000', 'Cergy'),
 (6, '28', 'Avenue de Nejib', '', '95540', 'Méry sur Oise'),
 (7, '44', 'Rue Cambronne', '', '75015', 'PARIS'),
-(8, '14', 'Khalid matrice', 'trigonalisable', '78000', 'Zogla');
+(8, '14', 'Khalid matrice', 'trigonalisable', '78000', 'Zogla mi'),
+(12, '9', 'Zhogla', 'supposé galiléen', '95000', 'Projet HDMI'),
+(13, '9', 'Avenue de Clichy', '', '75017', 'Paris'),
+(14, '5', 'Technoallee', '', '40210', 'Düsseldorf'),
+(15, '139', 'Adenauerallee', '', '53113', 'Bonn'),
+(16, '5', 'S+U Hauptbahnhof', 'brudi', '10179', 'BERLIN');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `bans`
+--
+
+CREATE TABLE `bans` (
+  `idCompte` int(11) NOT NULL,
+  `raison` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -39296,7 +39313,7 @@ CREATE TABLE `commandes` (
   `nVoyageurs` int(11) NOT NULL,
   `debut` date NOT NULL,
   `total` int(11) NOT NULL,
-  `paye` tinyint(1) NOT NULL,
+  `paye` tinyint(1) NOT NULL COMMENT '0 à régler, 1 payé, 2 annulée',
   `creation` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
@@ -39305,24 +39322,33 @@ CREATE TABLE `commandes` (
 --
 
 INSERT INTO `commandes` (`id`, `idCompte`, `idVoyage`, `nVoyageurs`, `debut`, `total`, `paye`, `creation`) VALUES
-(1, 2, 2, 1, '2025-12-20', -8, 1, '2025-04-25 13:34:43'),
-(2, 2, 1, 2, '2025-12-13', 0, 1, '2025-04-25 13:34:43'),
+(1, 2, 2, 1, '2025-12-20', 800, 1, '2025-04-25 13:34:43'),
+(2, 2, 1, 2, '2025-12-13', 1000, 1, '2025-04-25 13:34:43'),
 (3, 2, 1, 1, '2025-05-14', 1100, 1, '2025-04-25 13:34:43'),
 (4, 2, 2, 2, '2025-10-20', 1900, 1, '2025-04-25 13:34:43'),
 (5, 2, 1, 1, '2025-04-02', 1400, 1, '2025-04-25 13:34:43'),
-(6, 2, 3, 2, '2025-04-30', 1150, 1, '2025-04-25 13:55:25'),
+(6, 2, 3, 2, '2025-04-30', 1150, 2, '2025-04-25 13:55:25'),
 (7, 1, 3, 1, '2025-05-01', 1250, 0, '2025-04-26 16:10:59'),
 (8, 2, 3, 1, '2025-04-29', 750, 1, '2025-04-26 16:23:21'),
-(9, 6, 13, 1, '2025-05-20', 1700, 1, '2025-04-28 08:31:06'),
-(10, 7, 3, 1, '2025-04-28', 1100, 1, '2025-04-28 14:18:24'),
-(11, 2, 2, 1, '2026-04-28', 900, 1, '2025-04-29 14:51:48'),
+(9, 6, 13, 1, '2025-05-20', 1700, 2, '2025-04-28 08:31:06'),
+(10, 7, 3, 1, '2025-04-28', 1100, 2, '2025-04-28 14:18:24'),
+(11, 2, 2, 1, '2026-04-28', 900, 0, '2025-04-29 14:51:48'),
 (12, 8, 2, 2, '2025-05-15', 1600, 1, '2025-05-02 13:43:01'),
 (13, 5, 3, 8, '2025-05-18', 1200, 0, '2025-05-06 15:06:39'),
 (14, 5, 3, 7, '2025-05-24', 8400, 1, '2025-05-06 15:10:34'),
 (15, 2, 15, 888, '2025-05-23', 972660, 1, '2025-05-06 15:37:11'),
-(16, 2, 3, 6, '2025-05-23', 7300, 0, '2025-05-08 14:08:12'),
-(17, 2, 2, 1, '2025-05-31', 1100, 0, '2025-05-08 14:34:55'),
-(18, 2, 2, 1, '2025-05-31', 1100, 0, '2025-05-08 14:35:56');
+(16, 10, 4, 5, '2025-05-16', 7300, 0, '2025-05-07 15:55:22'),
+(17, 2, 1, 1, '2025-05-22', 1400, 2, '2025-05-13 11:39:54'),
+(18, 2, 2, 1, '2025-05-21', 3300, 1, '2025-05-15 14:07:34'),
+(19, 2, 2, 1, '2025-05-24', 3300, 1, '2025-05-15 14:29:20'),
+(20, 2, 2, 2, '2025-05-29', 4100, 1, '2025-05-15 14:29:35'),
+(21, 2, 2, 1, '2025-05-29', 999999999, 2, '2025-05-15 14:32:33'),
+(22, 13, 13, 2, '2025-05-29', 1664, 0, '2025-05-17 15:59:15'),
+(23, 13, 13, 2, '2025-05-21', 1664, 1, '2025-05-17 15:59:40'),
+(24, 2, 2, 2, '2025-05-29', 2050, 2, '2025-05-17 21:42:04'),
+(25, 2, 2, 2, '2025-05-28', 1600, 1, '2025-05-17 22:32:42'),
+(26, 9, 7, 4, '2025-05-30', 5300, 1, '2025-05-17 22:39:51'),
+(27, 15, 2, 1, '2025-05-27', 1850, 1, '2025-05-17 22:42:06');
 
 -- --------------------------------------------------------
 
@@ -39404,17 +39430,42 @@ INSERT INTO `commandesOpt` (`idCommande`, `idEtape`, `idOption`) VALUES
 (15, 1, 4),
 (15, 2, 0),
 (15, 3, 0),
-(16, 1, 0),
+(16, 1, 1),
 (16, 2, 0),
-(16, 3, 0),
+(16, 3, 1),
 (16, 4, 0),
 (16, 5, 0),
 (16, 6, 1),
-(18, 1, 0),
-(18, 2, 0),
-(18, 3, 0),
-(18, 4, 0),
-(18, 5, 4);
+(17, 1, 4),
+(18, 2, 1),
+(18, 2, 2),
+(18, 3, 1),
+(18, 3, 4),
+(21, 1, 1),
+(21, 1, 4),
+(21, 2, 1),
+(21, 2, 2),
+(21, 3, 1),
+(21, 3, 4),
+(21, 4, 1),
+(21, 4, 2),
+(21, 5, 1),
+(21, 5, 4),
+(22, 1, 1),
+(22, 1, 4),
+(23, 1, 1),
+(23, 1, 4),
+(24, 2, 2),
+(24, 3, 1),
+(24, 3, 4),
+(26, 3, 1),
+(26, 3, 4),
+(26, 5, 1),
+(27, 1, 4),
+(27, 2, 1),
+(27, 3, 4),
+(27, 4, 2),
+(27, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -39439,12 +39490,19 @@ CREATE TABLE `comptes` (
 
 INSERT INTO `comptes` (`idCompte`, `nom`, `prenom`, `role`, `newsletter`, `naissance`, `inscription`, `derniereConnexion`) VALUES
 (1, 'Roux', 'Valérie', 0, 1, '2005-12-20', '2025-03-31 12:57:02', '2025-04-26 16:07:18'),
-(2, 'Collin', 'Gweltaz', 0, 1, '2004-04-20', '2025-03-31 12:57:02', '2025-05-08 14:07:59'),
+(2, 'Vac', 'Tempo', 0, 0, '2004-04-20', '2025-03-31 12:57:02', '2025-05-17 22:52:34'),
 (4, 'Test', 'Test', 0, 0, '1879-10-26', '2025-03-31 12:59:22', '2025-03-31 12:59:27'),
-(5, 'Test2', 'Test2', 1, 0, '2003-06-15', '2025-03-31 21:46:46', '2025-05-06 13:28:04'),
+(5, 'Roux', 'Valérie', 1, 1, '2005-12-20', '2025-03-31 21:46:46', '2025-05-06 13:28:04'),
 (6, 'Sinet', 'Mathis', 2, 0, '2005-11-09', '2025-04-28 08:27:11', '2025-04-28 08:27:37'),
-(7, 'Compte de TEST', 'FEUR', 1, 0, '2025-04-30', '2025-04-28 14:17:05', '2025-04-28 14:17:09'),
-(8, 'joan', 'pablo', 0, 0, '2005-06-12', '2025-05-02 13:40:24', '2025-05-02 13:40:35');
+(7, 'Riemann', 'Bernhard', 0, 0, '2025-04-30', '2025-04-28 14:17:05', '2025-05-15 16:30:17'),
+(8, 'joan', 'pablo', 0, 0, '2005-06-12', '2025-05-02 13:40:24', '2025-05-17 15:01:23'),
+(9, 'Hütter', 'Ralf', 1, 0, '1970-08-08', '2025-05-17 22:38:07', '2025-05-17 22:38:24'),
+(10, 'Ngo', 'Jonathan', 0, 0, '1879-10-26', '2025-05-07 15:52:32', '2025-05-07 15:52:41'),
+(11, 'Mimi', 'Le CHAT', 2, 0, '1879-10-26', '2025-05-07 21:33:18', '0000-00-00 00:00:00'),
+(12, 'Stallman', 'Richard', 0, 0, '2025-05-13', '2025-05-17 15:05:24', '2025-05-17 15:05:56'),
+(13, 'Torvalds', 'Linus', 0, 1, '1982-05-13', '2025-05-17 15:39:48', '2025-05-17 15:41:08'),
+(15, 'Brandt', 'Willy', 1, 0, '1913-12-18', '2025-05-17 22:41:45', '2025-05-17 22:41:48'),
+(16, 'Ist mir', 'Egal', 1, 0, '1993-05-12', '2025-05-17 22:51:16', '2025-05-17 22:51:21');
 
 -- --------------------------------------------------------
 
@@ -39824,10 +39882,17 @@ INSERT INTO `login` (`id`, `mail`, `motdepasse`) VALUES
 (1, 'valerieroux001@gmail.com', '$2y$12$TE5462mKjisBkvlw3bWFT.O82bnrF5PfeM83ercQNtx45nbuSlI4a'),
 (2, 'gweltaz@cy-tech.fr', '$2y$12$ah2gXkdnm3X2hfHsM7TcsuSg14WqCFuaGlgeO9o76a0DJT3ZaQvYy'),
 (4, 'test@cy-tech.fr', '$2y$12$cWhtHiPHKbEvzUm1xnLqAOg/C6paWGoC17saFlpUm.zt7ezIMRLc2'),
-(5, 'test@gmail.com', '$2y$12$gA4Xskckv71wnbNGZABj8elE/dskIS42uVQTHhd8.djI4ReaXZuJe'),
+(5, 'valerieroux001@gmail.com', '$2y$12$gA4Xskckv71wnbNGZABj8elE/dskIS42uVQTHhd8.djI4ReaXZuJe'),
 (6, 'mathis.sinet@cy-tech.fr', '$2y$12$smsqGZxagvl.Ew2mNhGpxOKn4FZVkyjJ5NDIcipEbsHhwPFT4lYg6'),
 (7, 'test@test.fr', '$2y$12$sEm0YX96sHLsQu2TRdnfl.UTj7xDq9o.I68UtCWrMVLmDY6jnfeDe'),
-(8, 'sofyane@startour.fr', '$2y$12$AOWTSo4wkns6D7Pgs1UQ8OK5lVxlCSUdug.T9J4M4uRxVMaD4t.iG');
+(8, 'sofyane@startour.fr', '$2y$12$AOWTSo4wkns6D7Pgs1UQ8OK5lVxlCSUdug.T9J4M4uRxVMaD4t.iG'),
+(9, 'autobahn@autobahn.de', '$2y$12$10HgLWbSKZ5Gy3t2UBmUrOHG6jqRGyH.sLwSngRujepJhDu0.QhsK'),
+(10, 'triforce@gmail.com', '$2y$12$l3DoXO6zOoFjpeqP7nT0r.lAYpi30/uPze8gLVveUEX2I.ni63JnK'),
+(11, 'cat@cat.cat', '$2y$12$amp9VkOcZ7LPXGy1.sUhSerozXfWv94lDH9a8TK8sjC8aSkattXnW'),
+(12, 'cytech@cytech.cytech', '$2y$12$toW59QKiUXqu7Cuqndf8.uuWyB83cevy0wBf8S1mcMEIYsPtU9kNi'),
+(13, 'liste@cytech.fr', '$2y$12$orayKUlu9/BsIG5QBDwrDem6s6uRomy2.w/SSGlubtg/Baoj9G9wS'),
+(15, 'bundeskanzler@brd.bonn', '$2y$12$unfOHZZaG7EJzP7m9xf35.389AUfvaRt/cMz59udQkktHsZsfwtnm'),
+(16, 'document@secret.berlin', '$2y$12$ZplyPjpsV/Z.0nGL7srWiOYKPjv.aNe7TVB95NHPxzPNUQN6ztQo.');
 
 -- --------------------------------------------------------
 
@@ -39869,8 +39934,17 @@ CREATE TABLE `panier` (
 --
 
 INSERT INTO `panier` (`idCompte`, `idCommande`) VALUES
-(2, 16),
-(2, 18);
+(2, 17),
+(2, 18),
+(2, 19),
+(2, 20),
+(2, 21),
+(13, 22),
+(13, 23),
+(2, 24),
+(2, 25),
+(14, 26),
+(15, 27);
 
 -- --------------------------------------------------------
 
@@ -39991,8 +40065,21 @@ INSERT INTO `transactions` (`id`, `idCommande`, `status`) VALUES
 ('681a257f95cf364', 13, 0),
 ('681a266ab42ed9440133', 14, 1),
 ('681a2ca762027565271768', 15, 1),
-('681cbacc20ac3762008046', 16, 0),
-('681cc14cc59', 18, 0);
+('681b826a4f4fb198239056', 16, 0),
+('68232f8a20178332934171', 17, 2),
+('68232fd3a982', 17, 0),
+('6825f52630360338838', 18, 0),
+('6825fa40d96', 19, 0),
+('6825fa4f5045f665814220', 20, 0),
+('6825fb016ab5171', 21, 2),
+('6825fb40b03bd2454680', 5, 0),
+('6825fc6b00fed679604566', 21, 0),
+('6828b253450be859238038', 22, 0),
+('6828b26cbe1c6326', 23, 1),
+('682902ac773f1493606999', 24, 0),
+('68290e8ad90bd', 25, 1),
+('682910377fb52073796', 26, 1),
+('682910beb234e0127376', 27, 1);
 
 -- --------------------------------------------------------
 
@@ -40044,10 +40131,22 @@ ALTER TABLE `adresses`
   ADD UNIQUE KEY `idCompte` (`idCompte`);
 
 --
+-- Index pour la table `bans`
+--
+ALTER TABLE `bans`
+  ADD UNIQUE KEY `idCompte` (`idCompte`);
+
+--
 -- Index pour la table `commandes`
 --
 ALTER TABLE `commandes`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `commandesOpt`
+--
+ALTER TABLE `commandesOpt`
+  ADD UNIQUE KEY `idCommande` (`idCommande`,`idEtape`,`idOption`);
 
 --
 -- Index pour la table `comptes`
@@ -40133,13 +40232,13 @@ ALTER TABLE `voyage`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

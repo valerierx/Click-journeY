@@ -133,7 +133,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                 }
             }
           } else {
-            echo '<tr><td colspan="6">Aucune commande trouvée</td></tr>';
+            echo '<tr><td colspan="6">Aucune option</td></tr>';
           }
 
           echo '</tbody></table>';
