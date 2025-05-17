@@ -24,7 +24,7 @@ sudo chmod +x /usr/local/bin/podman-compose
 # Téléchargement des conteneurs
 
 Exécutez: 
-```bash
+```bash=
 sudo podman-compose pull
 ```
 

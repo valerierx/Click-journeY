@@ -65,7 +65,6 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         <li><a href="#statistique">Affluence du site</a></li>
         
     </ul>
-
 </nav>
 
 
@@ -76,42 +75,26 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         <caption class="admintable" ><strong>Liste des utilisateurs</strong></caption>
         <thead>
             <tr>
-                <th>Identifiant</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Mail</th>
-                <th>Date de naissance</th>
-                <th>Statut</th>
+                <th data-tri="id">Identifiant</th>
+                <th data-tri="nom">Nom</th>
+                <th data-tri="prenom">Prénom</th>
+                <th data-tri="mail">Mail</th>
+                <th data-tri="naissance">Date de naissance</th>
+                <th data-tri="role">Statut</th>
             </tr>
         </thead>
-        <tbody>
-        <?php
-        $role = "";
-        foreach($comptes as $compte) {
-            switch($compte['role']) {
-                case '0':
-                    $role = "Administrateur";
-                    break;
-                case '1':
-                    $role = "Particulier";
-                    break;
-                case '2':
-                    $role = "Entreprise";
-                    break;
-            }
+        <tbody id="tablecomptes">
+        <tr><td colspan="6"><i>Chargement...</i></td></tr>
 
-            echo '<tr><td>' . $compte['idCompte'] .'</td><td>'. $compte['nom'].'</td><td>'.$compte['prenom'].'</td><td>'.$compte['mail'].'</td><td>'.$compte['naissance'].'</td><td>'.$role.'</td></tr>';
-        }
-        ?>
         </tbody>
         <tfoot>
             <tr>
 
-                <td><button> <- précédent </button>  | <button>suivant -> </button> </td>
-                <td>1/..</td>
-                <td class="td-admin-modif"><button>Modifer</button></td>
+                <td><button id="comptesPrec"> <- précédent </button>  | <button id="comptesSuiv">suivant -> </button> </td>
+                <td id="comptesPage">1/..</td>
+                <td class="td-admin-modif"><button id="modifComptes">Modifer</button></td>
                 <td class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
-                <td class="td-admin" colspan="3" > <button> Bannir utilisateurs </button> </td>
+                <td class="td-admin" colspan="3" id="msgcomptes"> </td>
             </tr>
 
 

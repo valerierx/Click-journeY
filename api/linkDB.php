@@ -70,12 +70,18 @@ if(isset($_SESSION['id'])) {
     }
 }
 
-$api_key = getAPIKey("MI-1_A");
-
-if($_SESSION['role'] == 0) {
-    $compteQuery = "SELECT c.*, l.mail FROM comptes c, login l WHERE l.id = c.idCompte;";
-    $compteResult = mysqli_query($linkDB, $compteQuery);
-    while ($row = mysqli_fetch_assoc($compteResult)) {
-        $comptes[$row['idCompte']] = $row;
+function traiterMulti(false|mysqli $linkDB, string $query, DateTime $datetime): void
+{
+    if (mysqli_multi_query($linkDB, $query)) {
+        echo json_encode(array("status_code" => 200, "message" => "Modifié avec succès", "status_message" => "OK", "time" => $datetime->format(DateTime::ATOM)));
+        http_response_code(200);
+        exit();
+    } else {
+        header("Content-Type: application/json");
+        echo json_encode(array("status_code" => 500, "message" => "Erreur BDD", "status_message" => "Internal Server Error", "time" => $datetime->format(DateTime::ATOM)));
+        http_response_code(500);
+        exit();
     }
 }
+
+$api_key = getAPIKey("MI-1_A");

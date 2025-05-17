@@ -84,7 +84,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                     </div>
                     <!--<select name="commune" id="commune"></select>-->
                     <div class="bouton-array">
-                        <button id="modif" type="button" onclick="modifProfil()">Modifier le profil</button>
+                        <button id="modif" class="btn-telechargement" type="button" onclick="modifProfil()">Modifier le profil</button>
                         <?php if ($_SESSION['role'] == 0) {
                             echo '<button class="admin-btn"><a href="admin.php">Tableau de bord admin</a></button>';
                         }; ?>
@@ -92,7 +92,7 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                     </div>
                 </form>
 
-                <p>Thème: <button id="Theme-bouton" onclick="changerTheme()">🌙</button><p>
+                <p>Thème: <button id="theme-bouton" onclick="changerTheme()">🌙</button><p>
             </div>
         </section>
 
@@ -118,9 +118,11 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
                             $creation = new DateTime($commande['debut']);
 
                             echo "<tr><td>" . $voyage[$commande['idVoyage']]['titre'] . "</td><td>" . date('d F Y', $creation->getTimestamp()) . "</td>";
-                            if ($commande['paye']) {
+                            if ($commande['paye'] == 1) {
                                 //PAYE
                                 echo '<td><button class="commandeconfirmee"><a >Confirmée</a></button></td></tr>';
+                            } else if($commande["paye"] == 2) {
+                                echo '<td><button class="commandecancel"><a>Annulée</a></button></td></tr>';
                             } else {
                                 echo '<td><button class="commandeimpayee"><a  href="recapitulatif.php?commande=' . $commande['id'] . '">A régler</a></button></td></tr>';
                             }

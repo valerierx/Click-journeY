@@ -2,19 +2,7 @@
 require '../linkDB.php';
 $datetime = new DateTime();
 
-function traiterMulti(false|mysqli $linkDB, string $paye, DateTime $datetime): void
-{
-    if (mysqli_multi_query($linkDB, $paye)) {
-        echo json_encode(array("status_code" => 200, "message" => "Modifié avec succès", "status_message" => "OK", "time" => $datetime->format(DateTime::ATOM)));
-        http_response_code(200);
-        exit();
-    } else {
-        header("Content-Type: application/json");
-        echo json_encode(array("status_code" => 500, "message" => "Erreur BDD", "status_message" => "Internal Server Error", "time" => $datetime->format(DateTime::ATOM)));
-        http_response_code(500);
-        exit();
-    }
-}
+
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if($_SESSION["role"] != 0) {

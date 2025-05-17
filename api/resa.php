@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Ajout de la commande
     $total = $voyage[$_POST["voyage"]]['prix'] * $_POST["passengers"];
+
     foreach ($etapes[$_POST['voyage']] as $id => $row) {
         foreach ($option as $optss) {
             if (isset($_POST["etape_" . $id . "_options_" . $optss['id']])) {

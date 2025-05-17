@@ -1,17 +1,39 @@
-let commandesData, tableCmds, triColCmds;
+let commandesData, tableCmds, triColCmds, comptesData, tableComptes, triColComptes;
 let triAscCmds = false;
+let triAscComptes = false;
 const taillePage = 10;
 let curPageCmd = 1;
+let curPageComptes = 1;
+
+// tbody comptes et commandes
 tableCmds = document.getElementById('tablecommandes');
+tableComptes = document.getElementById('tablecomptes');
+
+// register GET asynchrone
 document.addEventListener('DOMContentLoaded', getCommandes, false);
+document.addEventListener('DOMContentLoaded', getComptes, false);
+
+// BOUTONS PRECEDENT/SUIVANT
 resaPrec = document.querySelector('#resaPrec');
-resaSuiv = document.querySelector('#resaSuiv')
+resaSuiv = document.querySelector('#resaSuiv');
+comptesPrec = document.querySelector('#comptesPrec');
+comptesSuiv = document.querySelector('#comptesSuiv');
+
+// inscription event
 resaPrec.addEventListener('click', pageResaPrec, false);
 resaSuiv.addEventListener('click', pageResaSuiv, false);
+comptesPrec.addEventListener('click', pageComptesPrec, false);
+comptesSuiv.addEventListener('click', pageComptesSuiv, false);
+
 let modif = document.getElementById("modifResa");
+let modifComptes = document.getElementById("modifComptes");
+let tailleComptes = 0;
 let tailleResaData = 0;
 let maxPageCmd = 0;
+let maxPageCom = 0;
 msgCommandes = document.getElementById("msgcommandes");
+msgComptes = document.getElementById("msgcomptes");
+
 
 function formDataToJSON(formData) {
     if (!(formData instanceof FormData)) {
@@ -36,10 +58,29 @@ async function getCommandes() {
         populateCommandes();
 
         document.querySelectorAll('#reservation thead tr th[data-tri]').forEach(t => {
-            t.addEventListener('click', sort, false);
+            t.addEventListener('click', sortCmds, false);
         });
 
 
+
+    } else {
+        return [];
+    }
+
+}
+
+async function getComptes() {
+    let response = await fetch('/api/admin/comptes.php', { method: 'GET' });
+
+    if(response.ok) {
+        comptesData = await response.json();
+        tailleComptes = comptesData.length - 1;
+        maxPageCom = Math.ceil(comptesData.length/taillePage)
+        populateComptes();
+
+        document.querySelectorAll('#utilisateurs thead tr th[data-tri]').forEach(t => {
+            t.addEventListener('click', sortComp, false);
+        });
 
     } else {
         return [];
@@ -72,6 +113,31 @@ function getOptions(paye) {
     }
 }
 
+function getRole(role) {
+    switch (role) {
+        case 0:
+            return `
+                <option value="0" selected="selected">Administrateur</option>
+                <option value="1">Particulier</option>
+                <option value="2">Entreprise</option>
+            `;
+        case 1:
+            return `
+                <option value="0">Administrateur</option>
+                <option value="1" selected="selected">Particulier</option>
+                <option value="2">Entreprise</option>
+            `;
+        case 2:
+            return `
+                <option value="0">Administrateur</option>
+                <option value="1">Particulier</option>
+                <option value="2" selected="selected">Entreprise</option>
+            `;
+        default:
+            return '';
+    }
+}
+
 function pageResaPrec() {
     if(curPageCmd > 1) curPageCmd--;
     populateCommandes();
@@ -82,11 +148,21 @@ function pageResaSuiv() {
     populateCommandes();
 }
 
+function pageComptesPrec() {
+    if(curPageComptes > 1) curPageComptes--;
+    populateComptes();
+}
+
+function pageComptesSuiv() {
+    if((curPageComptes * taillePage) < comptesData.length) curPageComptes++;
+    populateComptes();
+}
+
 
 // POPULATE commandes
 
 
-function sort(e) {
+function sortCmds(e) {
     let thisTri = e.target.dataset.tri;
     document.querySelectorAll('#reservation thead tr th[data-tri]').forEach(t => {
         t.removeAttribute("aria-sort");
@@ -118,7 +194,135 @@ function sort(e) {
     populateCommandes();
 }
 
-function populateCommandes() {
+function sortComp(e) {
+    let thisTri= e.target.dataset.tri;
+    document.querySelectorAll('#utilisateurs thead tr th[data-tri]').forEach(t => {
+        t.removeAttribute("aria-sort");
+    });
+
+    if(triColComptes === thisTri) {
+        triAscComptes = !triAscComptes
+    }
+    triColComptes = thisTri;
+    if(triAscComptes) {
+        e.target.setAttribute("aria-sort", "ascending");
+    } else {
+        e.target.setAttribute("aria-sort", "descending");
+    }
+    comptesData.sort((a, b) => {
+        if(a[triColComptes] < b[triColComptes]) return triAscComptes?1:-1;
+        if(a[triColComptes] > b[triColComptes]) return triAscComptes?-1:1;
+        return 0;
+    });
+
+    populateComptes();
+}
+
+function populateComptes() {
+    let debutInPage = false;
+    let finInPage = false;
+    let comptesResult = ""
+    console.log(tailleComptes);
+    comptesData.filter((ligne, index) => {
+        let debut = (curPageComptes - 1) * taillePage;
+        let fin = curPageComptes * taillePage;
+        if (index >= debut && index < fin) {
+            if (index === 0) {
+                debutInPage = true;
+            }
+            if (index === tailleComptes) {
+                finInPage = true;
+            }
+            return true;
+        }
+    }).forEach((compte) => {
+        comptesResult += `<tr>
+            <td>${compte.id}</td>
+            <td>${compte.prenom}</td>
+            <td>${compte.nom}</td>
+            <td>${compte.mail}</td>
+            <td>${compte.naissance}</td>
+            <td><select class="role" data-id="${compte.id}">
+                ${getRole(compte.role)}
+            </select></td>
+            </tr>`;
+    })
+
+    tableComptes.innerHTML = comptesResult;
+    if (debutInPage && finInPage) {
+        comptesPrec.setAttribute('disabled', '');
+        comptesSuiv.setAttribute('disabled', '');
+    } else if (debutInPage) {
+        comptesPrec.setAttribute('disabled', '');
+        comptesSuiv.removeAttribute('disabled');
+    } else if (finInPage) {
+        comptesPrec.removeAttribute('disabled');
+        comptesSuiv.setAttribute('disabled', '');
+    } else {
+        comptesSuiv.removeAttribute('disabled');
+        comptesPrec.removeAttribute('disabled');
+    }
+
+    document.getElementById("comptesPage").textContent = curPageComptes + "/" + maxPageCom;
+
+    //Modif
+    let selecteur = document.getElementsByClassName("role");
+
+    for (let i = 0; i < selecteur.length; i++) {
+        selecteur[i].onchange = function () {
+            console.log(selecteur[i].options[selecteur[i].selectedIndex].hasAttribute("selected"))
+            if (selecteur[i].options[selecteur[i].selectedIndex].hasAttribute("selected")) {
+                selecteur[i].className = "role";
+            } else {
+                selecteur[i].className = "role modif";
+            }
+        }
+    }
+
+    modifComptes.onclick = async function () {
+        let json = [];
+        let selecteurMod = document.getElementsByClassName("role modif");
+        for (let i = 0; i < selecteurMod.length; i++) {
+            json.push({"id": selecteurMod[i].dataset.id, "role": selecteurMod[i].options[selecteurMod[i].selectedIndex].value})
+        }
+        msgComptes.innerHTML = "";
+        if (json.length > 0) {
+            let attente = document.createElement("p");
+            attente.className = "message attente";
+            attente.textContent = "Chargement...";
+            msgComptes.appendChild(attente);
+
+            let response = await fetch("/api/admin/comptes.php", {
+                method: 'POST',
+                body: JSON.stringify(json),
+            })
+
+            let result = await response.json();
+            if (response.ok) {
+                msgComptes.innerHTML = "";
+                let valide = document.createElement("p");
+                valide.className = "message valide";
+                valide.textContent = "Succès !";
+                msgComptes.appendChild(valide);
+                populateComptes();
+            } else {
+                msgComptes.innerHTML = "";
+                let erreur = document.createElement("p");
+                erreur.className = "message erreur";
+                erreur.textContent = result.message + " : " + result.status_code + " " + result.message;
+                msgComptes.appendChild(erreur);
+            }
+        } else {
+            let erreur = document.createElement("p");
+            erreur.className = "message erreur";
+            erreur.textContent = "Veuillez modifier au moins un statut";
+            msgComptes.appendChild(erreur);
+        }
+    }
+}
+
+
+    function populateCommandes() {
     let debutInPage = false;
     let finInPage = false;
     let commandesResult = ""
@@ -222,54 +426,3 @@ function populateCommandes() {
         }
     }
 }
-
-
-
-
-
-
-
-
-/*
-    messages = document.querySelectorAll(".message");
-    if(messages.length > 0) {
-        messages.forEach(message => message.remove());
-    }
-    if(bouton.type === "button") {
-        e.preventDefault();
-        bouton.type = "submit";
-    }
-    formulaire = document.querySelector("form");
-    document.querySelectorAll("input:disabled").forEach(champ => {
-        champ.toggleAttribute('disabled');
-    });
-    bouton.textContent = "Valider la modification";
-    formulaire.onsubmit = async (e) => {
-        e.preventDefault();
-        const formData = formDataToJSON(new FormData(formulaire))
-        let response = await fetch('/api/profil.php', {
-            method: 'POST',
-            body: formData,
-        });
-        let result = await response.json();
-        if(response.ok) {
-            let valide = document.createElement("p");
-            valide.className = "message valide";
-            valide.textContent = "Votre profil a été modifié!";
-            formulaire.parentNode.insertBefore(valide, formulaire);
-            bouton.textContent = "Modifier le profil";
-            bouton.type = "button";
-            document.querySelectorAll("input").forEach(champ => {
-                champ.toggleAttribute('disabled');
-            });
-        } else {
-            let erreur = document.createElement("p");
-            erreur.className = "message erreur";
-            erreur.textContent = result.message + " : " + result.status_code + " " + result.message;
-            formulaire.parentNode.insertBefore(erreur, formulaire);
-        }
-    };
-
-
-}
-*/

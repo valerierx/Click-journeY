@@ -95,7 +95,7 @@ function options(etapesData) {
 }
 
 function calculateTotalPrice() {
-    let total = parseInt(document.getElementById('prixbase').dataset.prix) || 0;
+    let total = parseInt(document.getElementById('prixbase').dataset.prix) * parseInt(document.getElementById("passengers").value);
 
     const selectedOptions = document.querySelectorAll('.price-option:checked');
 
@@ -134,6 +134,9 @@ function setupPriceCalculation() {
             updateTotal();
         });
     });
+
+
+    document.getElementById("passengers").onchange = updateTotal;
 
     function anyOptionChecked(etapeId) {
         const options = document.querySelectorAll(`.price-option[data-etape="${etapeId}"]`);

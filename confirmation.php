@@ -5,6 +5,7 @@ if(!isset($_SESSION)) {
 if(!$_SESSION['connecte']) {
   header('Location: index.php');
 }
+require "api/linkDB.php"
 ?>
 
 <?php
@@ -55,12 +56,17 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
       <a href="recapitulatif.pdf" download class="btn-telechargement">📄 Télécharger le récapitulatif</a>
       <a href="facture.pdf" download class="btn-telechargement">🧾 Télécharger la facture</a>
     </div>';
-  } else {
+  } else if(isset($_GET['cancel'])) {
+      echo '  <h1>Commande annulée</h1>
+    <p>La commande '. $_GET["commande"] . ' a bien été annulée.</p>
+    <p>La somme de '. $commandes[$_GET["commande"]]['total'] . '€ ne vous a pas été facturée.</p>
+    <a href="profil.php" class="btn-telechargement">Mes voyages</a>';
+   } else {
     echo '  <h1>Paiement refusé ⛔</h1>
     <p>Veuillez réesayer votre achat.</p>
     <p>Id de transaction : '. $_SESSION['transid'] . '</p>
     <a href="recapitulatif.php?commande='.$_GET['commande']. '" class="btn-fail">Réessayer</a>';
-  }
+ }
 ?>
 
     <a href="index.html" class="btn-retour">Retour à l'accueil</a>

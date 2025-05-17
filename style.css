@@ -540,7 +540,8 @@ label[for=mdpoublie] {
     margin-bottom: 15px;
 }
 
-#Theme-bouton{
+#theme-bouton{
+    padding: 5px;
     border-radius: 5px;
     background-color: #0d1b1e;
   }
@@ -641,6 +642,14 @@ label[for=mdpoublie] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.commandecancel {
+    background-color: darkred;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
 }
 .tableau-commandes {
     width: 100%;

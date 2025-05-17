@@ -153,7 +153,6 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         couverts par l'agence.</p>
       <p class="total">Total à payer : <?= $commandes[$_GET['commande']]['total'] ?> €</p>
 
-
       <form action='https://www.plateforme-smc.fr/cybank/index.php' method='POST'>
         <input type='hidden' name='transaction' value=<?php
         $checkQuery = "SELECT id FROM transactions WHERE idCommande = '{$_GET['commande']}' AND status = '0' LIMIT 1";
@@ -189,7 +188,10 @@ $api_key
 . "#" . "MI-1_A"
 . "#" . "http://localhost:8080/api/retour_paiement.php?session=" .$_GET['commande']. "#" );
         ?>>
-        <input class="btn-payer" type='submit' value="Valider et payer">
+          <div style="display: flex; justify-content: center;">
+              <input class="btn-payer" type='submit' value="Valider et payer">
+              <a class="btn-retour" href="/api/cancel.php?commande=<?=$_GET['commande']?>">Annuler la commande</a>
+          </div>
       </form>
     </div>
 
