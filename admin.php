@@ -176,48 +176,23 @@ $fiche = ($theme === 'sombre') ? 'sombre.css' : 'style.css';
         <caption class="admintable" ><strong>Gestion des Réservations</strong></caption>
         <thead>
             <tr>
-                <th>Id réservation</th>
-                <th>Voyage</th>
+                <th data-tri="id" aria-sort="descending">Id réservation</th>
+                <th data-tri="titre">Voyage</th>
                 <th>Nom</th>
                 <th>Prénom</th>
-                <th>Date</th>
-                <th>Id compte</th>
-                <th>Statut</th>
+                <th data-tri="debut">Date</th>
+                <th data-tri="idCompte">Id compte</th>
+                <th data-tri="paye">Statut</th>
             </tr>
         </thead>
         <tbody id="tablecommandes">
-        <?php
-        /*$statut = "";
-        foreach($commandesAdm as $commande) {
-
-            echo '<tr><td>'. $commande['id'].'</td><td>'.$commande['titre'].'</td><td>'.$commande['nom'].'</td><td>'.$commande['prenom'].'</td><td>'.$commande['debut'].'</td><td>'.$commande['idCompte'].'</td>';
-            echo '<td><select class="status" data-id="'. $commande['id'] . '">';
-            switch($commande['paye']) {
-                case '0':
-                    echo '<option value="En attente" selected="selected">En attente</option>';
-                    echo '<option value="1">Confirmée</option>';
-                    echo '<option value="2">Annulée</option>';
-                    break;
-                case '1':
-                    echo '<option value="0">En attente</option>';
-                    echo '<option value="1" selected="selected">Confirmée</option>';
-                    echo '<option value="2">Annulée</option>';
-                    break;
-                case '2':
-                    echo '<option value="0">En attente</option>';
-                    echo '<option value="1">Confirmée</option>';
-                    echo '<option value="2" selected="selected">Annulée</option>';
-                    break;
-            }
-            echo '</select></td></tr>';
-        }*/
-        ?>
+            <tr><td colspan="7"><i>Chargement...</i></td></tr>
         </tbody>
         <tfoot>
         <tr>
 
-            <td><button><- précédent </button>  | <button>suivant -> </button> </td>
-            <td>1/..</td>
+            <td><button id="resaPrec"><- précédent </button>  | <button id="resaSuiv">suivant -> </button> </td>
+            <td id="resaPage">1/..</td>
             <td class="td-admin-modif"><button id="modifResa">Modifier</button></td>
             <td  class="td-admin"><a href="#haut-de-page">Haut de page</a></td>
             <td id="msgcommandes" colspan="3"></td>

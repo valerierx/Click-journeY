@@ -17,12 +17,13 @@ function traiterMulti(false|mysqli $linkDB, string $paye, DateTime $datetime): v
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    /*if($_SESSION["role"] != 0) {
+    if($_SESSION["role"] != 0) {
         header("Content-Type: application/json");
         echo json_encode(array("status_code" => 401, "message" => "Permission non accordée", "status_message" => "Unauthorized", "time" => $datetime->format(DateTime::ATOM)));
         http_response_code(401);
         exit();
-    }*/
+    }
+    sleep(3); // délai de 3 secondes
     header("Content-Type: application/json");
     $body = json_decode(file_get_contents('php://input'));
     $paye = "";

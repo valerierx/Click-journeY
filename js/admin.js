@@ -1,3 +1,18 @@
+let commandesData, tableCmds, triColCmds;
+let triAscCmds = false;
+const taillePage = 10;
+let curPageCmd = 1;
+tableCmds = document.getElementById('tablecommandes');
+document.addEventListener('DOMContentLoaded', getCommandes, false);
+resaPrec = document.querySelector('#resaPrec');
+resaSuiv = document.querySelector('#resaSuiv')
+resaPrec.addEventListener('click', pageResaPrec, false);
+resaSuiv.addEventListener('click', pageResaSuiv, false);
+let modif = document.getElementById("modifResa");
+let tailleResaData = 0;
+let maxPageCmd = 0;
+msgCommandes = document.getElementById("msgcommandes");
+
 function formDataToJSON(formData) {
     if (!(formData instanceof FormData)) {
         throw TypeError('formData argument is not an instance of FormData');
@@ -15,10 +30,21 @@ async function getCommandes() {
     let response = await fetch('/api/admin/commandes.php', { method: 'GET' });
 
     if(response.ok) {
-        return await response.json();
+        commandesData = await response.json();
+        tailleResaData = commandesData.length - 1;
+        maxPageCmd = Math.ceil(commandesData.length/taillePage)
+        populateCommandes();
+
+        document.querySelectorAll('#reservation thead tr th[data-tri]').forEach(t => {
+            t.addEventListener('click', sort, false);
+        });
+
+
+
     } else {
         return [];
     }
+
 }
 
 function getOptions(paye) {
@@ -46,13 +72,71 @@ function getOptions(paye) {
     }
 }
 
+function pageResaPrec() {
+    if(curPageCmd > 1) curPageCmd--;
+    populateCommandes();
+}
+
+function pageResaSuiv() {
+    if((curPageCmd * taillePage) < commandesData.length) curPageCmd++;
+    populateCommandes();
+}
+
 
 // POPULATE commandes
 
-getCommandes().then((commandes) => {
-    commandes.forEach((commande) => {
-        let ligne = document.createElement('tr');
-        ligne.innerHTML = `<tr>
+
+function sort(e) {
+    let thisTri = e.target.dataset.tri;
+    document.querySelectorAll('#reservation thead tr th[data-tri]').forEach(t => {
+        t.removeAttribute("aria-sort");
+    });
+
+    if(triColCmds === thisTri) {
+        triAscCmds = !triAscCmds
+    }
+    triColCmds = thisTri;
+    if(triAscCmds) {
+        e.target.setAttribute("aria-sort", "ascending");
+    } else {
+        e.target.setAttribute("aria-sort", "descending");
+    }
+    if(triColCmds === "idCompte") {
+        commandesData.sort((a, b) => {
+            if(a["compte"]["id"] < b["compte"]["id"]) return triAscCmds?1:-1;
+            if(a["compte"]["id"] > b["compte"]["id"]) return triAscCmds?-1:1;
+            return 0;
+        });
+    } else {
+        commandesData.sort((a, b) => {
+            if(a[triColCmds] < b[triColCmds]) return triAscCmds?1:-1;
+            if(a[triColCmds] > b[triColCmds]) return triAscCmds?-1:1;
+            return 0;
+        });
+    }
+
+    populateCommandes();
+}
+
+function populateCommandes() {
+    let debutInPage = false;
+    let finInPage = false;
+    let commandesResult = ""
+    console.log(tailleResaData);
+    commandesData.filter((ligne, index) => {
+        let debut = (curPageCmd-1)*taillePage;
+        let fin = curPageCmd*taillePage;
+        if(index >= debut && index < fin) {
+            if(index === 0) {
+                debutInPage = true;
+            }
+            if(index === tailleResaData) {
+                finInPage = true;
+            }
+            return true;
+        }
+    }).forEach((commande) => {
+        commandesResult += `<tr>
             <td>${commande.id}</td>
             <td>${commande.titre}</td>
             <td>${commande.compte.prenom}</td>
@@ -63,13 +147,28 @@ getCommandes().then((commandes) => {
                 ${getOptions(commande.paye)}
             </select></td>
             </tr>`;
-
-        document.getElementById('tablecommandes').appendChild(ligne);
     })
+
+    tableCmds.innerHTML = commandesResult;
+    if(debutInPage && finInPage) {
+        resaPrec.setAttribute('disabled', '');
+        resaSuiv.setAttribute('disabled', '');
+    } else if(debutInPage) {
+        resaPrec.setAttribute('disabled', '');
+        resaSuiv.removeAttribute('disabled');
+    } else if(finInPage) {
+        resaPrec.removeAttribute('disabled');
+        resaSuiv.setAttribute('disabled', '');
+    } else {
+        resaSuiv.removeAttribute('disabled');
+        resaPrec.removeAttribute('disabled');
+    }
+
+    document.getElementById("resaPage").textContent = curPageCmd + "/" + maxPageCmd;
+
 
     // MODIFICATION commandes
     let selecteur = document.getElementsByClassName("status");
-    let modif = document.getElementById("modifResa");
 
     for (let i = 0; i < selecteur.length; i++) {
         selecteur[i].onchange = function () {
@@ -88,8 +187,13 @@ getCommandes().then((commandes) => {
         for (let i = 0; i < selecteurMod.length; i++) {
             json.push({"id": selecteurMod[i].dataset.id, "paye": selecteurMod[i].options[selecteurMod[i].selectedIndex].value})
         }
-        console.log(JSON.stringify(json));
+        msgCommandes.innerHTML = "";
         if (json.length > 0) {
+            let attente = document.createElement("p");
+            attente.className = "message attente";
+            attente.textContent = "Chargement...";
+            msgCommandes.appendChild(attente);
+
             let response = await fetch("/api/admin/commandes.php", {
                 method: 'POST',
                 body: JSON.stringify(json),
@@ -97,19 +201,28 @@ getCommandes().then((commandes) => {
 
             let result = await response.json();
             if (response.ok) {
+                msgCommandes.innerHTML = "";
                 let valide = document.createElement("p");
                 valide.className = "message valide";
                 valide.textContent = "Succès !";
-                document.getElementById("msgcommandes").appendChild(valide);
+                msgCommandes.appendChild(valide);
+                populateCommandes();
             } else {
+                msgCommandes.innerHTML = "";
                 let erreur = document.createElement("p");
                 erreur.className = "message erreur";
                 erreur.textContent = result.message + " : " + result.status_code + " " + result.message;
-                document.getElementById("msgcommandes").appendChild(erreur);
+                msgCommandes.appendChild(erreur);
             }
+        } else {
+            let erreur = document.createElement("p");
+            erreur.className = "message erreur";
+            erreur.textContent = "Veuillez modifier au moins un statut";
+            msgCommandes.appendChild(erreur);
         }
     }
-})
+}
+
 
 
 
