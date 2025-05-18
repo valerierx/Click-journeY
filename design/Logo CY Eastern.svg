@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1200"
+   height="628"
+   viewBox="0 0 1200 628"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="Logo CY Eastern.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   inkscape:export-filename="Logo CY Eastern.webp"
+   inkscape:export-xdpi="48"
+   inkscape:export-ydpi="48"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.0133333"
+     inkscape:cx="368.09212"
+     inkscape:cy="332.5658"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient1"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#cd0000;stop-opacity:1;"
+         offset="0"
+         id="stop1" />
+      <stop
+         style="stop-color:#eb0000;stop-opacity:1;"
+         offset="1"
+         id="stop2" />
+    </linearGradient>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 314 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="1200 : 314 : 1"
+       inkscape:persp3d-origin="600 : 209.33333 : 1"
+       id="perspective1" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1"
+       id="radialGradient2"
+       cx="207.73027"
+       cy="293.58554"
+       fx="207.73027"
+       fy="293.58554"
+       r="179.11185"
+       gradientTransform="matrix(0.98982493,0,0,0.55831034,-28.327242,-63.911866)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     id="rect3"
+     style="fill:#6c00d4;stroke-width:1.04737"
+     d="M 325.51027,58.706463 H 800 L 776.66484,182.72636 H 259.82906 Z"
+     sodipodi:nodetypes="ccccc" />
+  <ellipse
+     style="fill:url(#radialGradient2);fill-opacity:1;stroke-width:1.16488"
+     id="path6"
+     ry="100"
+     rx="177.28937"
+     cy="100"
+     cx="177.28937" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:191.811px;font-family:Today;-inkscape-font-specification:Today;text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#eaeaea;fill-opacity:1;stroke-width:0.999015"
+       x="65.067429"
+       y="153.60611"
+       id="text1"
+       transform="scale(0.99080016,1.0092853)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="65.067429"
+         y="153.60611"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:191.811px;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;fill:#eaeaea;fill-opacity:1;stroke-width:0.999015"
+         dy="0 19.980314">CY</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:74.5932px;font-family:'Ferrite Core DX';-inkscape-font-specification:'Ferrite Core DX';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#eaeaea;fill-opacity:1;stroke-width:0.999015"
+       x="365.93317"
+       y="144.48245"
+       id="text6"
+       transform="scale(0.99080016,1.0092853)"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         x="365.93317"
+         y="144.48245"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:74.5932px;font-family:Serpentine;-inkscape-font-specification:'Serpentine Bold Italic';stroke-width:0.999015">EASTERN</tspan></text>
+  </g>
+</svg>
